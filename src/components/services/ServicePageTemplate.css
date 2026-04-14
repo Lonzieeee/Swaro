@@ -1,0 +1,184 @@
+.servicePage {
+  padding: clamp(3rem, 7vw, 5rem) max(1rem, env(safe-area-inset-right, 0px), 4vw);
+}
+
+.servicePage--soft {
+  background: rgba(249, 245, 236, 0.8);
+}
+
+.servicePage__inner {
+  max-width: 1120px;
+  margin: 0 auto;
+}
+
+.servicePage__sectionTag {
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+}
+
+.servicePage__heading {
+  margin: 0 0 1.25rem;
+  color: #1b4332;
+  font-size: clamp(1.9rem, 4vw, 2.75rem);
+}
+
+.servicePage__body {
+  color: #3f3f3f;
+  max-width: 70ch;
+  margin: 0 0 0.9rem;
+}
+
+.servicePage__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1rem;
+}
+
+.servicePage__card {
+  background: #ffffff;
+  border: 1px solid rgba(13, 43, 29, 0.08);
+  border-radius: 14px;
+  padding: 1.25rem;
+  box-shadow: 0 10px 24px rgba(13, 43, 29, 0.08);
+}
+
+.servicePage__cardTitle {
+  margin: 0 0 0.75rem;
+  color: #1b4332;
+  font-size: clamp(1.25rem, 2.2vw, 1.55rem);
+}
+
+.servicePage__list {
+  margin: 0;
+  padding-left: 1.1rem;
+  display: grid;
+  gap: 0.45rem;
+  color: #444444;
+}
+
+.servicePage__list li::marker {
+  color: #c9a84c;
+}
+
+.servicePage__methodList {
+  margin: 0;
+  padding-left: 1.1rem;
+  max-width: 72ch;
+  display: grid;
+  gap: 0.55rem;
+  color: #414141;
+}
+
+.servicePage__methodList li::marker {
+  color: #2d6a4f;
+}
+
+.servicePageCta {
+  padding: clamp(3rem, 7vw, 5rem) max(1rem, env(safe-area-inset-right, 0px), 4vw);
+  background: linear-gradient(150deg, #f9f5ec 0%, #f0e6cd 55%, #e9d8ad 100%);
+}
+
+.servicePageCta__inner {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  border: 1px solid rgba(27, 67, 50, 0.14);
+  border-radius: 16px;
+  padding: clamp(1.6rem, 3vw, 2.5rem);
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.servicePageCta__label {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #c9a84c;
+}
+
+.servicePageCta__title {
+  margin: 0.7rem 0 0.8rem;
+  color: #1b4332;
+  font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+}
+
+.servicePageCta__title span {
+  color: #2d6a4f;
+  font-style: italic;
+}
+
+.servicePageCta__body {
+  max-width: 62ch;
+  margin: 0 auto;
+  color: #4f4f4f;
+}
+
+.servicePageCta__actions {
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.servicePageCta__button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 210px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.8rem 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 0.78rem;
+  font-weight: 600;
+}
+
+.servicePageCta__button--primary {
+  background: #c9a84c;
+  color: #143425;
+}
+
+.servicePageCta__button--secondary {
+  background: transparent;
+  border-color: #1b4332;
+  color: #1b4332;
+}
+
+.servicePageCta__trust {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  color: #606060;
+  font-size: 0.82rem;
+}
+
+.servicePageCta__trust span {
+  position: relative;
+  padding-left: 0.62rem;
+}
+
+.servicePageCta__trust span::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.46rem;
+  width: 5px;
+  height: 5px;
+  border-radius: 999px;
+  background: #c9a84c;
+}
+
+@media (max-width: 680px) {
+  .servicePageCta__button {
+    width: 100%;
+    min-width: 0;
+  }
+}
