@@ -1,0 +1,263 @@
+.approachCta {
+  position: relative;
+  background: #f9f5ec;
+  padding-top: clamp(3.5rem, 8vw, 6rem);
+  padding-bottom: clamp(3.5rem, 8vw, 6rem);
+  padding-left: max(1rem, env(safe-area-inset-left, 0px), 4vw);
+  padding-right: max(1rem, env(safe-area-inset-right, 0px), 4vw);
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.approachCta__dots {
+  position: absolute;
+  width: 160px;
+  height: 160px;
+  background-image: radial-gradient(circle, rgba(201, 168, 76, 0.2) 1.5px, transparent 1.5px);
+  background-size: 18px 18px;
+  pointer-events: none;
+}
+
+.approachCta__dots--top {
+  top: 30px;
+  left: 30px;
+}
+
+.approachCta__dots--bottom {
+  bottom: 30px;
+  right: 30px;
+}
+
+.approachCta__inner {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1.2rem;
+}
+
+.approachCta__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c9a84c;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.approachCta__labelDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #c9a84c;
+  flex-shrink: 0;
+}
+
+.approachCta__heading {
+  margin: 0;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400;
+  color: #1b4332;
+  line-height: 1.2;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease 0.1s, transform 0.7s ease 0.1s;
+}
+
+.approachCta__headingAccent {
+  font-style: italic;
+  color: #2d6a4f;
+}
+
+.approachCta__divider {
+  width: 60px;
+  height: 2px;
+  background: #c9a84c;
+  border-radius: 2px;
+  opacity: 0;
+  transition: opacity 0.7s ease 0.2s;
+}
+
+.approachCta__subtext {
+  margin: 0;
+  max-width: 560px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 300;
+  color: #4a4a4a;
+  line-height: 1.75;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease 0.25s, transform 0.7s ease 0.25s;
+}
+
+.approachCta__buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 0.8rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease 0.35s, transform 0.7s ease 0.35s;
+}
+
+.approachCta__button {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.9rem 1.75rem;
+  border-radius: 6px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: all 0.25s ease;
+}
+
+.approachCta__button--primary {
+  color: #1b4332;
+  background: #c9a84c;
+  border: 1px solid #c9a84c;
+}
+
+.approachCta__button--secondary {
+  color: #1b4332;
+  background: transparent;
+  border: 1px solid #1b4332;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .approachCta__button--primary:hover {
+    background: #d8bc6e;
+    border-color: #d8bc6e;
+    transform: translateY(-2px);
+  }
+
+  .approachCta__button--secondary:hover {
+    background: rgba(27, 67, 50, 0.06);
+    transform: translateY(-2px);
+  }
+}
+
+.approachCta__trustRow {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.35rem;
+  margin-top: 0.9rem;
+  opacity: 0;
+  transition: opacity 0.7s ease 0.5s;
+}
+
+.approachCta__trustItem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.approachCta__trustDot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #c9a84c;
+  flex-shrink: 0;
+}
+
+.approachCta__trustText {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: #6b6b6b;
+}
+
+.approachCta--visible .approachCta__label,
+.approachCta--visible .approachCta__heading,
+.approachCta--visible .approachCta__subtext,
+.approachCta--visible .approachCta__buttons {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.approachCta--visible .approachCta__divider,
+.approachCta--visible .approachCta__trustRow {
+  opacity: 1;
+}
+
+@media (max-width: 767px) {
+  .approachCta__dots {
+    width: 120px;
+    height: 120px;
+    background-size: 16px 16px;
+  }
+
+  .approachCta__dots--top {
+    top: 12px;
+    left: 12px;
+  }
+
+  .approachCta__dots--bottom {
+    right: 12px;
+    bottom: 12px;
+  }
+
+  .approachCta__buttons {
+    width: 100%;
+  }
+
+  .approachCta__button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .approachCta__trustRow {
+    gap: 0.85rem 1.25rem;
+  }
+}
+
+.approachCta--motionless .approachCta__label,
+.approachCta--motionless .approachCta__heading,
+.approachCta--motionless .approachCta__divider,
+.approachCta--motionless .approachCta__subtext,
+.approachCta--motionless .approachCta__buttons,
+.approachCta--motionless .approachCta__trustRow {
+  transition: none !important;
+  transition-delay: 0s !important;
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .approachCta__label,
+  .approachCta__heading,
+  .approachCta__divider,
+  .approachCta__subtext,
+  .approachCta__buttons,
+  .approachCta__trustRow {
+    transition: none !important;
+    transition-delay: 0s !important;
+  }
+
+  .approachCta--visible .approachCta__label,
+  .approachCta--visible .approachCta__heading,
+  .approachCta--visible .approachCta__divider,
+  .approachCta--visible .approachCta__subtext,
+  .approachCta--visible .approachCta__buttons,
+  .approachCta--visible .approachCta__trustRow {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
