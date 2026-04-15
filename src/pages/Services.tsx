@@ -3,7 +3,7 @@ import PageHero, { type PageHeroBreadcrumb } from '../components/common/PageHero
 import SEOHead from '../components/seo/SEOHead'
 import ServicePageTemplate from '../components/services/ServicePageTemplate'
 import { servicePages, servicePagesBySlug } from '../constants/servicePages'
-import { pageHeroMedia } from '../constants/swaroData'
+import { aboutPageMedia, pageHeroMedia } from '../constants/swaroData'
 import type { BreadcrumbJsonLdItem } from '../utils/seo'
 import './Services.css'
 
@@ -39,14 +39,33 @@ function ServicesLanding() {
 
       <section className="servicesLanding" aria-labelledby="services-landing-heading">
         <div className="servicesLanding__inner">
-          <div className="servicesLanding__label">Core Services</div>
-          <h1 id="services-landing-heading" className="servicesLanding__heading">
-            Choose A Service To Explore In Detail
-          </h1>
-          <p className="servicesLanding__copy">
-            Each service has a dedicated page with overview, offerings, target audience, approach, and
-            clear next steps for engagement.
-          </p>
+          <div className="servicesLanding__overview">
+            <div className="servicesLanding__textCol">
+              <div className="servicesLanding__label">
+                <span className="servicesLanding__labelDot" aria-hidden />
+                Services Overview
+              </div>
+              <h1 id="services-landing-heading" className="servicesLanding__heading">
+                Practical, Evidence-Based Support Across Our Core Services
+              </h1>
+              <div className="servicesLanding__divider" aria-hidden />
+              <p className="servicesLanding__copy">
+                We support individuals, institutions and communities through six integrated service areas.
+                Explore each service to see focus areas, delivery approach, and how we can tailor support
+                for your context.
+              </p>
+            </div>
+
+            <div className="servicesLanding__imageCol">
+              <img
+                className="servicesLanding__image"
+                src={aboutPageMedia.showcase}
+                alt="SWARO consultants in collaborative planning and service delivery"
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+          </div>
 
           <div className="servicesLanding__grid">
             {servicePages.map((service) => (

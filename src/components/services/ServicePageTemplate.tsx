@@ -1,7 +1,24 @@
+import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
+import type { IconType } from 'react-icons'
+import {
+  HiOutlineAcademicCap,
+  HiOutlineBuildingLibrary,
+  HiOutlineChartBarSquare,
+  HiOutlineClipboardDocumentCheck,
+  HiOutlineHome,
+  HiOutlineHeart,
+  HiOutlineMegaphone,
+  HiOutlineScale,
+  HiOutlineSparkles,
+  HiOutlineUser,
+  HiOutlineUsers,
+  HiOutlineWrenchScrewdriver,
+} from 'react-icons/hi2'
 import PageHero, { type PageHeroBreadcrumb } from '../common/PageHero'
 import SEOHead from '../seo/SEOHead'
 import type { ServicePageContent } from '../../constants/servicePages'
+import { pageHeroMedia } from '../../constants/swaroData'
 import type { BreadcrumbJsonLdItem } from '../../utils/seo'
 import './ServicePageTemplate.css'
 
@@ -11,16 +28,123 @@ type ServicePageTemplateProps = {
 
 const TRUST_POINTS = ['Professionalism', 'Empowerment', 'Innovation', 'Community Impact'] as const
 
-const SHARED_METHOD = [
-  'Evidence-based solutions',
-  'Needs assessment and customization',
-  'Interactive training and delivery methodologies',
-  'Professional counselling and facilitation frameworks',
-  'Monitoring and evaluation for impact',
-  'Partnership and collaboration',
-] as const
+function defaultOfferSummary(serviceTitle: string, offer: string): string {
+  const lower = offer.toLowerCase()
+  if (lower.includes('counselling') || lower.includes('mediation') || lower.includes('conflict')) {
+    return 'Structured guidance that builds clarity, communication, and sustainable resolution.'
+  }
+  if (lower.includes('training') || lower.includes('capacity') || lower.includes('leadership')) {
+    return 'Practical learning sessions that strengthen skills, confidence, and day-to-day performance.'
+  }
+  if (lower.includes('curriculum') || lower.includes('education') || lower.includes('career')) {
+    return 'Targeted support that improves learning outcomes and helps shape clear growth pathways.'
+  }
+  if (lower.includes('community') || lower.includes('empowerment') || lower.includes('gender') || lower.includes('youth')) {
+    return 'Locally grounded interventions that increase participation, ownership, and long-term impact.'
+  }
+  if (lower.includes('research') || lower.includes('data') || lower.includes('evaluation') || lower.includes('monitoring')) {
+    return 'Evidence-driven analysis and insights to guide stronger strategy and accountable results.'
+  }
+  if (lower.includes('nutrition') || lower.includes('health') || lower.includes('lifestyle')) {
+    return 'Prevention-focused guidance that promotes healthier choices and lasting well-being.'
+  }
+  if (lower.includes('grant') || lower.includes('resource mobilization') || lower.includes('fundraising')) {
+    return 'Focused support to strengthen proposals, positioning, and resource mobilization outcomes.'
+  }
+  return `Tailored ${serviceTitle.toLowerCase()} support designed for practical delivery and measurable results.`
+}
+
+function selectOfferIcon(offer: string): IconType {
+  const lower = offer.toLowerCase()
+  if (lower.includes('counselling') || lower.includes('mediation') || lower.includes('conflict')) {
+    return HiOutlineScale
+  }
+  if (lower.includes('training') || lower.includes('capacity') || lower.includes('leadership')) {
+    return HiOutlineAcademicCap
+  }
+  if (lower.includes('research') || lower.includes('data') || lower.includes('evaluation') || lower.includes('monitoring')) {
+    return HiOutlineChartBarSquare
+  }
+  if (lower.includes('health') || lower.includes('nutrition') || lower.includes('lifestyle')) {
+    return HiOutlineHeart
+  }
+  if (lower.includes('community') || lower.includes('gender') || lower.includes('youth') || lower.includes('family')) {
+    return HiOutlineUsers
+  }
+  if (lower.includes('grant') || lower.includes('proposal') || lower.includes('resource mobilization') || lower.includes('fundraising')) {
+    return HiOutlineClipboardDocumentCheck
+  }
+  if (lower.includes('curriculum') || lower.includes('education') || lower.includes('career') || lower.includes('mentorship')) {
+    return HiOutlineWrenchScrewdriver
+  }
+  if (lower.includes('awareness') || lower.includes('motivation')) {
+    return HiOutlineMegaphone
+  }
+  return HiOutlineSparkles
+}
+
+function selectAudienceIcon(audience: string): IconType {
+  const lower = audience.toLowerCase()
+  if (lower.includes('individual') || lower.includes('client')) return HiOutlineUser
+  if (lower.includes('family') || lower.includes('community') || lower.includes('group')) return HiOutlineUsers
+  if (lower.includes('school') || lower.includes('university') || lower.includes('learner') || lower.includes('youth')) {
+    return HiOutlineAcademicCap
+  }
+  if (lower.includes('government') || lower.includes('ministry') || lower.includes('agency')) return HiOutlineBuildingLibrary
+  if (lower.includes('faith') || lower.includes('church')) return HiOutlineHome
+  if (lower.includes('ngo') || lower.includes('organization') || lower.includes('institution')) return HiOutlineClipboardDocumentCheck
+  return HiOutlineSparkles
+}
+
+function defaultAudienceSummary(audience: string): string {
+  return `Tailored support pathways for ${audience.toLowerCase()}, with practical delivery and context-specific guidance.`
+}
+
+function outcomesParagraph(outcomes: readonly string[], outcomesStatement?: string): string {
+  if (outcomesStatement) return outcomesStatement
+  return outcomes.join(' • ')
+}
 
 export default function ServicePageTemplate({ service }: ServicePageTemplateProps) {
+  const offersSectionRef = useRef<HTMLElement | null>(null)
+  const audienceSectionRef = useRef<HTMLElement | null>(null)
+  const [offersInView, setOffersInView] = useState(false)
+  const [audienceInView, setAudienceInView] = useState(false)
+
+  useEffect(() => {
+    const section = offersSectionRef.current
+    if (!section || offersInView) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        setOffersInView(true)
+        observer.disconnect()
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -8% 0px' }
+    )
+
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [offersInView])
+
+  useEffect(() => {
+    const section = audienceSectionRef.current
+    if (!section || audienceInView) return
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (!entry.isIntersecting) return
+        setAudienceInView(true)
+        observer.disconnect()
+      },
+      { threshold: 0.2, rootMargin: '0px 0px -8% 0px' }
+    )
+
+    observer.observe(section)
+    return () => observer.disconnect()
+  }, [audienceInView])
+
   const breadcrumbs: PageHeroBreadcrumb[] = [
     { label: 'Home', path: '/' },
     { label: 'Services', path: '/services' },
@@ -54,63 +178,131 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
 
       <section className="servicePage" aria-labelledby="service-overview-heading">
         <div className="servicePage__inner">
-          <div className="servicePage__sectionTag">Service Overview</div>
-          <h2 id="service-overview-heading" className="servicePage__heading">
-            {service.title}
-          </h2>
-          {service.overview.map((paragraph) => (
-            <p key={paragraph} className="servicePage__body">
-              {paragraph}
-            </p>
-          ))}
-        </div>
-      </section>
+          <div className="servicePage__overview">
+            <div className="servicePage__textCol">
+              <div className="servicePage__sectionTag">
+                <span className="servicePage__sectionTagDot" aria-hidden />
+                Service Overview
+              </div>
+              <h2 id="service-overview-heading" className="servicePage__heading">
+                {service.title}
+              </h2>
+              <div className="servicePage__divider" aria-hidden />
+              {service.overview.map((paragraph) => (
+                <p key={paragraph} className="servicePage__body">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
 
-      <section className="servicePage servicePage--soft" aria-labelledby="service-offerings-heading">
-        <div className="servicePage__inner">
-          <div className="servicePage__grid">
-            <article className="servicePage__card">
-              <h3 id="service-offerings-heading" className="servicePage__cardTitle">
-                What We Offer
-              </h3>
-              <ul className="servicePage__list">
-                {service.offerings.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
-
-            <article className="servicePage__card">
-              <h3 className="servicePage__cardTitle">Who This Is For</h3>
-              <ul className="servicePage__list">
-                {service.audience.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
-
-            <article className="servicePage__card">
-              <h3 className="servicePage__cardTitle">Expected Outcomes</h3>
-              <ul className="servicePage__list">
-                {service.outcomes.map((item) => (
-                  <li key={item}>{item}</li>
-                ))}
-              </ul>
-            </article>
+            <div className="servicePage__imageCol">
+              <img
+                className="servicePage__image"
+                src={service.heroImage}
+                alt={service.heroImageAlt}
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
           </div>
         </div>
       </section>
 
-      <section className="servicePage" aria-labelledby="service-approach-heading">
+      <section
+        ref={offersSectionRef}
+        className={`servicePageOffersSection${offersInView ? ' isInView' : ''}`}
+        aria-labelledby="service-offerings-heading"
+      >
         <div className="servicePage__inner">
-          <h3 id="service-approach-heading" className="servicePage__cardTitle">
-            How We Deliver
+          <div className="servicePage__sectionTag">
+            <span className="servicePage__sectionTagDot" aria-hidden />
+            What We Offer
+          </div>
+          <h3 id="service-offerings-heading" className="servicePage__cardTitle servicePage__cardTitle--section">
+            Key Service Offerings
           </h3>
-          <ul className="servicePage__methodList">
-            {SHARED_METHOD.map((step) => (
-              <li key={step}>{step}</li>
-            ))}
-          </ul>
+          <p className="servicePageOffers__subtext">
+            We deliver practical, context-aware interventions across these core service areas to ensure
+            measurable outcomes, stronger capacity and lasting impact.
+          </p>
+          <div
+            className="servicePageOffers__grid"
+            style={{ gridTemplateColumns: `repeat(${service.offerings.length}, minmax(220px, 1fr))` }}
+          >
+            {service.offerings.map((item) => {
+              const Icon = selectOfferIcon(item)
+              return (
+                <article key={item} className="servicePageOffers__card">
+                  <div className="servicePageOffers__iconWrap">
+                    <Icon className="servicePageOffers__icon" size={24} aria-hidden />
+                  </div>
+                  <h4 className="servicePageOffers__title">{item}</h4>
+                  <p className="servicePageOffers__body">
+                    {service.offeringSummaries?.[item] ?? defaultOfferSummary(service.shortLabel, item)}
+                  </p>
+                  <div className="servicePageOffers__accent" aria-hidden />
+                </article>
+              )
+            })}
+          </div>
+        </div>
+      </section>
+
+      <section className="servicePageOutcomeQuote" aria-labelledby="service-outcomes-heading">
+        <img
+          className="servicePageOutcomeQuote__bg"
+          src={pageHeroMedia.about}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          aria-hidden
+        />
+        <div className="servicePageOutcomeQuote__overlay" aria-hidden />
+        <div className="servicePageOutcomeQuote__inner">
+          <h3 id="service-outcomes-heading" className="servicePageOutcomeQuote__heading">
+            Expected Outcomes
+          </h3>
+          <p className="servicePageOutcomeQuote__text">
+            "{outcomesParagraph(service.outcomes, service.outcomesStatement)}"
+          </p>
+        </div>
+      </section>
+
+      <section
+        ref={audienceSectionRef}
+        className={`servicePageAudienceSection${audienceInView ? ' isInView' : ''}`}
+        aria-labelledby="service-audience-heading"
+      >
+        <div className="servicePage__inner">
+          <div className="servicePage__sectionTag">
+            <span className="servicePage__sectionTagDot" aria-hidden />
+            Who This Is For
+          </div>
+          <h3 id="service-audience-heading" className="servicePage__cardTitle servicePage__cardTitle--section">
+            Ideal Audience
+          </h3>
+          <p className="servicePageAudience__subtext">
+            This service is designed for the groups below, with delivery tailored to their context, goals,
+            and implementation realities.
+          </p>
+
+          <div className="servicePage__grid">
+            {service.audience.map((item) => {
+              const Icon = selectAudienceIcon(item)
+              return (
+                <article key={item} className="servicePage__card servicePageAudience__card">
+                  <div className="servicePageAudience__iconWrap">
+                    <Icon className="servicePageAudience__icon" size={22} aria-hidden />
+                  </div>
+                  <h4 className="servicePage__cardTitle">{item}</h4>
+                  <p className="servicePageAudience__body">
+                    {service.audienceSummaries?.[item] ?? defaultAudienceSummary(item)}
+                  </p>
+                  <div className="servicePageAudience__accent" aria-hidden />
+                </article>
+              )
+            })}
+          </div>
         </div>
       </section>
 

@@ -16,8 +16,11 @@ export type ServicePageContent = {
   metaDescription: string
   overview: string[]
   offerings: string[]
+  offeringSummaries?: Partial<Record<string, string>>
   audience: string[]
+  audienceSummaries?: Partial<Record<string, string>>
   outcomes: string[]
+  outcomesStatement?: string
 }
 
 const DEFAULT_SERVICE_HERO =
@@ -34,8 +37,8 @@ export const servicePages: readonly ServicePageContent[] = [
     metaDescription:
       'SWARO counselling and mediation services in Kenya: general, pre-marital, marital, youth and family counselling plus conflict resolution support.',
     overview: [
-      'Our counselling and mediation services support emotional well-being, healthier relationships, and practical conflict resolution.',
-      'We provide confidential, structured guidance for individuals, couples, families, and groups seeking clarity, healing, and sustainable peace.',
+      'Our counselling and mediation services strengthen emotional well-being, rebuild trust in relationships, and provide practical pathways for resolving conflict with dignity.',
+      'Through confidential, professionally guided sessions, we support individuals, couples, families, and groups to process challenges, make informed decisions, and sustain healthier communication patterns over time.',
     ],
     offerings: [
       'General counselling',
@@ -43,31 +46,53 @@ export const servicePages: readonly ServicePageContent[] = [
       'Family and youth counselling',
       'Conflict resolution and mediation',
     ],
+    offeringSummaries: {
+      'General counselling':
+        'One-on-one support that helps clients process stress, grief, transitions, and personal struggles while building practical coping tools for daily life.',
+      'Pre-marital and marital counselling':
+        'Guided sessions that help couples align expectations, improve communication, manage conflict constructively, and strengthen long-term partnership commitment.',
+      'Family and youth counselling':
+        'Developmentally informed guidance for families and young people facing behavioral, relational, or life-stage pressures at home, school, and in community settings.',
+      'Conflict resolution and mediation':
+        'Neutral facilitation that helps parties de-escalate tension, surface core interests, and agree on realistic, respectful, and actionable resolutions.',
+    },
     audience: [
       'Individuals and families',
       'Couples preparing for or strengthening marriage',
       'Youth groups and faith-based communities',
       'Institutions requiring civil mediation support',
     ],
+    audienceSummaries: {
+      'Individuals and families':
+        'For people and households seeking a safe, confidential space to work through emotional strain, relationship pressure, or difficult life transitions.',
+      'Couples preparing for or strengthening marriage':
+        'For partners who want to enter marriage with clarity or restore connection by improving trust, communication, and shared decision-making.',
+      'Youth groups and faith-based communities':
+        'For youth leaders and community ministries supporting adolescents and members who need structured psychosocial and relational support.',
+      'Institutions requiring civil mediation support':
+        'For organizations that need impartial mediation processes to manage disputes professionally and maintain healthy working relationships.',
+    },
     outcomes: [
       'Improved communication and trust',
       'Reduced conflict and practical mediation agreements',
       'Stronger family and relationship resilience',
       'Better emotional well-being and decision-making',
     ],
+    outcomesStatement:
+      'Clients and groups leave with stronger communication and trust, reduced conflict through practical mediation agreements, greater resilience in family and relationship dynamics, and healthier emotional well-being that supports clearer day-to-day decision-making.',
   },
   {
     slug: 'training',
     title: 'Training & Capacity Building',
     shortLabel: 'Training',
     path: '/services/training',
-    heroImage: DEFAULT_SERVICE_HERO,
+    heroImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/overviewtraining(1).webp',
     heroImageAlt: 'Facilitator leading a professional capacity building workshop',
     metaDescription:
       'SWARO training and capacity building in Kenya: leadership, management, institutional strengthening and practical development courses.',
     overview: [
-      'Our training programs equip people and institutions with practical knowledge, leadership capability, and organizational strength.',
-      'Every program is tailored to context so participants gain skills they can immediately apply for measurable performance improvement.',
+      'Our training and capacity-building programs equip individuals, teams, and institutions with practical knowledge, leadership capability, and organizational strength needed to perform effectively in real-world environments.',
+      'Each engagement is tailored to your context, goals, and operational realities so participants gain skills they can apply immediately, strengthen collaboration, and deliver measurable performance improvement over time.',
     ],
     offerings: [
       'Human development training',
