@@ -15,6 +15,8 @@ import {
   HiOutlineUsers,
   HiOutlineWrenchScrewdriver,
 } from 'react-icons/hi2'
+import { GiAppleCore } from 'react-icons/gi'
+import { MdHealthAndSafety } from 'react-icons/md'
 import PageHero, { type PageHeroBreadcrumb } from '../common/PageHero'
 import SEOHead from '../seo/SEOHead'
 import type { ServicePageContent } from '../../constants/servicePages'
@@ -56,6 +58,13 @@ function defaultOfferSummary(serviceTitle: string, offer: string): string {
 
 function selectOfferIcon(offer: string): IconType {
   const lower = offer.toLowerCase()
+  // Special icons for Health page
+  if (lower.includes('nutrition')) {
+    return GiAppleCore
+  }
+  if (lower.includes('awareness')) {
+    return MdHealthAndSafety
+  }
   if (lower.includes('counselling') || lower.includes('mediation') || lower.includes('conflict')) {
     return HiOutlineScale
   }
@@ -65,7 +74,7 @@ function selectOfferIcon(offer: string): IconType {
   if (lower.includes('research') || lower.includes('data') || lower.includes('evaluation') || lower.includes('monitoring')) {
     return HiOutlineChartBarSquare
   }
-  if (lower.includes('health') || lower.includes('nutrition') || lower.includes('lifestyle')) {
+  if (lower.includes('health') || lower.includes('lifestyle')) {
     return HiOutlineHeart
   }
   if (lower.includes('community') || lower.includes('gender') || lower.includes('youth') || lower.includes('family')) {
@@ -77,7 +86,7 @@ function selectOfferIcon(offer: string): IconType {
   if (lower.includes('curriculum') || lower.includes('education') || lower.includes('career') || lower.includes('mentorship')) {
     return HiOutlineWrenchScrewdriver
   }
-  if (lower.includes('awareness') || lower.includes('motivation')) {
+  if (lower.includes('motivation')) {
     return HiOutlineMegaphone
   }
   return HiOutlineSparkles
@@ -233,8 +242,13 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
           >
             {service.offerings.map((item) => {
               const Icon = selectOfferIcon(item)
+              // Add compact class for Health only
+              const isCompact = service.slug === 'health';
               return (
-                <article key={item} className="servicePageOffers__card">
+                <article
+                  key={item}
+                  className={`servicePageOffers__card${isCompact ? ' servicePageOffers__card--compact' : ''}`}
+                >
                   <div className="servicePageOffers__iconWrap">
                     <Icon className="servicePageOffers__icon" size={24} aria-hidden />
                   </div>
