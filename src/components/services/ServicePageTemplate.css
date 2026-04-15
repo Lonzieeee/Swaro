@@ -22,7 +22,7 @@
     linear-gradient(168deg, #1b4332 0%, #163529 42%, #0d1f18 100%);
   color: #ecf4f0;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .servicePageOffersSection .servicePage__sectionTag,
@@ -195,6 +195,12 @@
 @media (min-width: 900px) {
   .servicePage__overview {
     grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+    column-gap: clamp(4rem, 9vw, 8rem);
+  }
+
+  .servicePage__image {
+    width: min(86%, 520px);
+    margin-left: auto;
   }
 }
 
@@ -265,10 +271,6 @@
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.servicePage__imageCol--decorated {
-  /* Ensures the corners are positioned relative to the image container */
 }
 
 .servicePage__corner {
@@ -474,10 +476,16 @@
     max-width: 100%;
   }
 
-  .servicePageOffers__card {
-    padding: 1.35rem 1.15rem;
+  .servicePageOffers__card:not(.servicePageOffers__card--compact) {
+    padding: clamp(0.62rem, 4.2vw, 0.95rem) clamp(0.58rem, 3.8vw, 0.86rem) !important;
+    gap: clamp(0.45rem, 2.8vw, 0.72rem) !important;
+    min-height: 0 !important;
+  }
+
+  .servicePageOffers__card--compact {
+    padding: 1.1rem 0.95rem;
     gap: 0.85rem;
-    aspect-ratio: auto;
+    min-height: 0;
   }
 
   .servicePageOffers__iconWrap {
@@ -808,7 +816,7 @@
   overflow: hidden;
 }
 
-@media (max-width: 1024px) {
+@media (min-width: 641px) and (max-width: 1024px) {
   .servicePage {
     padding-block: clamp(2.25rem, 6vw, 3.75rem);
   }
@@ -834,6 +842,15 @@
   .servicePageOffers__grid {
     overflow: visible;
     padding-bottom: 0;
+  }
+
+  .servicePageOffers__grid--compact .servicePageOffers__card {
+    max-width: 100%;
+  }
+
+  .servicePageOffers__card {
+    aspect-ratio: auto;
+    min-height: 190px;
   }
 
   .servicePageOutcomeQuote {
@@ -914,6 +931,12 @@
     gap: 1.1rem;
   }
 
+  .servicePageAudience__card {
+    padding: clamp(0.7rem, 4.8vw, 1.15rem) clamp(0.65rem, 4.2vw, 1rem);
+    gap: clamp(0.45rem, 2.8vw, 0.78rem);
+    min-height: 0;
+  }
+
   .servicePageOutcomeQuote {
     min-height: clamp(240px, 68vw, 320px);
   }
@@ -923,7 +946,7 @@
   }
 
   .servicePageOutcomeQuote__text {
-    font-size: clamp(0.95rem, 2.4vw + 0.65rem, 1.25rem);
+    font-size: clamp(0.88rem, 1.8vw + 0.6rem, 1.08rem);
     line-height: 1.45;
   }
 }

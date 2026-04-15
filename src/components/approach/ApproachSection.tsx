@@ -69,24 +69,25 @@ export default function ApproachSection() {
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
     const el = sectionRef.current
     if (!el) return
+    const minimumVisibility = window.innerWidth <= 1023 ? 0.15 : 0.55
 
     const revealIfInView = () => {
       const rect = el.getBoundingClientRect()
       const visiblePx = Math.min(rect.bottom, window.innerHeight) - Math.max(rect.top, 0)
       const ratio = visiblePx / Math.max(rect.height, 1)
-      if (ratio >= 0.55) setVisible(true)
+      if (ratio >= minimumVisibility) setVisible(true)
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (!entry?.isIntersecting) return
         /* Trigger only when the section is substantially in view. */
-        if (entry.intersectionRatio < 0.55) return
+        if (entry.intersectionRatio < minimumVisibility) return
         setVisible(true)
         observer.unobserve(el)
       },
       {
-        threshold: [0, 0.25, 0.45, 0.55, 0.7, 1],
+        threshold: [0, minimumVisibility, 0.25, 0.45, 0.55, 0.7, 1],
       }
     )
 
