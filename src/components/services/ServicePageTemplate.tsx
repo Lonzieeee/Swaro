@@ -195,7 +195,8 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
               ))}
             </div>
 
-            <div className="servicePage__imageCol">
+            <div className="servicePage__imageCol servicePage__imageCol--decorated">
+              <span className="servicePage__corner servicePage__corner--topleft" aria-hidden></span>
               <img
                 className="servicePage__image"
                 src={service.overviewImage ?? service.heroImage}
@@ -203,6 +204,7 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
                 loading="lazy"
                 decoding="async"
               />
+              <span className="servicePage__corner servicePage__corner--bottomright" aria-hidden></span>
             </div>
           </div>
         </div>
@@ -329,8 +331,8 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
             <Link to="/contact" className="servicePageCta__button servicePageCta__button--primary">
               Book a Consultation
             </Link>
-            <Link to="/services" className="servicePageCta__button servicePageCta__button--secondary">
-              View All Services
+            <Link to="/about" className="servicePageCta__button servicePageCta__button--secondary">
+              Learn more about us
             </Link>
           </div>
           <div className="servicePageCta__trust">

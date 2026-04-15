@@ -60,7 +60,7 @@ const SERVICES: readonly ServiceItem[] = [
 const NAV_LINKS = [
   { label: "Home", path: "/" },
   { label: "About Us", path: "/about" },
-  { label: "Services", path: "/services", hasDropdown: true },
+  { label: "Services", hasDropdown: true }, // No path, just dropdown
   { label: "Our Approach", path: "/approach" },
   { label: "Partnerships", path: "/partnerships" },
 ] as const;
@@ -145,7 +145,7 @@ export default function Navbar() {
                   >
                     <button
                       type="button"
-                      className={`nav-link${linkActive(item.path) ? " nav-link--active" : ""}`}
+                      className={`nav-link${dropdownOpen ? " nav-link--active" : ""}`}
                       aria-expanded={dropdownOpen}
                       aria-haspopup="true"
                       aria-controls="services-mega-menu"

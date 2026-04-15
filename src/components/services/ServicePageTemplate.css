@@ -259,8 +259,43 @@
   line-height: 1.8;
 }
 
+
 .servicePage__imageCol {
   min-width: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.servicePage__imageCol--decorated {
+  /* Ensures the corners are positioned relative to the image container */
+}
+
+.servicePage__corner {
+  position: absolute;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  pointer-events: none;
+}
+
+.servicePage__corner--topleft {
+  top: 0;
+  left: 0;
+  background: linear-gradient(135deg, #c9a84c 60%, transparent 100%);
+  border-top-left-radius: 12px;
+  border-bottom-right-radius: 50% 40%;
+  clip-path: polygon(0 0, 100% 0, 0 100%);
+}
+
+.servicePage__corner--bottomright {
+  bottom: 0;
+  right: 0;
+  background: linear-gradient(-45deg, #c9a84c 60%, transparent 100%);
+  border-bottom-right-radius: 12px;
+  border-top-left-radius: 50% 40%;
+  clip-path: polygon(100% 100%, 0 100%, 100% 0);
 }
 
 .servicePage__image {
