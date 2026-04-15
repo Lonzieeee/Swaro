@@ -14,8 +14,7 @@
   min-height: 90vh;
   min-height: 90dvh;
   padding-block: clamp(2.75rem, 7vw, 6rem);
-  padding-left: max(1rem, env(safe-area-inset-left, 0px), 4vw);
-  padding-right: max(1rem, env(safe-area-inset-right, 0px), 4vw);
+  padding-inline: max(1rem, env(safe-area-inset-left, 0px), 4vw) max(1rem, env(safe-area-inset-right, 0px), 4vw);
   overflow-x: clip;
   overflow-y: visible;
   background:
@@ -824,7 +823,7 @@
 
   .servicePageOffersSection,
   .servicePageAudienceSection {
-    padding-block: clamp(2.25rem, 6vw, 4.25rem);
+    padding-block: clamp(2.25rem, 6vw, 3.75rem);
   }
 
   .servicePageOffers__grid,
