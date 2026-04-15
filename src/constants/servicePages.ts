@@ -315,7 +315,7 @@ export const servicePages: readonly ServicePageContent[] = [
     title: 'Health & Lifestyle Development',
     shortLabel: 'Health',
     path: '/services/health',
-    heroImage: DEFAULT_SERVICE_HERO,
+    heroImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/healthhero.webp',
     heroImageAlt: 'Health educator delivering community lifestyle and nutrition guidance',
     overviewImage: DEFAULT_SERVICE_HERO,
     overviewImageAlt: 'Health educator delivering community lifestyle and nutrition guidance',

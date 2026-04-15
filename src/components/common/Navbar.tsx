@@ -65,6 +65,9 @@ const NAV_LINKS = [
   { label: "Partnerships", path: "/partnerships" },
 ] as const;
 
+const hasPath = (item: (typeof NAV_LINKS)[number]): item is Extract<(typeof NAV_LINKS)[number], { path: string }> =>
+  "path" in item;
+
 function ChevronDown({ className }: { className?: string }) {
   return (
     <svg className={className} width={12} height={12} viewBox="0 0 12 12" fill="none" aria-hidden>
@@ -187,7 +190,7 @@ export default function Navbar() {
                       </div>
                     </div>
                   </div>
-                ) : (
+                ) : hasPath(item) ? (
                   <Link
                     key={item.label}
                     to={item.path}
@@ -196,7 +199,7 @@ export default function Navbar() {
                   >
                     {item.label}
                   </Link>
-                ),
+                ) : null,
               )}
             </div>
             <Link to="/contact" className="cta-desktop">
@@ -251,7 +254,7 @@ export default function Navbar() {
                   </div>
                 )}
               </div>
-            ) : (
+            ) : hasPath(item) ? (
               <Link
                 key={item.label}
                 to={item.path}
@@ -260,7 +263,7 @@ export default function Navbar() {
               >
                 {item.label}
               </Link>
-            ),
+            ) : null,
           )}
           <Link to="/contact" className="navbar__mobile-cta" onClick={() => setMobileOpen(false)}>
             Book a Consultation

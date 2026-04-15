@@ -8,7 +8,15 @@ import { aboutPageMedia, pageHeroMedia } from '../constants/swaroData';
 import type { BreadcrumbJsonLdItem } from '../utils/seo';
 import './Services.css';
 
+const SERVICES_BREADCRUMBS: PageHeroBreadcrumb[] = [
+  { label: 'Home', path: '/' },
+  { label: 'Services' },
+];
 
+const SERVICES_SEO_BREADCRUMBS: readonly BreadcrumbJsonLdItem[] = [
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services' },
+];
 
 function ServicesLanding() {
   return (
