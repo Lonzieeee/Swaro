@@ -40,9 +40,9 @@ export default function Hero() {
               <span className="hero__hide-mobile">Book a Consultation</span>
               <span className="hero__hide-desktop">Book consultation</span>
             </Link>
-            <Link to="/services" className="hero__btn hero__btn--secondary" aria-label="Explore our services">
-              <span className="hero__hide-mobile">Explore Our Services</span>
-              <span className="hero__hide-desktop">Our services</span>
+            <Link to="/partnerships" className="hero__btn hero__btn--secondary" aria-label="Partnerships">
+              <span className="hero__hide-mobile">Partnerships</span>
+              <span className="hero__hide-desktop">Partnerships</span>
             </Link>
           </div>
 

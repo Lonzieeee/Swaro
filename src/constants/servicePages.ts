@@ -13,6 +13,9 @@ export type ServicePageContent = {
   path: `/services/${ServiceSlug}`
   heroImage: string
   heroImageAlt: string
+  /** Optional: image for the overview section (if different from hero) */
+  overviewImage?: string
+  overviewImageAlt?: string
   metaDescription: string
   overview: string[]
   offerings: string[]
@@ -34,11 +37,13 @@ export const servicePages: readonly ServicePageContent[] = [
     path: '/services/counselling',
     heroImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/Counsellingnmeditation(1).webp',
     heroImageAlt: 'Professional counsellor supporting clients in a safe discussion space',
+    overviewImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/Servicecounselling(1).webp',
+    overviewImageAlt: 'Counselling and mediation service overview',
     metaDescription:
       'SWARO counselling and mediation services in Kenya: general, pre-marital, marital, youth and family counselling plus conflict resolution support.',
     overview: [
-      'Our counselling and mediation services strengthen emotional well-being, rebuild trust in relationships, and provide practical pathways for resolving conflict with dignity.',
-      'Through confidential, professionally guided sessions, we support individuals, couples, families, and groups to process challenges, make informed decisions, and sustain healthier communication patterns over time.',
+      'Our counselling and mediation services nurture emotional well-being, restore trust, and provide practical tools for resolving conflict. We offer a safe, confidential space for individuals, couples, families, and groups to address stress, grief, relationship strain, or major life changes.',
+      'Sessions are tailored to your needs, focusing on empathy, resilience, and clear communication. Mediation helps de-escalate conflict and guide all parties toward respectful, actionable solutions. Our goal is to help you move forward with clarity and confidence.'
     ],
     offerings: [
       'General counselling',
