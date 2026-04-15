@@ -198,8 +198,8 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
             <div className="servicePage__imageCol">
               <img
                 className="servicePage__image"
-                src={service.heroImage}
-                alt={service.heroImageAlt}
+                src={service.overviewImage ?? service.heroImage}
+                alt={service.overviewImageAlt ?? service.heroImageAlt}
                 loading="lazy"
                 decoding="async"
               />
@@ -226,13 +226,22 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
             measurable outcomes, stronger capacity and lasting impact.
           </p>
           <div
-            className="servicePageOffers__grid"
-            style={{ gridTemplateColumns: `repeat(${service.offerings.length}, minmax(220px, 1fr))` }}
+            className={`servicePageOffers__grid${service.offerings.length <= 2 ? ' servicePageOffers__grid--compact' : ''}`}
+            style={{
+              gridTemplateColumns:
+                service.offerings.length <= 2
+                  ? `repeat(${service.offerings.length}, minmax(220px, 320px))`
+                  : `repeat(${service.offerings.length}, minmax(220px, 1fr))`,
+            }}
           >
             {service.offerings.map((item) => {
               const Icon = selectOfferIcon(item)
+              const isCompactOffers = service.offerings.length <= 2
               return (
-                <article key={item} className="servicePageOffers__card">
+                <article
+                  key={item}
+                  className={`servicePageOffers__card${isCompactOffers ? ' servicePageOffers__card--compact' : ''}`}
+                >
                   <div className="servicePageOffers__iconWrap">
                     <Icon className="servicePageOffers__icon" size={24} aria-hidden />
                   </div>

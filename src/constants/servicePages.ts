@@ -13,6 +13,8 @@ export type ServicePageContent = {
   path: `/services/${ServiceSlug}`
   heroImage: string
   heroImageAlt: string
+  overviewImage?: string
+  overviewImageAlt?: string
   metaDescription: string
   overview: string[]
   offerings: string[]
@@ -34,6 +36,8 @@ export const servicePages: readonly ServicePageContent[] = [
     path: '/services/counselling',
     heroImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/Counsellingnmeditation(1).webp',
     heroImageAlt: 'Professional counsellor supporting clients in a safe discussion space',
+    overviewImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/Counsellingnmeditation(1).webp',
+    overviewImageAlt: 'Professional counsellor supporting clients in a safe discussion space',
     metaDescription:
       'SWARO counselling and mediation services in Kenya: general, pre-marital, marital, youth and family counselling plus conflict resolution support.',
     overview: [
@@ -88,11 +92,13 @@ export const servicePages: readonly ServicePageContent[] = [
     path: '/services/training',
     heroImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/overviewtraining(1).webp',
     heroImageAlt: 'Facilitator leading a professional capacity building workshop',
+    overviewImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/overviewtraining(1).webp',
+    overviewImageAlt: 'Facilitator guiding participants during a practical institutional training session',
     metaDescription:
       'SWARO training and capacity building in Kenya: leadership, management, institutional strengthening and practical development courses.',
     overview: [
-      'Our training and capacity-building programs equip individuals, teams, and institutions with practical knowledge, leadership capability, and organizational strength needed to perform effectively in real-world environments.',
-      'Each engagement is tailored to your context, goals, and operational realities so participants gain skills they can apply immediately, strengthen collaboration, and deliver measurable performance improvement over time.',
+      'Our training and capacity-building services are designed to move beyond theory by equipping individuals, teams, and institutions with practical competencies they can apply immediately in their day-to-day roles.',
+      'Through carefully structured facilitation, participatory learning methods, and context-specific tools, we help organizations strengthen leadership, improve internal systems, and build a confident workforce that can sustain performance and adapt to change.',
     ],
     offerings: [
       'Human development training',
@@ -100,18 +106,40 @@ export const servicePages: readonly ServicePageContent[] = [
       'Administration and institutional strengthening',
       'Short courses in personal and professional development',
     ],
+    offeringSummaries: {
+      'Human development training':
+        'Builds interpersonal effectiveness, emotional intelligence, and professional discipline so participants can work with greater confidence, responsibility, and collaboration.',
+      'Leadership and management training':
+        'Develops practical leadership behaviors, strategic thinking, and supervisory skills that help managers align teams, improve accountability, and deliver stronger results.',
+      'Administration and institutional strengthening':
+        'Improves core organizational systems by refining governance routines, operational workflows, and internal coordination needed for efficient, high-quality service delivery.',
+      'Short courses in personal and professional development':
+        'Offers focused learning modules that quickly upgrade essential workplace and life skills, enabling participants to respond effectively to evolving personal and professional demands.',
+    },
     audience: [
       'Universities and educational institutions',
       'NGOs and development partners',
       'Government and corporate agencies',
       'Community and faith-based organizations',
     ],
+    audienceSummaries: {
+      'Universities and educational institutions':
+        'Ideal for institutions seeking to strengthen teaching teams, administrative staff, and student-facing units through structured capacity development programs.',
+      'NGOs and development partners':
+        'Designed for program teams that need stronger implementation capability, clearer coordination, and practical leadership skills to improve project outcomes.',
+      'Government and corporate agencies':
+        'Supports departments and workforces aiming to improve operational efficiency, leadership effectiveness, and service standards in complex institutional settings.',
+      'Community and faith-based organizations':
+        'Well suited for mission-driven groups that want to empower leaders and volunteers with practical skills for organized, sustainable community impact.',
+    },
     outcomes: [
       'Stronger leadership and team effectiveness',
       'Improved institutional systems and service quality',
       'Higher workforce confidence and productivity',
       'Sustainable capacity for long-term impact',
     ],
+    outcomesStatement:
+      'Participants and institutions gain stronger leadership and team effectiveness, improved systems and service quality, higher workforce confidence and productivity, and sustainable internal capacity that supports long-term organizational impact.',
   },
   {
     slug: 'education',
@@ -120,11 +148,13 @@ export const servicePages: readonly ServicePageContent[] = [
     path: '/services/education',
     heroImage: DEFAULT_SERVICE_HERO,
     heroImageAlt: 'Mentor guiding learners through educational and career planning',
+    overviewImage: DEFAULT_SERVICE_HERO,
+    overviewImageAlt: 'Mentor guiding learners through educational and career planning',
     metaDescription:
       'SWARO education and career services in Kenya: curriculum development, mentorship, CV writing and career guidance for learners and professionals.',
     overview: [
-      'We support learners, institutions, and professionals with practical tools for academic growth and career direction.',
-      'Our approach combines mentorship, motivation, and evidence-based education practices to improve outcomes at every stage.',
+      'Our education and career development services help learners, institutions, and professionals translate ambition into clear academic and career progress through practical, structured support.',
+      'By combining mentorship, skills coaching, and evidence-based education strategies, we guide participants to make informed choices, strengthen employability, and pursue sustainable growth at every stage of their learning and professional journey.',
     ],
     offerings: [
       'Curriculum development',
@@ -132,18 +162,40 @@ export const servicePages: readonly ServicePageContent[] = [
       'CV and resume writing',
       'Educational mentorship',
     ],
+    offeringSummaries: {
+      'Curriculum development':
+        'Designs learner-centered curricula that align content, assessment, and delivery methods so institutions can improve relevance, consistency, and measurable learning outcomes.',
+      'Career guidance and motivation':
+        'Provides practical direction that helps participants identify strengths, explore realistic pathways, and maintain the confidence needed to pursue purposeful career goals.',
+      'CV and resume writing':
+        'Equips individuals to present their achievements clearly through professional CVs and resumes that communicate value, readiness, and role-specific fit.',
+      'Educational mentorship':
+        'Offers personalized mentorship that supports academic planning, performance improvement, and long-term goal setting through consistent guidance and accountability.',
+    },
     audience: [
       'Learners and graduates',
       'Schools, colleges, and universities',
       'Professionals transitioning careers',
       'Families supporting youth career decisions',
     ],
+    audienceSummaries: {
+      'Learners and graduates':
+        'For students and recent graduates who need practical support to improve academic outcomes, clarify career direction, and transition confidently into the job market.',
+      'Schools, colleges, and universities':
+        'For education institutions seeking stronger program design, improved learner support structures, and better alignment between training and workforce expectations.',
+      'Professionals transitioning careers':
+        'For working professionals planning a career shift who require strategic guidance, skills repositioning, and stronger personal branding for new opportunities.',
+      'Families supporting youth career decisions':
+        'For parents and guardians who want to provide informed, constructive support as young people make important education and career choices.',
+    },
     outcomes: [
       'Improved learning and academic progression',
       'Clear career pathways and stronger employability',
       'Professional, competitive CVs and resumes',
       'Greater confidence in education and career decisions',
     ],
+    outcomesStatement:
+      'Participants achieve stronger academic progression, gain clarity on career pathways with improved employability, develop professional and competitive CVs and resumes, and make education and career decisions with greater confidence and long-term direction.',
   },
   {
     slug: 'community',
@@ -152,11 +204,13 @@ export const servicePages: readonly ServicePageContent[] = [
     path: '/services/community',
     heroImage: DEFAULT_SERVICE_HERO,
     heroImageAlt: 'Community group session focused on empowerment and participation',
+    overviewImage: DEFAULT_SERVICE_HERO,
+    overviewImageAlt: 'Community group session focused on empowerment and participation',
     metaDescription:
       'SWARO community empowerment programs in Kenya: women, youth and gender initiatives with faith-based and social support for stronger communities.',
     overview: [
-      'Our community empowerment programs strengthen social inclusion, participation, and resilience at household and community levels.',
-      'We work alongside local groups to design culturally relevant initiatives that deliver lasting social and economic transformation.',
+      'Our community empowerment services are built to strengthen inclusion, participation, and resilience by helping people and local groups take active roles in shaping their own social and economic progress.',
+      'Working closely with community actors, we co-create culturally grounded interventions that build leadership, promote shared responsibility, and deliver practical, long-term change across households and community institutions.',
     ],
     offerings: [
       'Women empowerment programs',
@@ -164,18 +218,40 @@ export const servicePages: readonly ServicePageContent[] = [
       'Youth empowerment',
       'Church and faith-based counselling',
     ],
+    offeringSummaries: {
+      'Women empowerment programs':
+        'Supports women with practical life, leadership, and economic participation skills that strengthen voice, confidence, and decision-making influence in families and communities.',
+      'Gender empowerment initiatives':
+        'Advances equitable participation by facilitating dialogue, awareness, and action-oriented strategies that address barriers and promote healthier gender relations.',
+      'Youth empowerment':
+        'Engages young people through structured development pathways that build identity, responsibility, and practical skills for education, work, and community leadership.',
+      'Church and faith-based counselling':
+        'Provides values-informed counselling support that helps faith communities address social, relational, and emotional challenges with compassion and practical guidance.',
+    },
     audience: [
       'Women and youth groups',
       'Faith-based organizations',
       'Civil society and community leaders',
       'Vulnerable and underserved groups',
     ],
+    audienceSummaries: {
+      'Women and youth groups':
+        'For organized women and youth networks seeking stronger leadership capacity, collective action skills, and practical pathways for social and economic advancement.',
+      'Faith-based organizations':
+        'For churches and faith communities that want to deliver holistic support programs addressing spiritual, social, and psychosocial needs in their congregations.',
+      'Civil society and community leaders':
+        'For local leaders and civic actors who need tools to mobilize participation, strengthen collaboration, and drive inclusive community development initiatives.',
+      'Vulnerable and underserved groups':
+        'For populations facing exclusion or limited access to opportunity, with tailored support designed to restore agency, dignity, and meaningful participation.',
+    },
     outcomes: [
       'Increased participation and local leadership',
       'Improved gender inclusion and social cohesion',
       'Youth engagement in productive pathways',
       'Community-owned solutions with sustainable impact',
     ],
+    outcomesStatement:
+      'Communities experience increased participation and stronger local leadership, improved gender inclusion and social cohesion, greater youth engagement in productive pathways, and locally owned solutions that sustain meaningful impact over time.',
   },
   {
     slug: 'research',
@@ -184,11 +260,13 @@ export const servicePages: readonly ServicePageContent[] = [
     path: '/services/research',
     heroImage: DEFAULT_SERVICE_HERO,
     heroImageAlt: 'Research team reviewing data and program performance indicators',
+    overviewImage: DEFAULT_SERVICE_HERO,
+    overviewImageAlt: 'Research team reviewing data and program performance indicators',
     metaDescription:
       'SWARO research and consultancy services in Kenya: data collection, M&E, proposal writing and resource mobilization for development impact.',
     overview: [
-      'We provide research and consultancy services that convert data into actionable decisions for programs, institutions, and policy.',
-      'From study design to reporting, we prioritize rigor, clarity, and practical recommendations that improve results.',
+      'Our research and consultancy services help institutions transform data and field insights into clear, evidence-based decisions that improve policy, programs, and organizational strategy.',
+      'From study design and data collection to analysis, reporting, and implementation guidance, we prioritize methodological rigor, practical relevance, and recommendations that can be acted on with confidence.',
     ],
     offerings: [
       'Research and data collection',
@@ -196,18 +274,40 @@ export const servicePages: readonly ServicePageContent[] = [
       'Grant proposal writing',
       'Resource mobilization and fundraising',
     ],
+    offeringSummaries: {
+      'Research and data collection':
+        'Delivers context-sensitive studies and reliable data gathering processes that generate credible evidence for planning, decision-making, and program refinement.',
+      'Monitoring and evaluation':
+        'Builds robust M&E systems that track progress, measure outcomes, and provide timely learning insights for stronger accountability and adaptive management.',
+      'Grant proposal writing':
+        'Develops persuasive, well-structured proposals and concept notes that align donor priorities with clear program logic, budgets, and measurable impact pathways.',
+      'Resource mobilization and fundraising':
+        'Strengthens fundraising readiness through practical strategies, positioning support, and partnership approaches that diversify and sustain resource flows.',
+    },
     audience: [
       'NGOs and development partners',
       'Government ministries and agencies',
       'Academic institutions',
       'Organizations seeking funding and impact evidence',
     ],
+    audienceSummaries: {
+      'NGOs and development partners':
+        'For organizations that need credible evidence, stronger proposal quality, and better learning systems to improve program effectiveness and donor confidence.',
+      'Government ministries and agencies':
+        'For public institutions requiring research-informed planning, transparent performance tracking, and policy guidance grounded in reliable data.',
+      'Academic institutions':
+        'For universities and research centers seeking technical support in study design, data quality assurance, and translation of findings into practical application.',
+      'Organizations seeking funding and impact evidence':
+        'For institutions preparing to compete for funding while demonstrating clear results, measurable outcomes, and a compelling case for investment.',
+    },
     outcomes: [
       'Reliable evidence for policy and program planning',
       'Clear monitoring frameworks and impact reporting',
       'Higher quality grant proposals and concept notes',
       'Improved fundraising readiness and strategy',
     ],
+    outcomesStatement:
+      'Clients gain reliable evidence for stronger policy and program planning, clear monitoring frameworks with credible impact reporting, higher quality grant proposals and concept notes, and improved fundraising readiness supported by more strategic resource mobilization.',
   },
   {
     slug: 'health',
@@ -216,28 +316,48 @@ export const servicePages: readonly ServicePageContent[] = [
     path: '/services/health',
     heroImage: DEFAULT_SERVICE_HERO,
     heroImageAlt: 'Health educator delivering community lifestyle and nutrition guidance',
+    overviewImage: DEFAULT_SERVICE_HERO,
+    overviewImageAlt: 'Health educator delivering community lifestyle and nutrition guidance',
     metaDescription:
       'SWARO health and lifestyle development in Kenya: nutrition education and community health awareness programs for healthier living.',
     overview: [
-      'Our health and lifestyle programs promote practical, preventive wellness through nutrition education and local health awareness.',
-      'We translate evidence into everyday actions that help communities manage lifestyle risks and improve quality of life.',
+      'Our health and lifestyle development services promote practical, preventive wellness by helping individuals and communities build healthier habits through accessible nutrition and health education.',
+      'By translating evidence-based health knowledge into simple daily actions, we support people to reduce lifestyle-related risks, strengthen community awareness, and improve overall quality of life over time.',
     ],
     offerings: [
       'Nutrition education in lifestyle diseases',
       'Community health awareness programs',
     ],
+    offeringSummaries: {
+      'Nutrition education in lifestyle diseases':
+        'Provides practical nutrition guidance that helps individuals understand lifestyle-related conditions, make informed food choices, and adopt sustainable habits for long-term wellness.',
+      'Community health awareness programs':
+        'Delivers participatory health education sessions that raise local awareness, encourage preventive behavior, and strengthen collective responsibility for healthier communities.',
+    },
     audience: [
       'Families and community groups',
       'Youth and women networks',
       'Faith-based and civil society organizations',
       'Institutions promoting preventive health',
     ],
+    audienceSummaries: {
+      'Families and community groups':
+        'For households and local groups seeking practical health knowledge they can apply in everyday life to improve nutrition, prevention, and shared well-being.',
+      'Youth and women networks':
+        'For youth and women-led networks that want targeted wellness education and behavior-change support tailored to their specific health realities.',
+      'Faith-based and civil society organizations':
+        'For mission-driven organizations looking to integrate community-centered health promotion into outreach, care, and social support initiatives.',
+      'Institutions promoting preventive health':
+        'For schools, workplaces, and other institutions committed to strengthening preventive health culture through structured awareness and education programs.',
+    },
     outcomes: [
       'Improved nutrition and lifestyle choices',
       'Better awareness of lifestyle disease prevention',
       'Stronger community health knowledge',
       'Healthier daily practices and long-term well-being',
     ],
+    outcomesStatement:
+      'Participants and communities gain improved nutrition and lifestyle choices, stronger awareness of lifestyle disease prevention, deeper community health knowledge, and healthier daily practices that support long-term well-being.',
   },
 ]
 
