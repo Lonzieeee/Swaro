@@ -1,6 +1,22 @@
 {
   "name": "SWARO Consulty Services",
   "short_name": "SWARO",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0d2b1d",
+  "theme_color": "#0d2b1d",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "64x64",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
+{
+  "name": "SWARO Consulty Services",
+  "short_name": "SWARO",
   "description": "Evidence-based counselling, training, research and community development in Kenya.",
   "start_url": "/",
   "scope": "/",
