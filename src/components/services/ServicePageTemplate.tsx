@@ -237,17 +237,30 @@ export default function ServicePageTemplate({ service }: ServicePageTemplateProp
             measurable outcomes, stronger capacity and lasting impact.
           </p>
           <div
-            className="servicePageOffers__grid"
-            style={{ gridTemplateColumns: `repeat(${service.offerings.length}, minmax(220px, 1fr))` }}
+            className={`servicePageOffers__grid${service.offerings.length <= 2 ? ' servicePageOffers__grid--compact' : ''}`}
+            style={{
+              gridTemplateColumns:
+                service.offerings.length <= 2
+                  ? `repeat(${service.offerings.length}, minmax(220px, 320px))`
+                  : `repeat(${service.offerings.length}, minmax(220px, 1fr))`,
+            }}
           >
             {service.offerings.map((item) => {
               const Icon = selectOfferIcon(item)
+<<<<<<< HEAD
               // Add compact class for Health only
               const isCompact = service.slug === 'health';
               return (
                 <article
                   key={item}
                   className={`servicePageOffers__card${isCompact ? ' servicePageOffers__card--compact' : ''}`}
+=======
+              const isCompactOffers = service.offerings.length <= 2
+              return (
+                <article
+                  key={item}
+                  className={`servicePageOffers__card${isCompactOffers ? ' servicePageOffers__card--compact' : ''}`}
+>>>>>>> 39ce51e27c5f442aa5eb1fe2306c416fe669a005
                 >
                   <div className="servicePageOffers__iconWrap">
                     <Icon className="servicePageOffers__icon" size={24} aria-hidden />
