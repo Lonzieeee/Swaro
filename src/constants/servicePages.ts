@@ -91,7 +91,7 @@ export const servicePages: readonly ServicePageContent[] = [
     title: 'Training & Capacity Building',
     shortLabel: 'Training',
     path: '/services/training',
-    heroImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/overviewtraining(1).webp',
+    heroImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/traininghero(1).webp',
     heroImageAlt: 'Facilitator leading a professional capacity building workshop',
     overviewImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/overviewtraining(1).webp',
     overviewImageAlt: 'Facilitator guiding participants during a practical institutional training session',
