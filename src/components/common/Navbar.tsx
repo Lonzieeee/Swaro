@@ -11,6 +11,8 @@ import {
 import type { IconType } from "react-icons";
 import "./Navbar.css";
 
+const NAVBAR_LOGO_URL = "https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/SWAROLOGO-removebg-preview.png";
+
 type ServiceItem = {
   label: string;
   path: string;
@@ -125,8 +127,7 @@ export default function Navbar() {
       <nav className="navbar" data-scrolled={scrolled} aria-label="Main">
         <div className="navbar__inner">
           <Link to="/" className="navbar__logo" onClick={closeAllMenus}>
-            <span className="navbar__logo-main">SWARO</span>
-            <span className="navbar__logo-sub">Consulty Services</span>
+            <img src={NAVBAR_LOGO_URL} alt="SWARO Consulty Services" className="navbar__logo-image" />
           </Link>
 
           <div className="navbar__desktop">
