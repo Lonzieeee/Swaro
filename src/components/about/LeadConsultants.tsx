@@ -1,221 +1,70 @@
-import { useRef, useEffect, useLayoutEffect, useState } from 'react'
 import './LeadConsultants.css'
 
 type Consultant = {
   id: string
   name: string
   title: string
-  bio: string
-  image: string | null
-  initials: string
+  summary: string
+  image: string
+  imageAlt: string
+  bio: string[]
+  coreAreas: string[]
 }
 
 const consultants: readonly Consultant[] = [
   {
-    id: 'consultant-1',
-    name: 'Consultant Name',
-    title: 'Lead Consultant & Founder',
-    bio: 'A seasoned professional with over 30 years of experience in human development, education and community empowerment.',
-    image: null,
-    initials: 'CN',
+    id: 'consultant-alice',
+    name: 'Prof. Alice Ondigi',
+    title: 'Lead Consultant | Human Development & Community Empowerment',
+    summary:
+      'Specialist in counselling, gender and family wellbeing, and community-based research for sustainable livelihoods. She brings over two decades of leadership in mentoring, participatory research, and translating evidence into practical support for families and communities. Her work consistently connects academic rigor with compassionate field practice, helping organizations design interventions that are ethical, inclusive, and measurable.',
+    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/Alica.jpeg',
+    imageAlt: 'Prof. Alice Ondigi, Lead Consultant at SWARO',
+    bio: [
+      'Prof. Alice Ondigi is a Professor of Human Development with a PhD from Kenyatta University and MSc and BSc degrees from the University of Minnesota, USA. She currently serves at Kenyatta University in the Department of Community Resource Management.',
+      'With over 28 years of academic and leadership experience, she has held senior leadership positions in higher institutions of learning, where she pioneered new academic programmes and strengthened international linkages.',
+      'She has over 26 years of research experience and has published and disseminated knowledge at national and international forums. Through this work, she has built strong networks across institutions and communities, organized seminars and key forums, mobilized students and staff for outreach activities, and mentored many people in research, leadership, and community service.',
+      'She is highly skilled in research tool development, data collection, analysis, and reporting. She has won competitive research grants, managed large studies, and disseminated findings to stakeholders while upholding privacy and ethical practice.',
+      'Prof. Ondigi is an accredited counsellor (KCPA) and certified mediator (Serein Mediation Center). Her expertise spans family and youth counselling, gender empowerment, maternal and reproductive health, nutrition education, research and data-collection training, monitoring and evaluation, and sustainable livelihoods. She has led multiple research consultancies, including for Innovations for Poverty Action (IPA), supervised over 30 postgraduate students, and remains deeply committed to improving community well-being through evidence-based and compassionate interventions.',
+    ],
+    coreAreas: [
+      'Social mentorship',
+      'Counselling & Mediation',
+      'Health & Nutrition',
+      'Community Empowerment',
+      'Monitoring & Evaluation',
+      'Research & Consultancy',
+    ],
   },
   {
-    id: 'consultant-2',
-    name: 'Consultant Name',
-    title: 'Senior Consultant — Health & Nutrition',
-    bio: 'An experienced specialist in nutrition, maternal health and lifestyle development with a deep commitment to holistic well-being.',
-    image: null,
-    initials: 'CN',
-  },
-  {
-    id: 'consultant-3',
-    name: 'Consultant Name',
-    title: 'Senior Consultant — Counselling & Mediation',
-    bio: 'A skilled counsellor and mediator with extensive experience in family counselling, dispute resolution and mentorship.',
-    image: null,
-    initials: 'CN',
-  },
-  {
-    id: 'consultant-4',
-    name: 'Consultant Name',
-    title: 'Senior Consultant — Education & Training',
-    bio: 'Focused on curriculum design, capacity building and learning outcomes for institutions and community programs.',
-    image: null,
-    initials: 'CN',
-  },
-  {
-    id: 'consultant-5',
-    name: 'Consultant Name',
-    title: 'Senior Consultant — Research & Evaluation',
-    bio: 'Delivers applied research, monitoring and evaluation, and data-informed recommendations for partners.',
-    image: null,
-    initials: 'CN',
-  },
-  {
-    id: 'consultant-6',
-    name: 'Consultant Name',
-    title: 'Consultant — Community Programs',
-    bio: 'Supports grassroots initiatives in livelihoods, gender and youth engagement alongside local leadership.',
-    image: null,
-    initials: 'CN',
-  },
-  {
-    id: 'consultant-7',
-    name: 'Consultant Name',
-    title: 'Consultant — Program Design',
-    bio: 'Shapes program logic, stakeholder engagement and delivery models for sustainable community impact.',
-    image: null,
-    initials: 'CN',
-  },
-  {
-    id: 'consultant-8',
-    name: 'Consultant Name',
-    title: 'Consultant — Partnerships',
-    bio: 'Builds relationships with institutions, donors and civil society to align missions and resources.',
-    image: null,
-    initials: 'CN',
-  },
-  {
-    id: 'consultant-9',
-    name: 'Consultant Name',
-    title: 'Consultant — Field Operations',
-    bio: 'Coordinates on-the-ground activities, quality assurance and reporting across regional teams.',
-    image: null,
-    initials: 'CN',
+    id: 'consultant-samson',
+    name: 'Prof. Samson R. Ondigi',
+    title: 'Lead Consultant | Education & Institutional Development',
+    summary:
+      'Expert in curriculum development, teacher mentorship, and institutional capacity building for long-term impact. He combines policy insight, educational leadership, and strategic implementation to strengthen institutions and improve learning outcomes at scale. His consultancy approach emphasizes practical execution, stakeholder alignment, and sustainable systems that continue delivering value beyond project timelines.',
+    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/Samson.jpeg',
+    imageAlt: 'Prof. Samson R. Ondigi, Lead Consultant at SWARO',
+    bio: [
+      'Prof. Samson Ondigi is a Professor of Social Studies Education and the Executive Dean of the School of Education and Lifelong Learning at Kenyatta University. He holds a PhD from the University of Minnesota, USA, with a double major in Comparative International Development Education and Geography.',
+      'He brings over 30 years of experience in curriculum development, teacher mentorship, educational leadership, and ICT integration in pedagogy.',
+      'Prof. Ondigi has attracted more than USD 900,000 in research funding and supervised 84 postgraduate students to completion. He has led major consultancy assignments, including development of teacher-education programmes for refugee settings in Kakuma and Dadaab, and advisory work on national curriculum reforms (CBC).',
+      'His approach combines innovation, strategic planning, and a strong commitment to building institutional and individual capacity for sustainable development.',
+    ],
+    coreAreas: [
+      'Curriculum Development',
+      'Teacher Training',
+      'Leadership & Management',
+      'Educational Mentorship',
+      'Research & Consultancy',
+    ],
   },
 ]
 
-function ChevronLeft({ className }: { className?: string }) {
-  return (
-    <svg className={className} width={22} height={22} viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path
-        d="M15 18l-6-6 6-6"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-function ChevronRight({ className }: { className?: string }) {
-  return (
-    <svg className={className} width={22} height={22} viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path
-        d="M9 18l6-6-6-6"
-        stroke="currentColor"
-        strokeWidth={2}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
-function PlaceholderAvatar() {
-  return (
-    <svg width={40} height={40} viewBox="0 0 24 24" fill="none" aria-hidden>
-      <path
-        d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"
-        stroke="rgba(201,168,76,0.4)"
-        strokeWidth={1.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-      <circle
-        cx={12}
-        cy={7}
-        r={4}
-        stroke="rgba(201,168,76,0.4)"
-        strokeWidth={1.5}
-        strokeLinecap="round"
-        strokeLinejoin="round"
-      />
-    </svg>
-  )
-}
-
 export default function LeadConsultants() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const [visible, setVisible] = useState(false)
-  const [motionless, setMotionless] = useState(false)
-  const [pageSize, setPageSize] = useState(3)
-  const [pageIndex, setPageIndex] = useState(0)
-
-  const pageCount = Math.max(1, Math.ceil(consultants.length / pageSize))
-  const safePage = Math.min(pageIndex, pageCount - 1)
-  const start = safePage * pageSize
-  const visibleConsultants = consultants.slice(start, start + pageSize)
-
-  useLayoutEffect(() => {
-    if (typeof window === 'undefined') return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-      setMotionless(true)
-      setVisible(true)
-    }
-  }, [])
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-    const read = () => {
-      const w = window.innerWidth
-      if (w < 640) setPageSize(1)
-      else if (w < 1024) setPageSize(2)
-      else setPageSize(3)
-    }
-    read()
-    window.addEventListener('resize', read)
-    return () => window.removeEventListener('resize', read)
-  }, [])
-
-  useEffect(() => {
-    const pc = Math.max(1, Math.ceil(consultants.length / pageSize))
-    setPageIndex((i) => Math.min(i, pc - 1))
-  }, [pageSize])
-
-  useEffect(() => {
-    if (typeof window === 'undefined') return
-    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return
-
-    const el = sectionRef.current
-    if (!el) return
-
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (!entry?.isIntersecting) return
-        setVisible(true)
-        observer.unobserve(el)
-      },
-      {
-        /* Animate only once the section sits in the main viewport band (not a sliver at the edge). */
-        rootMargin: '-10% 0px -14% 0px',
-        threshold: 0,
-      }
-    )
-
-    observer.observe(el)
-    return () => observer.disconnect()
-  }, [])
-
-  const goPrev = () => setPageIndex((i) => Math.max(0, i - 1))
-  const goNext = () => setPageIndex((i) => Math.min(pageCount - 1, i + 1))
-
-  const sectionClass = [
-    'leadConsultants',
-    visible ? 'leadConsultants--visible' : '',
-    motionless ? 'leadConsultants--motionless' : '',
-  ]
-    .filter(Boolean)
-    .join(' ')
-
-  const showNav = pageCount > 1
-
   return (
     <section
-      ref={sectionRef}
       id="lead-consultants"
-      className={sectionClass}
+      className="leadConsultants"
       aria-labelledby="lead-consultants-heading"
     >
       <div className="leadConsultants__inner">
@@ -227,107 +76,33 @@ export default function LeadConsultants() {
           <h2 id="lead-consultants-heading" className="leadConsultants__heading">
             Our Lead <span className="leadConsultants__headingAccent">Consultants</span>
           </h2>
-          <p className="leadConsultants__subtext">
-            Our team of experienced consultants brings together decades of expertise across education, health,
-            research, counselling and community development.
-          </p>
         </header>
 
-        <div
-          className="leadConsultants__carousel"
-          role="region"
-          aria-roledescription="carousel"
-          aria-label="Lead consultants"
-        >
-          <div
-            className={
-              showNav
-                ? 'leadConsultants__carouselRow'
-                : 'leadConsultants__carouselRow leadConsultants__carouselRow--single'
-            }
-          >
-            {showNav && (
-              <button
-                type="button"
-                className="leadConsultants__nav leadConsultants__nav--prev"
-                onClick={goPrev}
-                disabled={safePage <= 0}
-                aria-label="Previous consultants"
-              >
-                <ChevronLeft className="leadConsultants__navIcon" />
-              </button>
-            )}
-
-            <div
-              className="leadConsultants__stage"
-              aria-live={motionless ? 'off' : 'polite'}
-            >
-              <ul
-                className="leadConsultants__grid"
-                style={{
-                  gridTemplateColumns: `repeat(${visibleConsultants.length}, minmax(0, 1fr))`,
-                }}
-                role="list"
-                key={`${safePage}-${pageSize}`}
-              >
-                {visibleConsultants.map((c) => (
-                  <li key={c.id} className="leadConsultants__card" role="listitem">
-                    <div className="leadConsultants__topBar" aria-hidden />
-
-                    <div className="leadConsultants__photoWrap">
-                      {c.image ? (
-                        <img
-                          className="leadConsultants__photo"
-                          src={c.image}
-                          alt={c.name}
-                          width={168}
-                          height={168}
-                        />
-                      ) : (
-                        <div className="leadConsultants__photoPlaceholder">
-                          <span className="leadConsultants__initials" aria-hidden>
-                            {c.initials}
-                          </span>
-                          <span className="leadConsultants__photoIcon">
-                            <PlaceholderAvatar />
-                          </span>
-                        </div>
-                      )}
-                      <div className="leadConsultants__photoRing" aria-hidden />
-                    </div>
-
-                    <div className="leadConsultants__nameBlock">
-                      <h3 className="leadConsultants__name">{c.name}</h3>
-                      <p className="leadConsultants__title">{c.title}</p>
-                    </div>
-
-                    <div className="leadConsultants__divider" aria-hidden />
-
-                    <p className="leadConsultants__bio">{c.bio}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {showNav && (
-              <button
-                type="button"
-                className="leadConsultants__nav leadConsultants__nav--next"
-                onClick={goNext}
-                disabled={safePage >= pageCount - 1}
-                aria-label="Next consultants"
-              >
-                <ChevronRight className="leadConsultants__navIcon" />
-              </button>
-            )}
-
-            {showNav && (
-              <p className="leadConsultants__carouselMeta" aria-live="polite">
-                Page {safePage + 1} of {pageCount}
-              </p>
-            )}
-          </div>
-        </div>
+        <ul className="leadConsultants__grid" role="list">
+          {consultants.map((c) => (
+            <li key={c.id} className="leadConsultants__card" role="listitem" tabIndex={0}>
+              <img className="leadConsultants__photo" src={c.image} alt={c.imageAlt} loading="lazy" />
+              <div className="leadConsultants__namePlate">
+                <h3 className="leadConsultants__name">{c.name}</h3>
+                <p className="leadConsultants__title">{c.title}</p>
+                <p className="leadConsultants__summary">{c.summary}</p>
+              </div>
+              <div className="leadConsultants__overlay">
+                <div className="leadConsultants__overlayContent">
+                  <h4 className="leadConsultants__overlayHeading">{c.name}</h4>
+                  {c.bio.map((paragraph) => (
+                    <p key={paragraph} className="leadConsultants__bio">
+                      {paragraph}
+                    </p>
+                  ))}
+                  <p className="leadConsultants__coreAreas">
+                    <strong>Core Areas:</strong> {c.coreAreas.join(', ')}
+                  </p>
+                </div>
+              </div>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   )
