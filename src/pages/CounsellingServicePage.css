@@ -1,0 +1,496 @@
+.counsellingServicePage {
+  background: #f8f9f6;
+}
+
+.counsellingServicePage__hero {
+  min-height: 60vh;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding: clamp(2.8rem, 7vw, 4.8rem) clamp(1.2rem, 4vw, 2rem);
+}
+
+.counsellingServicePage__inner {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.counsellingServicePage__label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e7e4dc;
+  margin-bottom: 0.85rem;
+}
+
+.counsellingServicePage__heading {
+  margin: 0;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #ffffff;
+  max-width: 20ch;
+}
+
+.counsellingServicePage__summary {
+  margin: 1rem 0 0;
+  max-width: 600px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.counsellingServicePage__bookButton {
+  margin-top: 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.78rem 1.2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #f3dfaa;
+  color: #1f2c29;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.counsellingServicePage__bookButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.counsellingServicePage__intro {
+  padding: clamp(2.4rem, 6vw, 4rem) clamp(1.2rem, 4vw, 2rem) clamp(3rem, 7vw, 4.8rem);
+}
+
+.counsellingServicePage__introInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.counsellingServicePage__introText {
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+  font-weight: 300;
+  line-height: 1.9;
+  color: #2e3b38;
+  opacity: 0;
+  transform: translateX(-42px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.counsellingServicePage__introImage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 1rem;
+  display: block;
+  opacity: 0;
+  transform: translateX(42px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.counsellingServicePage__intro--visible .counsellingServicePage__introText,
+.counsellingServicePage__intro--visible .counsellingServicePage__introImage {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.counsellingServicePage__intro--visible .counsellingServicePage__introImage {
+  transition-delay: 0.08s;
+}
+
+.counsellingServicePage__mosaic {
+  width: 90vw;
+  margin-left: calc(50% - 45vw);
+  margin-right: calc(50% - 45vw);
+  padding: 0 0 clamp(3.2rem, 7vw, 5rem);
+}
+
+.counsellingServicePage__mosaicGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+
+.counsellingServicePage__mosaicCell {
+  min-height: clamp(14rem, 27vw, 19rem);
+  opacity: 0;
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.counsellingServicePage__mosaicCell--text {
+  background: #2d6a73;
+  color: #eef6f5;
+  padding: clamp(1.35rem, 2.4vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: translateX(-26px);
+}
+
+.counsellingServicePage__mosaicTitle {
+  margin: 0 0 0.7rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.2rem, 1.5vw, 1.65rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #f2ead1;
+}
+
+.counsellingServicePage__mosaicBody {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.92rem, 0.9vw, 1.02rem);
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(240, 246, 245, 0.94);
+}
+
+.counsellingServicePage__mosaicImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: translateX(26px) scale(1.02);
+  transition: transform 0.7s ease;
+}
+
+.counsellingServicePage__mosaic--visible .counsellingServicePage__mosaicCell {
+  opacity: 1;
+}
+
+.counsellingServicePage__mosaic--visible .counsellingServicePage__mosaicCell--text {
+  transform: translateX(0);
+}
+
+.counsellingServicePage__mosaic--visible .counsellingServicePage__mosaicImage {
+  transform: translateX(0) scale(1);
+}
+
+.counsellingServicePage__mosaicGrid .counsellingServicePage__mosaicCell:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.counsellingServicePage__mosaicGrid .counsellingServicePage__mosaicCell:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.counsellingServicePage__mosaicGrid .counsellingServicePage__mosaicCell:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+.counsellingServicePage__mosaicGrid .counsellingServicePage__mosaicCell:nth-child(4) {
+  transition-delay: 0.24s;
+}
+
+.counsellingServicePage__mosaicGrid .counsellingServicePage__mosaicCell:nth-child(5) {
+  transition-delay: 0.32s;
+}
+
+.counsellingServicePage__mosaicGrid .counsellingServicePage__mosaicCell:nth-child(6) {
+  transition-delay: 0.4s;
+}
+
+.counsellingServicePage__programCards {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: 50vh;
+  padding: 0 clamp(1rem, 4vw, 2.4rem) clamp(3.4rem, 7vw, 5.2rem);
+}
+
+.counsellingServicePage__programCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.4rem, 2.6vw, 2.2rem);
+}
+
+.counsellingServicePage__programCard {
+  min-height: clamp(19rem, 22vh, 24rem);
+  border: 2px solid #1b4332;
+  background: #f7f6f1;
+  padding: clamp(1.1rem, 2vw, 1.6rem);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.counsellingServicePage__programCardTitle {
+  margin: 0 0 0.9rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.3rem, 1.8vw, 1.65rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #1b4332;
+}
+
+.counsellingServicePage__programRows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.94rem, 0.9vw, 1.03rem);
+  line-height: 1.6;
+  color: #2f463b;
+}
+
+.counsellingServicePage__programRow strong {
+  font-weight: 700;
+}
+
+.counsellingServicePage__programList {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.62rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.94rem, 0.9vw, 1.03rem);
+  line-height: 1.65;
+  color: #2f463b;
+}
+
+.counsellingServicePage__programCards--visible .counsellingServicePage__programCard {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__programCardsGrid .counsellingServicePage__programCard:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.counsellingServicePage__programCardsGrid .counsellingServicePage__programCard:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.counsellingServicePage__programCardsGrid .counsellingServicePage__programCard:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.counsellingServicePage__bookingFlow {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: 50vh;
+  padding: clamp(2rem, 4vw, 2.8rem) clamp(1rem, 3vw, 2rem) clamp(2rem, 4vw, 2.8rem);
+  background: #e5eadc;
+}
+
+.counsellingServicePage__bookingInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(50vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.counsellingServicePage__bookingHeading {
+  margin: 0 0 clamp(1.4rem, 2.4vw, 2rem);
+  text-align: center;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  font-weight: 400;
+  color: #1f2c29;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.counsellingServicePage__bookingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 3.4rem);
+}
+
+.counsellingServicePage__bookingCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.38rem;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.counsellingServicePage__bookingImageWrap {
+  width: clamp(7.2rem, 12vw, 9.4rem);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(45, 106, 79, 0.35);
+  background: #f5f6f1;
+  margin-bottom: 1rem;
+}
+
+.counsellingServicePage__bookingImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.counsellingServicePage__bookingTitle {
+  margin: 0 0 0.62rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.02rem, 1.25vw, 1.2rem);
+  font-weight: 400;
+  color: #21312d;
+}
+
+.counsellingServicePage__bookingText {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.88rem, 0.85vw, 0.98rem);
+  line-height: 1.7;
+  color: #2f3f3c;
+  max-width: 33ch;
+}
+
+.counsellingServicePage__bookingButton {
+  margin: clamp(1.25rem, 2.5vw, 1.8rem) auto 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.78rem 1.3rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #1b4332;
+  color: #f7f6f1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.counsellingServicePage__bookingButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(27, 67, 50, 0.28);
+}
+
+.counsellingServicePage__bookingFlow--visible .counsellingServicePage__bookingHeading,
+.counsellingServicePage__bookingFlow--visible .counsellingServicePage__bookingCard,
+.counsellingServicePage__bookingFlow--visible .counsellingServicePage__bookingButton {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__bookingGrid .counsellingServicePage__bookingCard:nth-child(1) {
+  transition-delay: 0.04s;
+}
+
+.counsellingServicePage__bookingGrid .counsellingServicePage__bookingCard:nth-child(2) {
+  transition-delay: 0.14s;
+}
+
+.counsellingServicePage__bookingGrid .counsellingServicePage__bookingCard:nth-child(3) {
+  transition-delay: 0.24s;
+}
+
+.counsellingServicePage__bookingFlow--visible .counsellingServicePage__bookingButton {
+  transition-delay: 0.3s;
+}
+
+@media (max-width: 720px) {
+  .counsellingServicePage__hero {
+    min-height: 52vh;
+  }
+
+  .counsellingServicePage__introInner {
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage__introText {
+    line-height: 1.8;
+  }
+
+  .counsellingServicePage__mosaicGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage__mosaicCell {
+    min-height: 13.5rem;
+  }
+
+  .counsellingServicePage__programCardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage__programCard {
+    min-height: auto;
+  }
+
+  .counsellingServicePage__bookingFlow {
+    min-height: auto;
+  }
+
+  .counsellingServicePage__bookingInner {
+    min-height: auto;
+  }
+
+  .counsellingServicePage__bookingGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 721px) {
+  .counsellingServicePage__mosaicGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .counsellingServicePage__programCardsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .counsellingServicePage__introText,
+  .counsellingServicePage__introImage {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .counsellingServicePage__mosaicCell,
+  .counsellingServicePage__mosaicImage {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .counsellingServicePage__programCard {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .counsellingServicePage__bookingHeading,
+  .counsellingServicePage__bookingCard,
+  .counsellingServicePage__bookingButton {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

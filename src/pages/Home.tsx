@@ -3,6 +3,7 @@ import CTASection from '../components/home/CTASection'
 import Hero from '../components/home/Hero'
 import AboutSnapshot from '../components/home/AboutSnapshot'
 import ServicesSnapshot from '../components/home/ServicesSnapshot'
+import CounsellingServices from '../components/home/CounsellingServices'
 import WhyChooseUs from '../components/home/WhyChooseUs'
 import { site } from '../constants/swaroData'
 
@@ -13,6 +14,7 @@ export default function Home() {
       <Hero />
       <AboutSnapshot />
       <ServicesSnapshot />
+      <CounsellingServices />
       <WhyChooseUs />
       <CTASection />
     </>

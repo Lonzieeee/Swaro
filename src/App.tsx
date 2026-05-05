@@ -9,6 +9,7 @@ import Approach   from "./pages/Approach";
 import WhyUs      from "./pages/WhyUs";
 import Partnerships from "./pages/Partnerships";
 import Contact    from "./pages/Contact";
+import CounsellingServicePage from "./pages/CounsellingServicePage";
 import ScrollToTop from "./components/common/ScrollToTop";
 
 export default function App() {
@@ -25,6 +26,7 @@ export default function App() {
           <Route path="/why-us"       element={<WhyUs />}        />
           <Route path="/partnerships" element={<Partnerships />} />
           <Route path="/contact"      element={<Contact />}      />
+          <Route path="/counselling-services/:slug" element={<CounsellingServicePage />} />
         </Routes>
       </main>
       <Footer />
