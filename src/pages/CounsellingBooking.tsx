@@ -1,24 +1,19 @@
-import SEOHead from '../components/seo/SEOHead'
 import type { FormEvent } from 'react'
+import { useSearchParams } from 'react-router-dom'
+import SEOHead from '../components/seo/SEOHead'
 import { pageHeroMedia } from '../constants/swaroData'
 import { counsellingServices } from '../constants/counsellingServices'
 import type { BreadcrumbJsonLdItem } from '../utils/seo'
-import { useSearchParams } from 'react-router-dom'
 import './Contact.css'
 
-const CONTACT_SEO_BREADCRUMBS: readonly BreadcrumbJsonLdItem[] = [
+const BOOKING_BREADCRUMBS: readonly BreadcrumbJsonLdItem[] = [
   { name: 'Home', path: '/' },
-  { name: 'Contact / Consultation' },
+  { name: 'Book Session' },
 ]
 
-const CONTACT_META_DESCRIPTION =
-  'Book a consultation with Swaro Institute in Kenya. Share your goals and context to receive a tailored, evidence-based support plan.'
-
-const CONTACT_KEYWORDS =
-  'book consultation Kenya, SWARO contact, counselling consultation, training consultation, research consultancy contact, community development support'
-
-export default function Contact() {
+export default function CounsellingBooking() {
   const [searchParams] = useSearchParams()
+  const today = new Date().toISOString().split('T')[0]
   const preselectedServiceParam = searchParams.get('service') ?? ''
   const preselectedService =
     counsellingServices.find((service) => service.slug === preselectedServiceParam)?.title ??
@@ -26,8 +21,7 @@ export default function Contact() {
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    const form = e.currentTarget
-    const formData = new FormData(form)
+    const formData = new FormData(e.currentTarget)
 
     const fullName = String(formData.get('fullName') ?? '').trim()
     const email = String(formData.get('email') ?? '').trim()
@@ -39,7 +33,7 @@ export default function Contact() {
     const message = String(formData.get('message') ?? '').trim()
 
     const details = [
-      'Hello SWARO, I would like to book a consultation.',
+      'Hello SWARO, I would like to book a counselling session.',
       '',
       `Full Name: ${fullName}`,
       `Email: ${email}`,
@@ -52,40 +46,31 @@ export default function Contact() {
     ].join('\n')
 
     const whatsappNumber = '254711966258'
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(details)}`
-    window.location.href = whatsappUrl
+    window.location.href = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(details)}`
   }
 
   return (
     <>
       <SEOHead
-        title="Book a Consultation"
-        description={CONTACT_META_DESCRIPTION}
-        path="/contact"
+        title="Book a Counselling Session"
+        description="Complete your booking details and continue to WhatsApp to confirm your counselling session."
+        path="/book-session"
         image={pageHeroMedia.about}
-        ogImageAlt="Consultation scheduling form for Swaro Institute"
-        keywords={CONTACT_KEYWORDS}
+        ogImageAlt="Book a counselling session form"
         schemaPageType="ContactPage"
-        breadcrumbs={CONTACT_SEO_BREADCRUMBS}
+        breadcrumbs={BOOKING_BREADCRUMBS}
       />
 
       <section className="contactConsult">
         <div className="contactConsult__hero" aria-hidden>
-          <img
-            src={pageHeroMedia.about}
-            alt=""
-            className="contactConsult__bg"
-            decoding="async"
-          />
+          <img src={pageHeroMedia.about} alt="" className="contactConsult__bg" decoding="async" />
           <div className="contactConsult__overlay" />
         </div>
 
         <div className="contactConsult__inner">
           <div className="contactConsult__panel">
-            <h1 className="contactConsult__title">Schedule a Consultation</h1>
-            <p className="contactConsult__intro">
-              To help our team prepare well, please share a few details before we connect.
-            </p>
+            <h1 className="contactConsult__title">Book a Counselling Session</h1>
+            <p className="contactConsult__intro">Share your details below, then confirm instantly on WhatsApp.</p>
 
             <form className="contactConsult__form" onSubmit={handleSubmit}>
               <label className="contactConsult__field">
@@ -105,7 +90,7 @@ export default function Contact() {
 
               <label className="contactConsult__field">
                 <span>Preferred Start Date *</span>
-                <input type="date" name="preferredStartDate" required />
+                <input type="date" name="preferredStartDate" min={today} required />
               </label>
 
               <label className="contactConsult__field">
@@ -151,11 +136,6 @@ export default function Contact() {
                   rows={4}
                   placeholder="Briefly share what you need support with..."
                 />
-              </label>
-
-              <label className="contactConsult__consent contactConsult__field--full">
-                <input type="checkbox" required name="consent" />
-                <span>I consent to being contacted by SWARO regarding this consultation request.</span>
               </label>
 
               <div className="contactConsult__field--full">

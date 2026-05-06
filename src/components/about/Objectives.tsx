@@ -103,7 +103,7 @@ export default function Objectives() {
             Our <span className="objectives__headingAccent">Objectives</span>
           </h2>
           <p className="objectives__subtext objectives__subtext--full">
-            Six clear objectives that drive everything we do at SWARO Consulty Services — from the programs we
+            Six clear objectives that drive everything we do at Swaro Institute — from the programs we
             design to the communities we serve.
           </p>
           <p className="objectives__subtext objectives__subtext--short">

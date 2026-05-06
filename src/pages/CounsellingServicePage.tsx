@@ -60,14 +60,20 @@ const debriefProgramCards = {
   },
 } as const
 
-const debriefBookingSteps = [
+const debriefBookingSteps: ReadonlyArray<{
+  title: string
+  description: string
+  image?: string
+}> = [
   {
     title: '1. Reserve Your Slot',
     description: 'Choose a date and time that fits your schedule and secure your session in just a few steps.',
+    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/bookslot.avif',
   },
   {
     title: '2. Connect & Talk',
     description: 'Meet your counsellor in a safe and private space, either through a secure online session link or in person, depending on your preference.',
+    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/debrief.jpg',
   },
   {
     title: '3. Begin to Heal',
@@ -129,7 +135,14 @@ export default function CounsellingServicePage() {
     content.id === 'debrief-grief-support' ||
     content.slug === 'debrief-grief-loss-support' ||
     content.slug.includes('debrief')
-  const mosaicImages = [content.introSectionImage ?? content.image, content.image, content.introSectionImage ?? content.image]
+  const pageImage = content.pageImage ?? content.image
+  const debriefMosaicImage = 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/shot.jpg'
+  const debriefMosaicImageMiddle = 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/sliideee.webp'
+  const debriefMosaicImageLast = 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/consoling.jpeg'
+  const mosaicImages = isDebriefService
+    ? [debriefMosaicImage, debriefMosaicImageMiddle, debriefMosaicImageLast]
+    : [content.introSectionImage ?? pageImage, pageImage, content.introSectionImage ?? pageImage]
+  
 
   return (
     <>
@@ -138,7 +151,7 @@ export default function CounsellingServicePage() {
         description={heroDescription}
         path={`/counselling-services/${content.slug}`}
         schemaPageType="WebPage"
-        image={content.image}
+        image={pageImage}
         ogImageAlt={content.imageAlt}
       />
       <section className="counsellingServicePage">
@@ -152,7 +165,7 @@ export default function CounsellingServicePage() {
             <div className="counsellingServicePage__label">Counselling Service</div>
             <h1 className="counsellingServicePage__heading">{content.title}</h1>
             <p className="counsellingServicePage__summary">{heroDescription}</p>
-            <Link to="/contact" className="counsellingServicePage__bookButton">
+            <Link to={`/book-session?service=${encodeURIComponent(content.slug)}`} className="counsellingServicePage__bookButton">
               Book Session
             </Link>
           </div>
@@ -256,7 +269,7 @@ export default function CounsellingServicePage() {
 
                 <div className="counsellingServicePage__bookingGrid">
                   {debriefBookingSteps.map((step, index) => {
-                    const imageSrc = mosaicImages[index] ?? content.image
+                    const imageSrc = step.image ?? mosaicImages[index] ?? content.image
                     return (
                       <article key={step.title} className="counsellingServicePage__bookingCard">
                         <div className="counsellingServicePage__bookingImageWrap">
@@ -274,7 +287,7 @@ export default function CounsellingServicePage() {
                   })}
                 </div>
 
-                <Link to="/contact" className="counsellingServicePage__bookingButton">
+                <Link to={`/book-session?service=${encodeURIComponent(content.slug)}`} className="counsellingServicePage__bookingButton">
                   Book Session
                 </Link>
               </div>

@@ -20,10 +20,10 @@ const ABOUT_SEO_BREADCRUMBS: readonly BreadcrumbJsonLdItem[] = [
 
 /** ~153 characters — fits typical Google snippet width */
 const ABOUT_META_DESCRIPTION =
-  'About SWARO Consulty Services Kenya: mission, vision, values and objectives. Counselling, training, research and community programmes led by consultants.'
+  'About Swaro Institute Kenya: mission, vision, values and objectives. Counselling, training, research and community programmes led by consultants.'
 
 const ABOUT_KEYWORDS =
-  'SWARO Consulty Services, about SWARO, Kenya consultancy, counselling Kenya, training Kenya, community development, mission and vision, core values, organizational objectives, research consultancy'
+  'Swaro Institute, about SWARO, Kenya consultancy, counselling Kenya, training Kenya, community development, mission and vision, core values, organizational objectives, research consultancy'
 
 export default function About() {
   return (
@@ -33,7 +33,7 @@ export default function About() {
         description={ABOUT_META_DESCRIPTION}
         path="/about"
         image={pageHeroMedia.about}
-        ogImageAlt="SWARO Consulty Services — professional team and modern consultancy workspace in Kenya"
+        ogImageAlt="Swaro Institute — professional team and modern consultancy workspace in Kenya"
         keywords={ABOUT_KEYWORDS}
         schemaPageType="AboutPage"
         breadcrumbs={ABOUT_SEO_BREADCRUMBS}

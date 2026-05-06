@@ -40,7 +40,7 @@ export const servicePages: readonly ServicePageContent[] = [
     overviewImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/Servicecounselling(1).webp',
     overviewImageAlt: 'Counselling and mediation service overview',
     metaDescription:
-      'SWARO counselling and mediation services in Kenya: general, pre-marital, marital, youth and family counselling plus conflict resolution support.',
+      'Swaro Institute counselling and mediation services in Kenya: general, pre-marital, marital, youth and family counselling plus conflict resolution support.',
     overview: [
       'Our counselling and mediation services nurture emotional well-being, restore trust, and provide practical tools for resolving conflict. We offer a safe, confidential space for individuals, couples, families, and groups to address stress, grief, relationship strain, or major life changes.',
       'Sessions are tailored to your needs, focusing on empathy, resilience, and clear communication. Mediation helps de-escalate conflict and guide all parties toward respectful, actionable solutions. Our goal is to help you move forward with clarity and confidence.'
@@ -96,7 +96,7 @@ export const servicePages: readonly ServicePageContent[] = [
     overviewImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/overviewtraining(1).webp',
     overviewImageAlt: 'Facilitator guiding participants during a practical institutional training session',
     metaDescription:
-      'SWARO training and capacity building in Kenya: leadership, management, institutional strengthening and practical development courses.',
+      'Swaro Institute training and capacity building in Kenya: leadership, management, institutional strengthening and practical development courses.',
     overview: [
       'Our training and capacity-building services are designed to move beyond theory by equipping individuals, teams, and institutions with practical competencies they can apply immediately in their day-to-day roles.',
       'Through carefully structured facilitation, participatory learning methods, and context-specific tools, we help organizations strengthen leadership, improve internal systems, and build a confident workforce that can sustain performance and adapt to change.',
@@ -152,7 +152,7 @@ export const servicePages: readonly ServicePageContent[] = [
     overviewImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/educastionoverview.webp',
     overviewImageAlt: 'Mentor guiding learners through educational and career planning',
     metaDescription:
-      'SWARO education and career services in Kenya: curriculum development, mentorship, CV writing and career guidance for learners and professionals.',
+      'Swaro Institute education and career services in Kenya: curriculum development, mentorship, CV writing and career guidance for learners and professionals.',
     overview: [
       'Our education and career development services help learners, institutions, and professionals translate ambition into clear academic and career progress through practical, structured support.',
       'By combining mentorship, skills coaching, and evidence-based education strategies, we guide participants to make informed choices, strengthen employability, and pursue sustainable growth at every stage of their learning and professional journey.',
@@ -208,7 +208,7 @@ export const servicePages: readonly ServicePageContent[] = [
     overviewImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/serviceempowerment.webp',
     overviewImageAlt: 'Community group session focused on empowerment and participation',
     metaDescription:
-      'SWARO community empowerment programs in Kenya: women, youth and gender initiatives with faith-based and social support for stronger communities.',
+      'Swaro Institute community empowerment programs in Kenya: women, youth and gender initiatives with faith-based and social support for stronger communities.',
     overview: [
       'Our community empowerment services are built to strengthen inclusion, participation, and resilience by helping people and local groups take active roles in shaping their own social and economic progress.',
       'Working closely with community actors, we co-create culturally grounded interventions that build leadership, promote shared responsibility, and deliver practical, long-term change across households and community institutions.',
@@ -264,7 +264,7 @@ export const servicePages: readonly ServicePageContent[] = [
     overviewImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/Researhoverview.webp',
     overviewImageAlt: 'Research team reviewing data and program performance indicators',
     metaDescription:
-      'SWARO research and consultancy services in Kenya: data collection, M&E, proposal writing and resource mobilization for development impact.',
+      'Swaro Institute research and consultancy services in Kenya: data collection, M&E, proposal writing and resource mobilization for development impact.',
     overview: [
       'Our research and consultancy services help institutions transform data and field insights into clear, evidence-based decisions that improve policy, programs, and organizational strategy.',
       'From study design and data collection to analysis, reporting, and implementation guidance, we prioritize methodological rigor, practical relevance, and recommendations that can be acted on with confidence.',
@@ -320,7 +320,7 @@ export const servicePages: readonly ServicePageContent[] = [
     overviewImage: DEFAULT_SERVICE_HERO,
     overviewImageAlt: 'Health educator delivering community lifestyle and nutrition guidance',
     metaDescription:
-      'SWARO health and lifestyle development in Kenya: nutrition education and community health awareness programs for healthier living.',
+      'Swaro Institute health and lifestyle development in Kenya: nutrition education and community health awareness programs for healthier living.',
     overview: [
       'Our health and lifestyle development services promote practical, preventive wellness by helping individuals and communities build healthier habits through accessible nutrition and health education.',
       'By translating evidence-based health knowledge into simple daily actions, we support people to reduce lifestyle-related risks, strengthen community awareness, and improve overall quality of life over time.',

@@ -127,7 +127,7 @@ export default function ApproachSection() {
             Our <span className="approachSection__headingAccent">Research-Based</span> Approach
           </h2>
           <p className="approachSection__subtext">
-            SWARO Consulty Services applies a rigorous, participatory and evidence-based approach to every
+            Swaro Institute applies a rigorous, participatory and evidence-based approach to every
             engagement, ensuring real, measurable and lasting impact for every client we serve.
           </p>
         </header>

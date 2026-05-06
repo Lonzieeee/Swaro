@@ -127,7 +127,7 @@ export default function WhyChooseUs() {
             &rdquo;
           </span>
         </blockquote>
-        <p className="whyChooseUs__quoteSource">— SWARO Consulty Services Philosophy</p>
+        <p className="whyChooseUs__quoteSource">— Swaro Institute Philosophy</p>
         <Link to="/approach" className="whyChooseUs__cta">
           Our Approach
         </Link>

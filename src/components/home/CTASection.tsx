@@ -89,7 +89,7 @@ export default function CTASection() {
           </h2>
           <p className="ctaSection__subtitle">Let&apos;s Work Together</p>
           <p className="ctaSection__lede">
-            Whether you are an individual, family, institution or community — SWARO Consulty Services has a tailored,
+            Whether you are an individual, family, institution or community — Swaro Institute has a tailored,
             evidence-based solution designed to empower, develop and transform you.
           </p>
         </header>

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://swaroconsulting.com/sitemap.xml
+Sitemap: https://swaroinstitute.com/sitemap.xml

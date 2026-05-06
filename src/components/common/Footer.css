@@ -321,4 +321,23 @@
 
 .footer__credit {
   font-style: italic;
+  color: #f9f5ec;
+}
+
+.footer__creditLink {
+  color: #c9a84c;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.2s ease;
+}
+
+.footer__creditLink:hover {
+  color: #e8d5a3;
+}
+
+.footer__creditLink:focus-visible {
+  outline: 2px solid #c9a84c;
+  outline-offset: 2px;
+  border-radius: 2px;
 }

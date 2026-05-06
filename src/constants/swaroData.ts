@@ -1,26 +1,23 @@
 export const site = {
   name: 'SWARO',
   /** Full legal / marketing name — used in titles and schema */
-  fullName: 'SWARO Consulty Services',
+  fullName: 'Swaro Institute',
   tagline: 'Counselling, training, and community empowerment',
-  /** Primary document title on the home page (aim for ~50–60 characters). */
-  homeTitle: 'SWARO Consulty Services | Kenya consultancy & development',
-  /**
-   * Home meta description (~150–160 characters for search snippets).
-   * Add a dedicated 1200×630 `public/og-image.jpg` when ready and set `defaultOgImagePath`.
-   */
+
+  homeTitle: 'Swaro Institute | Kenya consultancy & development',
+ 
   homeDescription:
-    'SWARO Consulty Services: evidence-based counselling, training, research and community development in Kenya. Support for individuals, schools and partners—book a consultation.',
-  /** Stable blurb for JSON-LD Organization (not page-specific). */
+    'Swaro Institute: evidence-based counselling, training, research and community development in Kenya. Support for individuals, schools and partners—book a consultation.',
+ 
   organizationDescription:
     'Kenya consultancy delivering counselling, mediation, training, research, education and community empowerment for individuals, institutions and development partners.',
-  url: 'https://swaroconsulting.com',
-  /** Public social profile URLs for JSON-LD `sameAs` — add real profile URLs when available */
+  url: 'https://swaroinstitute.com',
+ 
   sameAs: [] as readonly string[],
-  /** Open Graph / Twitter image path under `public/` (absolute URL built at runtime) */
-  defaultOgImagePath: '/favicon.svg',
-  contactEmail: 'hello@example.com',
-  phone: '+1 (000) 000-0000',
+  
+  defaultOgImagePath: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/sliideee.webp',
+  contactEmail: 'info@swaroinstitute.com',
+  phone: '+254 711 966258',
 } as const
 
 export const navLinks = [

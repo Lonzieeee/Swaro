@@ -29,7 +29,7 @@ const REVEAL = {
   points: KEY_POINTS.map((p) => packRevealWords(p, REVEAL_START)),
 } as const
 
-const MOTION_LINE = 'About SWARO Consulty Services'
+const MOTION_LINE = 'About Swaro Institute'
 const MOTION_LAYERS = 4
 
 const MOTION_CHARS = [...MOTION_LINE]

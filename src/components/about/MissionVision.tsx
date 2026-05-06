@@ -36,7 +36,7 @@ export default function MissionVision() {
 
           <div className="missionVision__intro">
             <p className="missionVision__introText">
-              SWARO Consulty Services believes that sustainable development starts with empowered
+              Swaro Institute believes that sustainable development starts with empowered
               individuals. By integrating education, mentorship, counselling, research and practical
               interventions, we nurture knowledgeable, healthy and resilient communities. We view each
               client as a partner in the journey toward personal growth, societal well-being and

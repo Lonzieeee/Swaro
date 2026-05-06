@@ -4,6 +4,7 @@ export type CounsellingService = {
   title: string
   description: string
   pageDescription?: string
+  pageImage?: string
   introSectionBody?: string
   introSectionImage?: string
   introSectionImageAlt?: string
@@ -20,6 +21,7 @@ export const counsellingServices: readonly CounsellingService[] = [
       'A safe space to process grief, loss, and emotional pain. Helps you move through healing, acceptance, and emotional stability at your own pace.',
     pageDescription:
       "Whether you're grieving a loved one, a relationship, or a life change, you don’t have to go through it alone.",
+    pageImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/sliideee.webp',
     introSectionBody:
       'Debrief is a supportive and guided counselling process designed to help you work through difficult experiences, loss, and emotional overwhelm in a safe and compassionate environment. Rather than rushing you to "move on," it focuses on helping you understand your emotions, make sense of what you have been through, and gradually regain a sense of stability and clarity. Every person experiences grief differently, and there is no right or wrong way to feel-healing takes time, and there is no fixed timeline for it.',
     introSectionImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/woman-writining-notebook_1_.webp',

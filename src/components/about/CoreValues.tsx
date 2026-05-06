@@ -99,7 +99,7 @@ export default function CoreValues() {
           </div>
           <div className="coreValues__headerRight">
             <p className="coreValues__intro">
-              At SWARO Consulty Services, our core values are not just words — they are the foundation of
+              At Swaro Institute, our core values are not just words — they are the foundation of
               every program we design, every relationship we build and every community we serve. They guide
               our decisions, shape our culture and define who we are as an organization.
             </p>

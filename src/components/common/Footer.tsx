@@ -117,7 +117,7 @@ export default function Footer() {
           <div className="footer__col">
             <Link to="/" className="footer__logo">
               <span className="footer__logoMain">{site.name}</span>
-              <span className="footer__logoSub">Consulty Services</span>
+              <span className="footer__logoSub">Institute</span>
             </Link>
             <p className="footer__tagline">
               &ldquo;Empowering Lives Through Research, Knowledge &amp; Transformation&rdquo;
@@ -277,9 +277,19 @@ export default function Footer() {
       <div className="footer__bottom">
         <div className="footer__bottomInner">
           <p className="footer__copyright">
-            © {year} SWARO Consulty Services. All rights reserved.
+            © {year} Swaro Institute. All rights reserved.
           </p>
-          <p className="footer__credit">Designed with care for communities</p>
+          <p className="footer__credit">
+            Powered by{' '}
+            <a
+              className="footer__creditLink"
+              href="https://nakkei.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Nakkei
+            </a>
+          </p>
         </div>
       </div>
     </footer>

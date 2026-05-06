@@ -13,7 +13,7 @@ export default function Hero() {
         <div className="hero__content">
           <div className="hero__pill">
             <span className="hero__pill-dot" />
-            <span className="hero__pill-text">Welcome to SWARO Consulty Services</span>
+            <span className="hero__pill-text">Welcome to Swaro Institute</span>
           </div>
 
           <h1 className="hero__headline">
