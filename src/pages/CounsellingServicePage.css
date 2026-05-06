@@ -46,6 +46,14 @@
   color: rgba(255, 255, 255, 0.92);
 }
 
+.counsellingServicePage__summaryMobile {
+  display: none;
+}
+
+.counsellingServicePage__summaryDesktop {
+  display: inline;
+}
+
 .counsellingServicePage__bookButton {
   margin-top: 1.35rem;
   display: inline-flex;
@@ -93,6 +101,67 @@
   transition: opacity 0.7s ease, transform 0.7s ease;
 }
 
+.counsellingServicePage__introHeading {
+  margin: 0 0 0.9rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #1f2c29;
+}
+
+.counsellingServicePage__introParagraph {
+  margin: 0 0 1rem;
+}
+
+.counsellingServicePage__introParagraph--mobile {
+  display: none;
+}
+
+.counsellingServicePage__introParagraph--desktop {
+  display: block;
+}
+
+.counsellingServicePage__introLead {
+  margin: 0.6rem 0 0.45rem;
+  font-weight: 500;
+}
+
+.counsellingServicePage__introBenefits {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.62rem;
+}
+
+.counsellingServicePage__introBenefitItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.counsellingServicePage__introBenefitIcon {
+  width: 1.05rem;
+  height: 1.05rem;
+  color: #2d6a4f;
+  margin-top: 0.22rem;
+  flex-shrink: 0;
+}
+
+.counsellingServicePage__introFooter {
+  max-width: 1280px;
+  margin: clamp(1rem, 2vw, 1.4rem) auto 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+  font-weight: 300;
+  line-height: 1.9;
+  color: #2e3b38;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
 .counsellingServicePage__introImage {
   width: 100%;
   aspect-ratio: 16 / 9;
@@ -110,8 +179,99 @@
   transform: translateX(0);
 }
 
+.counsellingServicePage__intro--visible .counsellingServicePage__introFooter {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.12s;
+}
+
 .counsellingServicePage__intro--visible .counsellingServicePage__introImage {
   transition-delay: 0.08s;
+}
+
+.counsellingServicePage__prenatalJourney {
+  background: #f1f1ee;
+  padding: clamp(2.2rem, 5vw, 3.2rem) clamp(0.9rem, 3vw, 1.8rem) clamp(2.8rem, 6vw, 3.8rem);
+}
+
+.counsellingServicePage__prenatalJourneyFrame {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(90px, 0.22fr) minmax(0, 1fr) minmax(90px, 0.22fr);
+  gap: clamp(0.9rem, 1.8vw, 1.5rem);
+  align-items: stretch;
+}
+
+.counsellingServicePage__prenatalJourneySide {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.counsellingServicePage__prenatalJourneySide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.counsellingServicePage__prenatalJourneySide--left img {
+  object-position: 18% center;
+  filter: saturate(1.04) brightness(1.03) contrast(0.97);
+}
+
+.counsellingServicePage__prenatalJourneySide--right img {
+  object-position: 82% center;
+  filter: saturate(0.94) brightness(0.95) contrast(1.04);
+}
+
+.counsellingServicePage__prenatalJourneyContent {
+  background: #f7f7f4;
+  border: 1px solid rgba(30, 40, 34, 0.12);
+  padding: clamp(1.15rem, 2.4vw, 1.9rem) clamp(1.1rem, 2.5vw, 2rem);
+  color: #1e2723;
+}
+
+.counsellingServicePage__prenatalJourneyTitle {
+  margin: 0 0 0.7rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  line-height: 1.25;
+  font-weight: 400;
+}
+
+.counsellingServicePage__prenatalJourneyText {
+  margin: 0 0 0.9rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.95rem, 1vw, 1.02rem);
+  line-height: 1.8;
+  color: #2a3632;
+}
+
+.counsellingServicePage__prenatalJourneySubtitle {
+  margin: 1.05rem 0 0.45rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.2rem, 1.7vw, 1.5rem);
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+.counsellingServicePage__prenatalJourneyLead {
+  margin: 0 0 0.55rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.92rem, 0.95vw, 1rem);
+  line-height: 1.75;
+}
+
+.counsellingServicePage__prenatalJourneyList {
+  margin: 0;
+  padding-left: 1.08rem;
+  display: grid;
+  gap: 0.42rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.9rem, 0.95vw, 1rem);
+  line-height: 1.72;
+  color: #2a3632;
 }
 
 .counsellingServicePage__mosaic {
@@ -416,14 +576,93 @@
 @media (max-width: 720px) {
   .counsellingServicePage__hero {
     min-height: 52vh;
+    padding-top: clamp(3.2rem, 11vw, 4.2rem);
+    padding-bottom: clamp(2.4rem, 8vw, 3.2rem);
+  }
+
+  .counsellingServicePage__summary {
+    margin-top: 0.85rem;
+    font-size: 0.94rem;
+    line-height: 1.6;
+    max-width: 42ch;
+  }
+
+  .counsellingServicePage__summaryDesktop {
+    display: none;
+  }
+
+  .counsellingServicePage__summaryMobile {
+    display: inline;
   }
 
   .counsellingServicePage__introInner {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
   .counsellingServicePage__introText {
-    line-height: 1.8;
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .counsellingServicePage__introHeading {
+    font-size: clamp(1.28rem, 5.2vw, 1.55rem);
+    margin-bottom: 0.65rem;
+  }
+
+  .counsellingServicePage__introLead {
+    margin-top: 0.45rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.93rem;
+  }
+
+  .counsellingServicePage__introBenefitItem span {
+    font-size: 0.93rem;
+    line-height: 1.62;
+  }
+
+  .counsellingServicePage__introParagraph--desktop {
+    display: none;
+  }
+
+  .counsellingServicePage__introParagraph--mobile {
+    display: block;
+    margin-bottom: 0.7rem;
+  }
+
+  .counsellingServicePage__introFooter {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .counsellingServicePage__prenatalJourney {
+    padding-top: 1.8rem;
+    padding-bottom: 2.3rem;
+  }
+
+  .counsellingServicePage__prenatalJourneyFrame {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .counsellingServicePage__prenatalJourneySide {
+    display: none;
+  }
+
+  .counsellingServicePage__prenatalJourneyContent {
+    padding: 1rem 0.92rem;
+  }
+
+  .counsellingServicePage__prenatalJourneyTitle {
+    font-size: clamp(1.22rem, 5vw, 1.45rem);
+  }
+
+  .counsellingServicePage__prenatalJourneyText,
+  .counsellingServicePage__prenatalJourneyLead,
+  .counsellingServicePage__prenatalJourneyList {
+    font-size: 0.92rem;
+    line-height: 1.65;
   }
 
   .counsellingServicePage__mosaicGrid {
@@ -456,12 +695,151 @@
 }
 
 @media (max-width: 1024px) and (min-width: 721px) {
+  .counsellingServicePage__hero {
+    min-height: 56vh;
+  }
+
+  .counsellingServicePage__summary {
+    max-width: 54ch;
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .counsellingServicePage__introInner {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+    gap: clamp(1.35rem, 3vw, 2.2rem);
+  }
+
+  .counsellingServicePage__introHeading {
+    font-size: clamp(1.35rem, 2vw, 1.72rem);
+  }
+
+  .counsellingServicePage__introText {
+    font-size: 0.98rem;
+    line-height: 1.78;
+  }
+
+  .counsellingServicePage__prenatalJourneyFrame {
+    grid-template-columns: minmax(72px, 0.18fr) minmax(0, 1fr) minmax(72px, 0.18fr);
+  }
+
+  .counsellingServicePage__prenatalJourneyContent {
+    padding: clamp(1rem, 2vw, 1.35rem);
+  }
+
   .counsellingServicePage__mosaicGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
   .counsellingServicePage__programCardsGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Final exact-match prenatal journey styling */
+.counsellingServicePage__prenatalJourney {
+  background: transparent;
+  min-height: 96vh;
+  padding: clamp(1.2rem, 2.8vw, 1.8rem);
+  display: flex;
+  align-items: center;
+}
+
+.counsellingServicePage__prenatalJourneyFrame {
+  width: min(1320px, 100%);
+  min-height: min(92vh, 920px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr) 190px;
+  gap: 0;
+  align-items: stretch;
+}
+
+.counsellingServicePage__prenatalJourneySide {
+  display: block;
+  overflow: hidden;
+}
+
+.counsellingServicePage__prenatalJourneySide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.counsellingServicePage__prenatalJourneyContent {
+  background: #f5f5f3;
+  border: none;
+  width: min(900px, 100%);
+  justify-self: center;
+  padding: clamp(1.2rem, 2.1vw, 1.95rem) clamp(1.25rem, 2.3vw, 2.15rem);
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.counsellingServicePage__prenatalJourneyTitle {
+  font-size: clamp(1.45rem, 2vw, 1.95rem);
+  max-width: 34ch;
+}
+
+.counsellingServicePage__prenatalJourneyText {
+  font-size: clamp(0.96rem, 1vw, 1.05rem);
+  line-height: 1.8;
+}
+
+.counsellingServicePage__prenatalJourneyLead,
+.counsellingServicePage__prenatalJourneyList {
+  font-size: clamp(0.92rem, 0.95vw, 1rem);
+  line-height: 1.72;
+}
+
+.counsellingServicePage__prenatalJourneyList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.counsellingServicePage__prenatalJourneyListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.counsellingServicePage__prenatalJourneyListIcon {
+  width: 1.02rem;
+  height: 1.02rem;
+  color: #2d6a4f;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) and (min-width: 721px) {
+  .counsellingServicePage__prenatalJourneyFrame {
+    grid-template-columns: 130px minmax(0, 1fr) 130px;
+  }
+}
+
+@media (max-width: 720px) {
+  .counsellingServicePage__prenatalJourney {
+    padding: 1rem 0.75rem 1.2rem;
+    min-height: auto;
+  }
+
+  .counsellingServicePage__prenatalJourneyFrame {
+    min-height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage__prenatalJourneySide {
+    display: none;
+  }
+
+  .counsellingServicePage__prenatalJourneyContent {
+    padding: 1rem 0.9rem;
   }
 }
 

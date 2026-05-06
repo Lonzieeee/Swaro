@@ -1,5 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
+import { HiCheckCircle } from 'react-icons/hi2'
 import SEOHead from '../components/seo/SEOHead'
 import { counsellingServicesBySlug } from '../constants/counsellingServices'
 import './CounsellingServicePage.css'
@@ -81,6 +82,44 @@ const debriefBookingSteps: ReadonlyArray<{
   },
 ] as const
 
+const prenatalIntro = {
+  title: 'Why Prenatal Wellbeing Matters',
+  intro:
+    'Pregnancy is not only a physical journey but also an emotional and mental one. As your body, routine, and relationships change, it is natural to experience a mix of excitement, uncertainty, and emotional shifts. Taking time to care for your wellbeing during this period helps you feel more grounded, supported, and confident as you prepare for motherhood.',
+  introMobile:
+    'Pregnancy brings physical, emotional, and mental changes. Caring for your wellbeing helps you feel grounded, supported, and more confident for motherhood.',
+  leadIn: 'Focusing on your emotional wellbeing during pregnancy can help you:',
+  points: [
+    'Better manage stress, anxiety, and emotional changes',
+    'Feel more confident and prepared for motherhood',
+    'Adjust to lifestyle and relationship changes more smoothly',
+    'Build a calm, supportive foundation for yourself and your baby',
+  ],
+  outro:
+    'Prioritising your wellbeing during this time allows you to move through your pregnancy with greater ease, clarity, and a stronger sense of emotional readiness for the journey ahead.',
+  outroMobile:
+    'Prioritising wellbeing helps you move through pregnancy with more calm, clarity, and emotional readiness.',
+  image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/whyprenatal.webp',
+} as const
+
+const prenatalJourney = {
+  title: 'A Space Just for You and Your Journey',
+  body: [
+    'Pregnancy is a deeply personal experience, and every journey into motherhood is unique. Whether you are a first-time mum navigating new emotions and uncertainties, or preparing to welcome another child while balancing life\'s demands, this space is designed with you in mind.',
+    'Through gentle guidance and supportive conversations, you are given the time, care, and understanding needed to reflect, adjust, and prepare for motherhood with confidence and emotional clarity.',
+  ],
+  subTitle: 'Who This Program Is For',
+  leadIn: 'This program is designed for:',
+  points: [
+    'First-time mothers adjusting to the emotional and physical changes of pregnancy',
+    'Expectant mothers experiencing stress, anxiety, or uncertainty',
+    'Women seeking emotional support, clarity, and confidence during pregnancy',
+    'Partners who wish to be involved and supportive during the journey',
+  ],
+  leftImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/prenatal%20nursery-Photoroom.webp',
+  rightImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/whyprenatal.webp',
+} as const
+
 export default function CounsellingServicePage() {
   const { slug } = useParams<{ slug: string }>()
   const content = slug ? counsellingServicesBySlug[slug] : undefined
@@ -135,6 +174,10 @@ export default function CounsellingServicePage() {
     content.id === 'debrief-grief-support' ||
     content.slug === 'debrief-grief-loss-support' ||
     content.slug.includes('debrief')
+  const isPrenatalService =
+    content.id === 'prenatal-wellbeing-support' ||
+    content.slug === 'prenatal-wellbeing-support' ||
+    content.slug.includes('prenatal')
   const pageImage = content.pageImage ?? content.image
   const debriefMosaicImage = 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/shot.jpg'
   const debriefMosaicImageMiddle = 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/sliideee.webp'
@@ -157,21 +200,75 @@ export default function CounsellingServicePage() {
       <section className="counsellingServicePage">
         <div
           className="counsellingServicePage__hero"
-          style={{ backgroundImage: `linear-gradient(rgba(15, 19, 18, 0.55), rgba(15, 19, 18, 0.55)), url(${content.image})` }}
+          style={{ backgroundImage: `linear-gradient(rgba(15, 19, 18, 0.55), rgba(15, 19, 18, 0.55)), url(${pageImage})` }}
           role="img"
           aria-label={content.imageAlt}
         >
           <div className="counsellingServicePage__inner">
             <div className="counsellingServicePage__label">Counselling Service</div>
             <h1 className="counsellingServicePage__heading">{content.title}</h1>
-            <p className="counsellingServicePage__summary">{heroDescription}</p>
+            <p className="counsellingServicePage__summary">
+              {isPrenatalService ? (
+                <>
+                  <span className="counsellingServicePage__summaryDesktop">{heroDescription}</span>
+                  <span className="counsellingServicePage__summaryMobile">
+                    Pregnancy brings many changes. You do not have to navigate them alone; we are here to support
+                    you at every step.
+                  </span>
+                </>
+              ) : (
+                heroDescription
+              )}
+            </p>
             <Link to={`/book-session?service=${encodeURIComponent(content.slug)}`} className="counsellingServicePage__bookButton">
               Book Session
             </Link>
           </div>
         </div>
 
-        {content.introSectionBody && content.introSectionImage ? (
+        {isPrenatalService ? (
+          <section
+            ref={introRef}
+            className={`counsellingServicePage__intro${isIntroVisible ? ' counsellingServicePage__intro--visible' : ''}`}
+            aria-label="Prenatal wellbeing overview"
+          >
+            <div className="counsellingServicePage__introInner">
+              <img
+                className="counsellingServicePage__introImage"
+                src={prenatalIntro.image}
+                alt="Expectant mother reflecting calmly by a window"
+                loading="lazy"
+              />
+
+              <div className="counsellingServicePage__introText">
+                <h2 className="counsellingServicePage__introHeading">{prenatalIntro.title}</h2>
+                <p className="counsellingServicePage__introParagraph counsellingServicePage__introParagraph--desktop">
+                  {prenatalIntro.intro}
+                </p>
+                <p className="counsellingServicePage__introParagraph counsellingServicePage__introParagraph--mobile">
+                  {prenatalIntro.introMobile}
+                </p>
+                <p className="counsellingServicePage__introLead">{prenatalIntro.leadIn}</p>
+                <ul className="counsellingServicePage__introBenefits" role="list">
+                  {prenatalIntro.points.map((point) => (
+                    <li key={point} className="counsellingServicePage__introBenefitItem">
+                      <HiCheckCircle className="counsellingServicePage__introBenefitIcon" aria-hidden />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+            <div className="counsellingServicePage__introFooter">
+              <p className="counsellingServicePage__introParagraph counsellingServicePage__introParagraph--desktop">
+                {prenatalIntro.outro}
+              </p>
+              <p className="counsellingServicePage__introParagraph counsellingServicePage__introParagraph--mobile">
+                {prenatalIntro.outroMobile}
+              </p>
+            </div>
+          </section>
+        ) : content.introSectionBody && content.introSectionImage ? (
           <section
             ref={introRef}
             className={`counsellingServicePage__intro${isIntroVisible ? ' counsellingServicePage__intro--visible' : ''}`}
@@ -186,6 +283,40 @@ export default function CounsellingServicePage() {
                 loading="lazy"
               />
             </div>
+          </section>
+        ) : null}
+
+        {isPrenatalService ? (
+          <section className="counsellingServicePage__prenatalJourney" aria-label="Prenatal support overview">
+            <div className="counsellingServicePage__prenatalJourneyFrame">
+              <aside className="counsellingServicePage__prenatalJourneySide counsellingServicePage__prenatalJourneySide--left" aria-hidden>
+                <img src={prenatalJourney.leftImage} alt="" loading="lazy" />
+              </aside>
+
+              <article className="counsellingServicePage__prenatalJourneyContent">
+                <h2 className="counsellingServicePage__prenatalJourneyTitle">{prenatalJourney.title}</h2>
+                {prenatalJourney.body.map((paragraph) => (
+                  <p key={paragraph} className="counsellingServicePage__prenatalJourneyText">
+                    {paragraph}
+                  </p>
+                ))}
+
+                <h3 className="counsellingServicePage__prenatalJourneySubtitle">{prenatalJourney.subTitle}</h3>
+                <p className="counsellingServicePage__prenatalJourneyLead">{prenatalJourney.leadIn}</p>
+                <ul className="counsellingServicePage__prenatalJourneyList" role="list">
+                  {prenatalJourney.points.map((point) => (
+                    <li key={point} className="counsellingServicePage__prenatalJourneyListItem">
+                      <HiCheckCircle className="counsellingServicePage__prenatalJourneyListIcon" aria-hidden />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </article>
+
+              <aside className="counsellingServicePage__prenatalJourneySide counsellingServicePage__prenatalJourneySide--right" aria-hidden>
+                <img src={prenatalJourney.rightImage} alt="" loading="lazy" />
+              </aside>
+             </div>
           </section>
         ) : null}
 

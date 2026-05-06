@@ -54,6 +54,9 @@ export const counsellingServices: readonly CounsellingService[] = [
     title: 'Prenatal Wellbeing Support',
     description:
       'Support for expectant mothers navigating the emotional, mental, and lifestyle changes of pregnancy. Helps manage stress, build confidence, and prepare for a healthy and balanced motherhood journey.',
+    pageDescription:
+      "Pregnancy is a time of change; physically, emotionally, and mentally. You don't have to navigate it alone. We're here to support you every step of the way.",
+    pageImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/pregnant-woman-life-1.webp',
     image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/prenatal-wellbeing-1.webp',
     imageAlt: 'Expectant mother receiving emotional support',
   },
