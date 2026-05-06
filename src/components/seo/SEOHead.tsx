@@ -6,6 +6,21 @@ import { absoluteUrl, buildTitle, resolveOgImage } from '../../utils/seo'
 type Props = PageMeta
 
 const JSON_LD_ID = 'swaro-jsonld'
+const SHARE_IMAGE_VERSION = '20260506'
+
+function appendVersion(url: string): string {
+  const separator = url.includes('?') ? '&' : '?'
+  return `${url}${separator}v=${SHARE_IMAGE_VERSION}`
+}
+
+function detectImageType(url: string): string {
+  const clean = url.split('?')[0].toLowerCase()
+  if (clean.endsWith('.png')) return 'image/png'
+  if (clean.endsWith('.jpg') || clean.endsWith('.jpeg')) return 'image/jpeg'
+  if (clean.endsWith('.gif')) return 'image/gif'
+  if (clean.endsWith('.webp')) return 'image/webp'
+  return 'image/*'
+}
 
 function itemListJsonLd(
   items: readonly { name: string; description?: string }[],
@@ -69,6 +84,8 @@ export default function SEOHead({
   const fullTitle = buildTitle(title)
   const url = absoluteUrl(path)
   const ogImage = resolveOgImage(image)
+  const shareImage = appendVersion(ogImage)
+  const shareImageType = detectImageType(ogImage)
   const imageAlt = ogImageAlt?.trim() || `${site.fullName} — ${title.trim()}`
   const orgId = `${site.url.replace(/\/$/, '')}/#organization`
   const websiteId = `${site.url.replace(/\/$/, '')}/#website`
@@ -123,9 +140,9 @@ export default function SEOHead({
     setMeta('og:title', fullTitle, 'property')
     setMeta('og:description', description, 'property')
     setMeta('og:url', url, 'property')
-    setMeta('og:image', ogImage, 'property')
-    setMeta('og:image:secure_url', ogImage, 'property')
-    setMeta('og:image:type', 'image/webp', 'property')
+    setMeta('og:image', shareImage, 'property')
+    setMeta('og:image:secure_url', shareImage, 'property')
+    setMeta('og:image:type', shareImageType, 'property')
     setMeta('og:image:width', '1200', 'property')
     setMeta('og:image:height', '630', 'property')
     setMeta('og:image:alt', imageAlt, 'property')
@@ -136,7 +153,7 @@ export default function SEOHead({
     setMeta('twitter:card', 'summary_large_image')
     setMeta('twitter:title', fullTitle)
     setMeta('twitter:description', description)
-    setMeta('twitter:image', ogImage)
+    setMeta('twitter:image', shareImage)
     setMeta('twitter:image:alt', imageAlt)
 
     setLink('canonical', url)
@@ -248,7 +265,7 @@ export default function SEOHead({
     fullTitle,
     description,
     url,
-    ogImage,
+      shareImage,
     imageAlt,
     orgId,
     websiteId,
@@ -257,6 +274,7 @@ export default function SEOHead({
     title,
     schemaPageType,
     keywords,
+      shareImageType,
     path,
     breadcrumbs,
     itemList,

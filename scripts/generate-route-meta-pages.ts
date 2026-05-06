@@ -13,6 +13,7 @@ type RouteMeta = {
 }
 
 const SITE_URL = 'https://swaroinstitute.com'
+const SHARE_IMAGE_VERSION = '20260506'
 const DIST_DIR = path.resolve(process.cwd(), 'dist')
 const DIST_INDEX = path.join(DIST_DIR, 'index.html')
 
@@ -53,8 +54,24 @@ function setAlternateHref(html: string, hreflang: string, href: string): string 
   return replaceTag(html, pattern, `<link rel="alternate" hreflang="${hreflang}" href="${href}" />`)
 }
 
+function appendVersion(url: string): string {
+  const separator = url.includes('?') ? '&' : '?'
+  return `${url}${separator}v=${SHARE_IMAGE_VERSION}`
+}
+
+function detectImageType(url: string): string {
+  const clean = url.split('?')[0].toLowerCase()
+  if (clean.endsWith('.png')) return 'image/png'
+  if (clean.endsWith('.jpg') || clean.endsWith('.jpeg')) return 'image/jpeg'
+  if (clean.endsWith('.gif')) return 'image/gif'
+  if (clean.endsWith('.webp')) return 'image/webp'
+  return 'image/*'
+}
+
 function buildRouteHtml(templateHtml: string, meta: RouteMeta): string {
   const pageUrl = absoluteUrl(meta.routePath)
+  const shareImage = appendVersion(meta.image)
+  const shareImageType = detectImageType(meta.image)
   let html = templateHtml
 
   html = replaceTag(html, /<title>.*?<\/title>/i, `<title>${meta.title} · Swaro Institute</title>`)
@@ -66,13 +83,16 @@ function buildRouteHtml(templateHtml: string, meta: RouteMeta): string {
   html = setMetaByProperty(html, 'og:url', pageUrl)
   html = setMetaByProperty(html, 'og:title', `${meta.title} · Swaro Institute`)
   html = setMetaByProperty(html, 'og:description', meta.description)
-  html = setMetaByProperty(html, 'og:image', meta.image)
-  html = setMetaByProperty(html, 'og:image:secure_url', meta.image)
+  html = setMetaByProperty(html, 'og:image', shareImage)
+  html = setMetaByProperty(html, 'og:image:secure_url', shareImage)
+  html = setMetaByProperty(html, 'og:image:type', shareImageType)
+  html = setMetaByProperty(html, 'og:image:width', '1200')
+  html = setMetaByProperty(html, 'og:image:height', '630')
   html = setMetaByProperty(html, 'og:image:alt', meta.imageAlt)
 
   html = setMetaByName(html, 'twitter:title', `${meta.title} · Swaro Institute`)
   html = setMetaByName(html, 'twitter:description', meta.description)
-  html = setMetaByName(html, 'twitter:image', meta.image)
+  html = setMetaByName(html, 'twitter:image', shareImage)
   html = setMetaByName(html, 'twitter:image:alt', meta.imageAlt)
 
   return html
