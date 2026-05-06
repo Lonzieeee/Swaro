@@ -78,7 +78,6 @@ const debriefBookingSteps = [
 export default function CounsellingServicePage() {
   const { slug } = useParams<{ slug: string }>()
   const content = slug ? counsellingServicesBySlug[slug] : undefined
-  const heroDescription = content?.pageDescription ?? content?.description
   const introRef = useRef<HTMLElement | null>(null)
   const mosaicRef = useRef<HTMLElement | null>(null)
   const programCardsRef = useRef<HTMLElement | null>(null)
@@ -125,6 +124,7 @@ export default function CounsellingServicePage() {
   if (!content) {
     return <Navigate to="/" replace />
   }
+  const heroDescription = content.pageDescription ?? content.description
   const isDebriefService =
     content.id === 'debrief-grief-support' ||
     content.slug === 'debrief-grief-loss-support' ||
@@ -136,7 +136,7 @@ export default function CounsellingServicePage() {
       <SEOHead
         title={content.title}
         description={heroDescription}
-        path={`/counselling-services/${slug}`}
+        path={`/counselling-services/${content.slug}`}
         schemaPageType="WebPage"
         image={content.image}
         ogImageAlt={content.imageAlt}
