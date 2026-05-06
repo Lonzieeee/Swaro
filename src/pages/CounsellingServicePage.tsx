@@ -30,12 +30,12 @@ const debriefProgramCards = {
   highlights: {
     title: 'Program Highlights',
     rows: [
-      { label: 'Duration', value: '20 weeks' },
+      { label: 'Duration', value: '20 hrs' },
       { label: 'Session Length', value: '2 hours per week' },
       { label: 'Location', value: 'Online or Physical Sessions' },
       { label: 'Certificate', value: 'Awarded upon completion' },
       { label: 'Individual Counselling', value: 'Ksh 40,000' },
-      { label: 'Group Counselling', value: 'Ksh 35,000' },
+      { label: 'Group Counselling', value: 'Ksh 50,000' },
     ],
   },
   gains: {
@@ -61,6 +61,41 @@ const debriefProgramCards = {
   },
 } as const
 
+const prenatalProgramCards = {
+  highlights: {
+    title: 'Program Highlights',
+    rows: [
+      { label: 'Duration', value: '20 hrs' },
+      { label: 'Session Length', value: '2 hours per week' },
+      { label: 'Location', value: 'Online or Physical Sessions' },
+      { label: 'Certificate', value: 'Awarded upon completion' },
+      { label: 'Individual Counselling', value: 'Ksh 40,000' },
+      { label: 'Group Counselling', value: 'Ksh 50,000' },
+    ],
+  },
+  gains: {
+    title: "What You'll Gain",
+    items: [
+      'Greater emotional balance and calm throughout your pregnancy',
+      'Increased confidence in preparing for motherhood',
+      'Practical ways to manage stress, anxiety, and emotional changes',
+      'A stronger sense of connection to yourself and your journey',
+      'Improved readiness for the transition into motherhood',
+    ],
+  },
+  support: {
+    title: 'How We Help',
+    items: [
+      'Provide a safe, nurturing space to express your thoughts and emotions',
+      'Support you in managing pregnancy-related stress and uncertainty',
+      'Help you understand and navigate emotional and lifestyle changes',
+      'Offer gentle guidance to build confidence and emotional resilience',
+      'Encourage reflection and preparation for motherhood at your own pace',
+      'Equip you with simple, practical tools for everyday wellbeing',
+    ],
+  },
+} as const
+
 const debriefBookingSteps: ReadonlyArray<{
   title: string
   description: string
@@ -79,6 +114,28 @@ const debriefBookingSteps: ReadonlyArray<{
   {
     title: '3. Begin to Heal',
     description: 'Begin your healing journey with supportive guidance, emotional clarity, and simple, practical steps to help you move forward.',
+  },
+] as const
+
+const prenatalBookingSteps: ReadonlyArray<{
+  title: string
+  description: string
+  image?: string
+}> = [
+  {
+    title: '1. Reserve Your Slot',
+    description: 'Choose a date and time that feels right for you and secure your prenatal wellbeing session in a few easy steps.',
+    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/bookslot.avif',
+  },
+  {
+    title: '2. Connect & Reflect',
+    description: 'Meet your counsellor in a safe and supportive space to talk through your emotions, concerns, and expectations during pregnancy.',
+    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/whyprenatal.webp',
+  },
+  {
+    title: '3. Prepare with Confidence',
+    description: 'Build practical emotional tools, clarity, and calm so you can move through pregnancy and motherhood with greater confidence.',
+    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/prenatal%20nursery-Photoroom.webp',
   },
 ] as const
 
@@ -124,23 +181,30 @@ export default function CounsellingServicePage() {
   const { slug } = useParams<{ slug: string }>()
   const content = slug ? counsellingServicesBySlug[slug] : undefined
   const introRef = useRef<HTMLElement | null>(null)
+  const prenatalJourneyRef = useRef<HTMLElement | null>(null)
   const mosaicRef = useRef<HTMLElement | null>(null)
   const programCardsRef = useRef<HTMLElement | null>(null)
   const bookingRef = useRef<HTMLElement | null>(null)
   const [isIntroVisible, setIsIntroVisible] = useState(false)
+  const [isPrenatalJourneyVisible, setIsPrenatalJourneyVisible] = useState(false)
   const [isMosaicVisible, setIsMosaicVisible] = useState(false)
   const [isProgramCardsVisible, setIsProgramCardsVisible] = useState(false)
   const [isBookingVisible, setIsBookingVisible] = useState(false)
 
   useEffect(() => {
     const introEl = introRef.current
+    const prenatalJourneyEl = prenatalJourneyRef.current
     const mosaicEl = mosaicRef.current
     const programCardsEl = programCardsRef.current
     const bookingEl = bookingRef.current
-    if (!introEl && !mosaicEl && !programCardsEl && !bookingEl) return
+    if (!introEl && !prenatalJourneyEl && !mosaicEl && !programCardsEl && !bookingEl) return
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
+        if (entry.target === prenatalJourneyEl) {
+          setIsPrenatalJourneyVisible(entry.isIntersecting)
+          return
+        }
         if (!entry.isIntersecting) return
         if (entry.target === introEl) setIsIntroVisible(true)
         if (entry.target === mosaicEl) setIsMosaicVisible(true)
@@ -153,12 +217,14 @@ export default function CounsellingServicePage() {
     })
 
     if (introEl) observer.observe(introEl)
+    if (prenatalJourneyEl) observer.observe(prenatalJourneyEl)
     if (mosaicEl) observer.observe(mosaicEl)
     if (programCardsEl) observer.observe(programCardsEl)
     if (bookingEl) observer.observe(bookingEl)
 
     return () => {
       if (introEl) observer.unobserve(introEl)
+      if (prenatalJourneyEl) observer.unobserve(prenatalJourneyEl)
       if (mosaicEl) observer.unobserve(mosaicEl)
       if (programCardsEl) observer.unobserve(programCardsEl)
       if (bookingEl) observer.unobserve(bookingEl)
@@ -179,6 +245,9 @@ export default function CounsellingServicePage() {
     content.slug === 'prenatal-wellbeing-support' ||
     content.slug.includes('prenatal')
   const pageImage = content.pageImage ?? content.image
+  const pageKeywords = isPrenatalService
+    ? 'prenatal wellbeing support Kenya, pregnancy counselling Kenya, maternal mental health support, emotional support during pregnancy, pregnancy stress counselling, expectant mothers support'
+    : undefined
   const debriefMosaicImage = 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/shot.jpg'
   const debriefMosaicImageMiddle = 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/sliideee.webp'
   const debriefMosaicImageLast = 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/consoling.jpeg'
@@ -196,8 +265,9 @@ export default function CounsellingServicePage() {
         schemaPageType="WebPage"
         image={pageImage}
         ogImageAlt={content.imageAlt}
+        keywords={pageKeywords}
       />
-      <section className="counsellingServicePage">
+      <section className={`counsellingServicePage${isPrenatalService ? ' counsellingServicePage--prenatal' : ''}`}>
         <div
           className="counsellingServicePage__hero"
           style={{ backgroundImage: `linear-gradient(rgba(15, 19, 18, 0.55), rgba(15, 19, 18, 0.55)), url(${pageImage})` }}
@@ -287,7 +357,11 @@ export default function CounsellingServicePage() {
         ) : null}
 
         {isPrenatalService ? (
-          <section className="counsellingServicePage__prenatalJourney" aria-label="Prenatal support overview">
+          <section
+            ref={prenatalJourneyRef}
+            className={`counsellingServicePage__prenatalJourney${isPrenatalJourneyVisible ? ' counsellingServicePage__prenatalJourney--visible' : ''}`}
+            aria-label="Prenatal support overview"
+          >
             <div className="counsellingServicePage__prenatalJourneyFrame">
               <aside className="counsellingServicePage__prenatalJourneySide counsellingServicePage__prenatalJourneySide--left" aria-hidden>
                 <img src={prenatalJourney.leftImage} alt="" loading="lazy" />
@@ -317,6 +391,78 @@ export default function CounsellingServicePage() {
                 <img src={prenatalJourney.rightImage} alt="" loading="lazy" />
               </aside>
              </div>
+          </section>
+        ) : null}
+
+        {isPrenatalService ? (
+          <section
+            ref={programCardsRef}
+            className={`counsellingServicePage__programCards${isProgramCardsVisible ? ' counsellingServicePage__programCards--visible' : ''}`}
+            aria-label="Program cards"
+          >
+            <div className="counsellingServicePage__programCardsGrid">
+              <article className="counsellingServicePage__programCard">
+                <h3 className="counsellingServicePage__programCardTitle">{prenatalProgramCards.highlights.title}</h3>
+                <ul className="counsellingServicePage__programRows" role="list">
+                  {prenatalProgramCards.highlights.rows.map((row) => (
+                    <li key={row.label} className="counsellingServicePage__programRow">
+                      <strong>{row.label}:</strong> {row.value}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+
+              <article className="counsellingServicePage__programCard">
+                <h3 className="counsellingServicePage__programCardTitle">{prenatalProgramCards.gains.title}</h3>
+                <ul className="counsellingServicePage__programList">
+                  {prenatalProgramCards.gains.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+
+              <article className="counsellingServicePage__programCard">
+                <h3 className="counsellingServicePage__programCardTitle">{prenatalProgramCards.support.title}</h3>
+                <ul className="counsellingServicePage__programList">
+                  {prenatalProgramCards.support.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            </div>
+          </section>
+        ) : null}
+
+        {isPrenatalService ? (
+          <section
+            ref={bookingRef}
+            className={`counsellingServicePage__bookingFlow${isBookingVisible ? ' counsellingServicePage__bookingFlow--visible' : ''}`}
+            aria-label="How to book a session"
+          >
+            <div className="counsellingServicePage__bookingInner">
+              <h3 className="counsellingServicePage__bookingHeading">How to Book a Session</h3>
+
+              <div className="counsellingServicePage__bookingGrid">
+                {prenatalBookingSteps.map((step) => (
+                  <article key={step.title} className="counsellingServicePage__bookingCard">
+                    <div className="counsellingServicePage__bookingImageWrap">
+                      <img
+                        className="counsellingServicePage__bookingImage"
+                        src={step.image ?? content.image}
+                        alt={step.title}
+                        loading="lazy"
+                      />
+                    </div>
+                    <h4 className="counsellingServicePage__bookingTitle">{step.title}</h4>
+                    <p className="counsellingServicePage__bookingText">{step.description}</p>
+                  </article>
+                ))}
+              </div>
+
+              <Link to={`/book-session?service=${encodeURIComponent(content.slug)}`} className="counsellingServicePage__bookingButton">
+                Book Session
+              </Link>
+            </div>
           </section>
         ) : null}
 

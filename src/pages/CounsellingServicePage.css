@@ -758,6 +758,9 @@
 .counsellingServicePage__prenatalJourneySide {
   display: block;
   overflow: hidden;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .counsellingServicePage__prenatalJourneySide img {
@@ -777,6 +780,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
 }
 
 .counsellingServicePage__prenatalJourneyTitle {
@@ -817,6 +823,24 @@
   flex-shrink: 0;
 }
 
+.counsellingServicePage__prenatalJourney--visible .counsellingServicePage__prenatalJourneyContent,
+.counsellingServicePage__prenatalJourney--visible .counsellingServicePage__prenatalJourneySide {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__prenatalJourney--visible .counsellingServicePage__prenatalJourneySide--left {
+  transition-delay: 0.06s;
+}
+
+.counsellingServicePage__prenatalJourney--visible .counsellingServicePage__prenatalJourneyContent {
+  transition-delay: 0.12s;
+}
+
+.counsellingServicePage__prenatalJourney--visible .counsellingServicePage__prenatalJourneySide--right {
+  transition-delay: 0.2s;
+}
+
 @media (max-width: 1024px) and (min-width: 721px) {
   .counsellingServicePage__prenatalJourneyFrame {
     grid-template-columns: 130px minmax(0, 1fr) 130px;
@@ -840,6 +864,136 @@
 
   .counsellingServicePage__prenatalJourneyContent {
     padding: 1rem 0.9rem;
+  }
+}
+
+/* Prenatal-only responsive hardening */
+.counsellingServicePage--prenatal .counsellingServicePage__hero {
+  min-height: clamp(50vh, 62vh, 68vh);
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__heading {
+  max-width: 18ch;
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__summary {
+  max-width: 62ch;
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__introInner {
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__programCards {
+  padding-top: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__programCardsGrid {
+  gap: clamp(1.1rem, 2.2vw, 2rem);
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__bookingGrid {
+  gap: clamp(1.5rem, 3vw, 2.6rem);
+}
+
+@media (max-width: 1200px) and (min-width: 901px) {
+  .counsellingServicePage--prenatal .counsellingServicePage__prenatalJourneyFrame {
+    grid-template-columns: 120px minmax(0, 1fr) 120px;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__programCardsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) and (min-width: 721px) {
+  .counsellingServicePage--prenatal .counsellingServicePage__hero {
+    min-height: 54vh;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__introInner {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__introImage {
+    aspect-ratio: 16 / 8.6;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__programCardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__bookingGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .counsellingServicePage--prenatal .counsellingServicePage__hero {
+    min-height: 48vh;
+    padding-top: clamp(2.4rem, 9vw, 3.2rem);
+    padding-bottom: clamp(2rem, 7vw, 2.6rem);
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__heading {
+    font-size: clamp(1.6rem, 7.2vw, 2rem);
+    max-width: 14ch;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__summary {
+    font-size: 0.92rem;
+    line-height: 1.58;
+    max-width: 40ch;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__bookButton {
+    width: 100%;
+    max-width: 16rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__intro {
+    padding-top: 1.7rem;
+    padding-bottom: 2.1rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__introImage {
+    border-radius: 0.8rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__programCards {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__programCard {
+    padding: 1rem 0.92rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__bookingFlow {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__bookingImageWrap {
+    width: clamp(6.4rem, 28vw, 7.8rem);
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__bookingText {
+    max-width: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .counsellingServicePage--prenatal .counsellingServicePage__programCardTitle {
+    font-size: 1.16rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__programRows,
+  .counsellingServicePage--prenatal .counsellingServicePage__programList,
+  .counsellingServicePage--prenatal .counsellingServicePage__bookingText {
+    font-size: 0.9rem;
+    line-height: 1.58;
   }
 }
 
@@ -870,5 +1024,52 @@
     opacity: 1;
     transform: none;
     transition: none;
+  }
+
+  .counsellingServicePage__prenatalJourneySide,
+  .counsellingServicePage__prenatalJourneyContent {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Final mobile overflow guards for prenatal page */
+.counsellingServicePage--prenatal {
+  overflow-x: clip;
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__intro,
+.counsellingServicePage--prenatal .counsellingServicePage__introInner,
+.counsellingServicePage--prenatal .counsellingServicePage__introText,
+.counsellingServicePage--prenatal .counsellingServicePage__introFooter {
+  max-width: 100%;
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__introBenefitItem span {
+  min-width: 0;
+}
+
+@media (max-width: 720px) {
+  .counsellingServicePage--prenatal .counsellingServicePage__intro {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__introInner {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__introHeading {
+    max-width: 100%;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__introText,
+  .counsellingServicePage--prenatal .counsellingServicePage__introFooter,
+  .counsellingServicePage--prenatal .counsellingServicePage__introBenefitItem span {
+    overflow-wrap: anywhere;
   }
 }
