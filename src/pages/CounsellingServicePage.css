@@ -54,6 +54,17 @@
   display: inline;
 }
 
+.counsellingServicePage__summarySubtitle {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #f3dfaa;
+}
+
 .counsellingServicePage__bookButton {
   margin-top: 1.35rem;
   display: inline-flex;
@@ -187,6 +198,226 @@
 
 .counsellingServicePage__intro--visible .counsellingServicePage__introImage {
   transition-delay: 0.08s;
+}
+
+.counsellingServicePage__motherhoodSupport {
+  background: #242427;
+  color: #f4f1e8;
+  padding: clamp(2.4rem, 5vw, 3.8rem) clamp(1rem, 3vw, 2rem);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
+.counsellingServicePage__motherhoodSupportInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(1.9rem, 4vw, 2.8rem);
+}
+
+.counsellingServicePage__motherhoodRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.88fr);
+  gap: clamp(1rem, 2.2vw, 1.8rem);
+  align-items: center;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.counsellingServicePage__motherhoodRow--reverse {
+  grid-template-columns: minmax(280px, 0.88fr) minmax(0, 1fr);
+}
+
+.counsellingServicePage__motherhoodTextCard {
+  padding: clamp(0.5rem, 1vw, 0.9rem);
+}
+
+.counsellingServicePage__motherhoodTitle {
+  margin: 0 0 0.7rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.3rem, 1.8vw, 1.85rem);
+  font-weight: 400;
+  line-height: 1.28;
+  color: #f3dfaa;
+}
+
+.counsellingServicePage__motherhoodBody {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.92rem, 0.95vw, 1.02rem);
+  line-height: 1.78;
+  color: rgba(245, 244, 240, 0.92);
+}
+
+.counsellingServicePage__motherhoodImage {
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
+.counsellingServicePage__motherhoodList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.52rem;
+}
+
+.counsellingServicePage__motherhoodListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.91rem, 0.93vw, 1rem);
+  line-height: 1.7;
+  color: rgba(244, 241, 232, 0.95);
+}
+
+.counsellingServicePage__motherhoodListIcon {
+  width: 1.02rem;
+  height: 1.02rem;
+  color: #f3dfaa;
+  margin-top: 0.18rem;
+  flex-shrink: 0;
+}
+
+.counsellingServicePage__motherhoodSupport--visible .counsellingServicePage__motherhoodRow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__motherhoodSupport--visible .counsellingServicePage__motherhoodRow:nth-child(2) {
+  transition-delay: 0.12s;
+}
+
+.counsellingServicePage__motherhoodCards {
+  background: #f7f6f1;
+  padding: clamp(2.2rem, 5vw, 3.6rem) clamp(1rem, 3vw, 2rem);
+}
+
+.counsellingServicePage__motherhoodCardsInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.15rem, 2.4vw, 1.8rem);
+}
+
+.counsellingServicePage__motherhoodCardsHeader {
+  grid-column: 1 / -1;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.counsellingServicePage__motherhoodCardsHeading {
+  margin: 0 0 0.55rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #1f2c29;
+}
+
+.counsellingServicePage__motherhoodCardsDescription {
+  margin: 0;
+  max-width: 76ch;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.94rem, 0.95vw, 1.02rem);
+  line-height: 1.72;
+  color: #32413b;
+  text-align: left;
+}
+
+.counsellingServicePage__motherhoodCard {
+  border: 1px solid rgba(201, 168, 76, 0.28);
+  background: linear-gradient(165deg, #1b4332 0%, #163529 52%, #123023 100%);
+  border-radius: 14px;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  box-shadow:
+    0 6px 22px rgba(27, 67, 50, 0.2);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.counsellingServicePage__motherhoodCards--visible .counsellingServicePage__motherhoodCardsHeader {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__motherhoodCards--visible .counsellingServicePage__motherhoodCard {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__motherhoodCards--visible .counsellingServicePage__motherhoodCard:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.counsellingServicePage__motherhoodCards--visible .counsellingServicePage__motherhoodCard:nth-child(3) {
+  transition-delay: 0.14s;
+}
+
+.counsellingServicePage__motherhoodCards--visible .counsellingServicePage__motherhoodCard:nth-child(4) {
+  transition-delay: 0.2s;
+}
+
+.counsellingServicePage__motherhoodCards--visible .counsellingServicePage__motherhoodCard:nth-child(5) {
+  transition-delay: 0.26s;
+}
+
+.counsellingServicePage__motherhoodCard:hover {
+  transform: translateY(-8px) !important;
+  border-color: rgba(232, 213, 163, 0.56);
+  background: linear-gradient(165deg, #214d3b 0%, #1a3d2e 52%, #153626 100%);
+  box-shadow: 0 14px 32px rgba(16, 33, 25, 0.26);
+}
+
+.counsellingServicePage__motherhoodCardIconWrap {
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.62rem;
+  background: rgba(201, 168, 76, 0.14);
+  border: 1px solid rgba(201, 168, 76, 0.38);
+}
+
+.counsellingServicePage__motherhoodCardIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: #f3dfaa;
+}
+
+.counsellingServicePage__motherhoodCardTitle {
+  margin: 0 0 0.6rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.1rem, 1.2vw, 1.35rem);
+  line-height: 1.3;
+  font-weight: 400;
+  color: #f7f3e8;
+}
+
+.counsellingServicePage__motherhoodCardBody {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.92rem, 0.9vw, 0.99rem);
+  line-height: 1.72;
+  color: rgba(241, 247, 243, 0.93);
 }
 
 .counsellingServicePage__prenatalJourney {
@@ -374,6 +605,11 @@
   padding: 0 clamp(1rem, 4vw, 2.4rem) clamp(3.4rem, 7vw, 5.2rem);
 }
 
+.counsellingServicePage__programCards--motherhood {
+  margin-block: 0;
+  padding: clamp(2.4rem, 4vw, 3rem) clamp(1rem, 4vw, 2.4rem) clamp(2.4rem, 4vw, 3rem);
+}
+
 .counsellingServicePage__programCardsGrid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -399,6 +635,14 @@
   font-weight: 400;
   line-height: 1.25;
   color: #1b4332;
+}
+
+.counsellingServicePage__programIntro {
+  margin: 0 0 0.9rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.9rem, 0.95vw, 1rem);
+  line-height: 1.68;
+  color: #2f463b;
 }
 
 .counsellingServicePage__programRows {
@@ -545,14 +789,54 @@
   transform: translateY(18px);
 }
 
+.counsellingServicePage__bookingActions {
+  margin-top: clamp(1.25rem, 2.5vw, 1.8rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.counsellingServicePage__bookingActions .counsellingServicePage__bookingButton {
+  margin-top: 0;
+  margin-inline: 0;
+}
+
+.counsellingServicePage__bookingSecondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.78rem 1.3rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid #1b4332;
+  color: #1b4332;
+  background: transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  opacity: 0;
+  transform: translateY(18px);
+}
+
 .counsellingServicePage__bookingButton:hover {
   transform: translateY(-1px);
   box-shadow: 0 8px 20px rgba(27, 67, 50, 0.28);
 }
 
+.counsellingServicePage__bookingSecondaryButton:hover {
+  transform: translateY(-1px);
+  background: rgba(27, 67, 50, 0.08);
+}
+
 .counsellingServicePage__bookingFlow--visible .counsellingServicePage__bookingHeading,
 .counsellingServicePage__bookingFlow--visible .counsellingServicePage__bookingCard,
-.counsellingServicePage__bookingFlow--visible .counsellingServicePage__bookingButton {
+.counsellingServicePage__bookingFlow--visible .counsellingServicePage__bookingButton,
+.counsellingServicePage__bookingFlow--visible .counsellingServicePage__bookingSecondaryButton {
   opacity: 1;
   transform: translateY(0);
 }
@@ -634,6 +918,29 @@
     margin-top: 0.5rem;
     font-size: 0.95rem;
     line-height: 1.75;
+  }
+
+  .counsellingServicePage__motherhoodRow,
+  .counsellingServicePage__motherhoodRow--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage__motherhoodTitle {
+    font-size: clamp(1.2rem, 5vw, 1.45rem);
+  }
+
+  .counsellingServicePage__motherhoodBody,
+  .counsellingServicePage__motherhoodListItem {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .counsellingServicePage__motherhoodCardsInner {
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage__motherhoodCard {
+    padding: 0.95rem;
   }
 
   .counsellingServicePage__prenatalJourney {
@@ -1050,6 +1357,20 @@
   min-width: 0;
 }
 
+.counsellingServicePage--motherhood .counsellingServicePage__hero {
+  min-height: clamp(52vh, 64vh, 70vh);
+}
+
+.counsellingServicePage--motherhood .counsellingServicePage__programCards {
+  min-height: auto;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.counsellingServicePage--motherhood .counsellingServicePage__summary {
+  max-width: 65ch;
+}
+
 @media (max-width: 720px) {
   .counsellingServicePage--prenatal .counsellingServicePage__intro {
     padding-left: 0.9rem;
@@ -1065,6 +1386,11 @@
     max-width: 100%;
     text-wrap: balance;
     overflow-wrap: anywhere;
+  }
+
+  .counsellingServicePage__summarySubtitle {
+    font-size: 0.84rem;
+    margin-bottom: 0.28rem;
   }
 
   .counsellingServicePage--prenatal .counsellingServicePage__introText,

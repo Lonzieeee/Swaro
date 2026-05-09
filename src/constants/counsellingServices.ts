@@ -21,7 +21,7 @@ export const counsellingServices: readonly CounsellingService[] = [
       'A safe space to process grief, loss, and emotional pain. Helps you move through healing, acceptance, and emotional stability at your own pace.',
     pageDescription:
       "Whether you're grieving a loved one, a relationship, or a life change, you don’t have to go through it alone.",
-    pageImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/sliideee.webp',
+    pageImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/debrief.jpg',
     introSectionBody:
       'Debrief is a supportive and guided counselling process designed to help you work through difficult experiences, loss, and emotional overwhelm in a safe and compassionate environment. Rather than rushing you to "move on," it focuses on helping you understand your emotions, make sense of what you have been through, and gradually regain a sense of stability and clarity. Every person experiences grief differently, and there is no right or wrong way to feel-healing takes time, and there is no fixed timeline for it.',
     introSectionImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/woman-writining-notebook_1_.webp',
@@ -39,14 +39,20 @@ export const counsellingServices: readonly CounsellingService[] = [
     imageAlt: 'Couple receiving premarital counseling support',
   },
   {
-    id: 'career-workplace-support',
-    slug: 'career-workplace-support',
-    title: 'Career & Workplace Support',
+    id: 'resilient-motherhood-program',
+    slug: 'resilient-motherhood-program',
+    title: 'Resilient Motherhood Program',
     description:
-      'Support for career transitions, job stress, burnout, and finding clarity in your professional journey.',
-    image:
-      'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/stressed-businesswoman-suffering-from-headache-work-doing-overtime-late-night-1.webp',
-    imageAlt: 'Professional experiencing workplace stress',
+      'A guided motherhood support program designed to help first-time mothers build emotional resilience, caregiving confidence, and wellbeing during pregnancy and early motherhood.',
+    pageDescription:
+      'Pregnancy and early motherhood bring both joy and change. This program is designed to help first-time mothers build emotional resilience, caregiving confidence, and wellbeing through guided support, practical learning, and meaningful conversations.',
+    pageImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/newborn.jpeg',
+    introSectionBody:
+      'The Resilient Motherhood Program provides structured and compassionate support for first-time mothers as they navigate pregnancy and early motherhood. Through guided sessions, practical caregiving tools, and reflective conversations, the program helps mothers strengthen emotional wellbeing, build confidence in daily caregiving, and adjust to new responsibilities with clarity and support.',
+    introSectionImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/newmother_compressed.webp',
+    introSectionImageAlt: 'First-time mother holding her baby in a calm home setting',
+    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/newmother_compressed.webp',
+    imageAlt: 'Mother holding her baby during early motherhood support',
   },
   {
     id: 'prenatal-wellbeing-support',

@@ -39,9 +39,6 @@ export default function CounsellingServices() {
 
         <div className="counsellingServices__grid" role="list">
           {counsellingServices.map((service, index) => {
-            const isClickableService =
-              service.slug === 'debrief-grief-loss-support' ||
-              service.slug === 'prenatal-wellbeing-support'
             return (
             <article
               key={service.id}
@@ -62,13 +59,9 @@ export default function CounsellingServices() {
                 />
                 <div className="counsellingServices__titleWrap">
                   <h3 className="counsellingServices__title">
-                    {isClickableService ? (
-                      <Link to={`/counselling-services/${service.slug}`} className="counsellingServices__titleLink">
-                        {service.title}
-                      </Link>
-                    ) : (
-                      <span>{service.title}</span>
-                    )}
+                    <Link to={`/counselling-services/${service.slug}`} className="counsellingServices__titleLink">
+                      {service.title}
+                    </Link>
                   </h3>
                 </div>
               </div>
