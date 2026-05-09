@@ -247,7 +247,9 @@ export default function CounsellingServicePage() {
   const pageImage = content.pageImage ?? content.image
   const pageKeywords = isPrenatalService
     ? 'prenatal wellbeing support Kenya, pregnancy counselling Kenya, maternal mental health support, emotional support during pregnancy, pregnancy stress counselling, expectant mothers support'
-    : undefined
+    : isDebriefService
+      ? 'grief counselling Kenya, loss support counselling, bereavement therapy Kenya, emotional healing support, debrief grief and loss, trauma and grief counselling'
+      : undefined
   const debriefMosaicImage = 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/shot.jpg'
   const debriefMosaicImageMiddle = 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/sliideee.webp'
   const debriefMosaicImageLast = 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/consoling.jpeg'
