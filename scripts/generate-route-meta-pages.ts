@@ -33,13 +33,21 @@ function replaceTag(html: string, pattern: RegExp, replacement: string): string 
 function setMetaByName(html: string, name: string, content: string): string {
   const escaped = escapeRegExp(name)
   const pattern = new RegExp(`<meta\\s+name="${escaped}"\\s+content="[^"]*"\\s*\\/?>`, 'i')
-  return replaceTag(html, pattern, `<meta name="${name}" content="${content}" />`)
+  const replacement = `<meta name="${name}" content="${content}" />`
+  if (pattern.test(html)) {
+    return replaceTag(html, pattern, replacement)
+  }
+  return html.replace('</head>', `    ${replacement}\n  </head>`)
 }
 
 function setMetaByProperty(html: string, property: string, content: string): string {
   const escaped = escapeRegExp(property)
   const pattern = new RegExp(`<meta\\s+property="${escaped}"\\s+content="[^"]*"\\s*\\/?>`, 'i')
-  return replaceTag(html, pattern, `<meta property="${property}" content="${content}" />`)
+  const replacement = `<meta property="${property}" content="${content}" />`
+  if (pattern.test(html)) {
+    return replaceTag(html, pattern, replacement)
+  }
+  return html.replace('</head>', `    ${replacement}\n  </head>`)
 }
 
 function setLinkRel(html: string, rel: string, href: string): string {
