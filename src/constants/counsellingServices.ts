@@ -39,6 +39,8 @@ export const counsellingServices: readonly CounsellingService[] = [
       'Builds strong foundations for marriage through better communication, shared expectations, and emotional understanding.',
     pageDescription:
       'Prepare for marriage with premarital and marital counselling in Kenya: communication, expectations, conflict skills, and emotional connection—in person or online at Swaro Institute.',
+    /** WhatsApp/Facebook often skip WebP for previews — use PNG/JPEG for og:image (hero stays WebP). */
+    shareImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/premaritalcta.png',
     image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/remaritall_1_.webp',
     imageAlt: 'Premarital and marital counselling for couples at Swaro Institute Kenya',
   },

@@ -6,7 +6,7 @@ import { absoluteUrl, buildTitle, resolveOgImage } from '../../utils/seo'
 type Props = PageMeta
 
 const JSON_LD_ID = 'swaro-jsonld'
-const SHARE_IMAGE_VERSION = '20260512'
+const SHARE_IMAGE_VERSION = '20260513'
 
 function appendVersion(url: string): string {
   const separator = url.includes('?') ? '&' : '?'

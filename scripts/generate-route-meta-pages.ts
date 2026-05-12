@@ -13,7 +13,7 @@ type RouteMeta = {
 }
 
 const SITE_URL = 'https://swaroinstitute.com'
-const SHARE_IMAGE_VERSION = '20260512'
+const SHARE_IMAGE_VERSION = '20260513'
 const DIST_DIR = path.resolve(process.cwd(), 'dist')
 const DIST_INDEX = path.join(DIST_DIR, 'index.html')
 
