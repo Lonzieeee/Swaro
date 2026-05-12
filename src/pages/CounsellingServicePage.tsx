@@ -1,6 +1,6 @@
 import { Link, Navigate, useParams } from 'react-router-dom'
 import { useEffect, useRef, useState } from 'react'
-import { HiCheckCircle } from 'react-icons/hi2'
+import { HiCheckCircle, HiOutlineHeart } from 'react-icons/hi2'
 import SEOHead from '../components/seo/SEOHead'
 import { counsellingServicesBySlug } from '../constants/counsellingServices'
 import './CounsellingServicePage.css'
@@ -184,6 +184,124 @@ const prenatalIntro = {
   image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/whyprenatal.webp',
 } as const
 
+const premaritalWhyThisMatters = {
+  label: 'WHY THIS MATTERS',
+  title: 'Why This Matters',
+  intro:
+    'Relationships can bring love, companionship, and growth, but they can also come with misunderstandings, emotional distance, stress, and conflict. Without healthy communication and support, small issues can gradually affect trust, connection, and emotional wellbeing. Counselling provides a safe and supportive space for couples to better understand each other, strengthen communication, and navigate challenges together in a healthier way.',
+  points: [
+    'Improve communication and emotional understanding',
+    'Build trust, connection, and healthy conflict resolution skills',
+    'Prepare for long-term commitment and shared responsibilities',
+    'Strengthen emotional intimacy and relationship stability',
+  ],
+  image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/couple%20therapy-2e45fd9b-3560-48c0-9c8b-3e79555d6e31.jpg',
+  imageAlt: 'Couple receiving premarital counselling support',
+} as const
+
+const premaritalRelationshipQuote = {
+  text:
+    'Every relationship goes through seasons of growth, adjustment, and challenge. Whether you are preparing for marriage, newly married, or working through ongoing difficulties, this counselling space is designed to help couples reconnect, communicate openly, and grow together with greater understanding and support.',
+} as const
+
+const premaritalWhoThisIsFor = {
+  intro:
+    'This counselling service is designed for couples at different stages of their relationship journey who are seeking guidance, healthier communication, emotional support, and stronger connection. Whether you are preparing for marriage, adjusting to married life, navigating conflict, or working through relationship challenges together, this space provides support tailored to your unique relationship needs.',
+  items: [
+    {
+      title: 'Engaged Couples',
+      description:
+        'Couples preparing for marriage who want to build a strong foundation through healthy communication, shared expectations, and emotional understanding.',
+    },
+    {
+      title: 'Newly Married Couples',
+      description:
+        'Partners adjusting to married life, shared responsibilities, lifestyle changes, and building deeper connection during the early stages of marriage.',
+    },
+    {
+      title: 'Couples Facing Relationship Challenges',
+      description:
+        'Couples experiencing conflict, communication difficulties, emotional distance, or recurring misunderstandings within the relationship.',
+    },
+    {
+      title: 'Couples Navigating Life Transitions',
+      description:
+        'Partners adjusting to major life changes such as parenthood, financial pressure, relocation, career demands, or family-related stress.',
+    },
+  ],
+} as const
+
+const premaritalReasonsSection = {
+  title: 'Common Reasons Couples Seek Counselling',
+  items: [
+    {
+      title: 'Communication Challenges',
+      body: 'Difficulty expressing feelings, frequent misunderstandings, or feeling unheard within the relationship.',
+    },
+    {
+      title: 'Conflict & Recurring Arguments',
+      body: 'Ongoing disagreements, tension, or unresolved issues that affect connection and peace within the relationship.',
+    },
+    {
+      title: 'Emotional Distance',
+      body: 'Feeling disconnected, emotionally distant, or struggling to maintain closeness and intimacy.',
+    },
+    {
+      title: 'Premarital Preparation',
+      body: 'Preparing for marriage through conversations around expectations, values, finances, and future goals.',
+    },
+    {
+      title: 'Life Transitions & Stress',
+      body: 'Navigating major changes such as marriage, parenthood, relocation, financial pressure, or career stress together.',
+    },
+    {
+      title: 'Trust & Relationship Healing',
+      body: 'Working through trust issues, emotional hurt, or rebuilding connection after difficult experiences.',
+    },
+  ],
+} as const
+
+const premaritalProgramCards = {
+  highlights: {
+    title: 'Program Highlights',
+    rows: [
+      { label: 'Session Format', value: 'Individual Couple Sessions or Group Sessions' },
+      { label: 'Location', value: 'Online or Physical Sessions' },
+      { label: 'Session Duration', value: '1.5 – 2 Hours' },
+      { label: 'Focus Areas', value: 'Communication, emotional wellbeing, trust, and relationship growth' },
+      { label: 'Certification', value: 'Available for premarital completion programs' },
+    ],
+  },
+  gains: {
+    title: "What You'll Gain",
+    items: [
+      'Healthier communication and listening skills',
+      'Greater emotional understanding and connection',
+      'Practical tools for managing conflict and relationship stress',
+      'Improved trust, respect, and emotional support',
+      'Better preparation for marriage and shared responsibilities',
+      'A stronger and healthier relationship foundation',
+    ],
+  },
+  support: {
+    title: 'How We Help',
+    items: [
+      'Create a safe and non-judgmental space for open conversations',
+      'Guide couples through healthy communication and conflict resolution',
+      'Support emotional healing, trust-building, and relationship growth',
+      'Help couples navigate stress, expectations, and life transitions together',
+      'Provide practical relationship tools that strengthen long-term connection',
+    ],
+  },
+} as const
+
+const premaritalCTA = {
+  image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/premaritalcta.png',
+  heading: 'Your Relationship Deserves Care & Support',
+  body: 'Taking the step to strengthen your relationship is a sign of commitment, growth, and intentional love. Whether you are preparing for marriage or working through challenges together, support is available to help you build a healthier and more connected relationship.',
+  subtitle: 'Available for online or physical sessions in a safe and supportive environment.',
+}
+
 const prenatalJourney = {
   title: 'A Space Just for You and Your Journey',
   body: [
@@ -279,13 +397,18 @@ export default function CounsellingServicePage() {
   const mosaicRef = useRef<HTMLElement | null>(null)
   const programCardsRef = useRef<HTMLElement | null>(null)
   const bookingRef = useRef<HTMLElement | null>(null)
+  const relationshipQuoteRef = useRef<HTMLElement | null>(null)
+  const premaritalAccordionRef = useRef<HTMLElement | null>(null)
   const [isIntroVisible, setIsIntroVisible] = useState(false)
   const [isPrenatalJourneyVisible, setIsPrenatalJourneyVisible] = useState(false)
   const [isMotherhoodSupportVisible, setIsMotherhoodSupportVisible] = useState(false)
   const [isMosaicVisible, setIsMosaicVisible] = useState(false)
   const [isProgramCardsVisible, setIsProgramCardsVisible] = useState(false)
   const [isBookingVisible, setIsBookingVisible] = useState(false)
+  const [isRelationshipQuoteVisible, setIsRelationshipQuoteVisible] = useState(false)
+  const [premaritalAccordionOpen, setPremaritalAccordionOpen] = useState<number | null>(0)
 
+  const [isPremaritalAccordionVisible, setIsPremaritalAccordionVisible] = useState(false)
   useEffect(() => {
     const introEl = introRef.current
     const prenatalJourneyEl = prenatalJourneyRef.current
@@ -293,7 +416,10 @@ export default function CounsellingServicePage() {
     const mosaicEl = mosaicRef.current
     const programCardsEl = programCardsRef.current
     const bookingEl = bookingRef.current
-    if (!introEl && !prenatalJourneyEl && !motherhoodSupportEl && !mosaicEl && !programCardsEl && !bookingEl) return
+    const relationshipQuoteEl = relationshipQuoteRef.current
+    const premaritalAccordionEl = premaritalAccordionRef.current
+    const premaritalProgramCardsEl = premaritalProgramCardsRef.current
+    if (!introEl && !prenatalJourneyEl && !motherhoodSupportEl && !mosaicEl && !programCardsEl && !bookingEl && !relationshipQuoteEl && !premaritalAccordionEl && !premaritalProgramCardsEl) return
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
@@ -307,6 +433,18 @@ export default function CounsellingServicePage() {
         }
         if (entry.target === bookingEl) {
           setIsBookingVisible(entry.isIntersecting && entry.intersectionRatio >= 0.3)
+          return
+        }
+        if (entry.target === relationshipQuoteEl) {
+          setIsRelationshipQuoteVisible(entry.isIntersecting && entry.intersectionRatio >= 0.45)
+          return
+        }
+        if (entry.target === premaritalAccordionEl) {
+          setIsPremaritalAccordionVisible(entry.isIntersecting && entry.intersectionRatio >= 0.3)
+          return
+        }
+        if (entry.target === premaritalProgramCardsEl) {
+          setIsPremaritalProgramCardsVisible(entry.isIntersecting && entry.intersectionRatio >= 0.3)
           return
         }
         if (entry.target === motherhoodSupportEl) {
@@ -328,7 +466,9 @@ export default function CounsellingServicePage() {
     if (mosaicEl) observer.observe(mosaicEl)
     if (programCardsEl) observer.observe(programCardsEl)
     if (bookingEl) observer.observe(bookingEl)
-
+    if (relationshipQuoteEl) observer.observe(relationshipQuoteEl)
+    if (premaritalAccordionEl) observer.observe(premaritalAccordionEl)
+    if (premaritalProgramCardsEl) observer.observe(premaritalProgramCardsEl)
     return () => {
       if (introEl) observer.unobserve(introEl)
       if (prenatalJourneyEl) observer.unobserve(prenatalJourneyEl)
@@ -336,6 +476,9 @@ export default function CounsellingServicePage() {
       if (mosaicEl) observer.unobserve(mosaicEl)
       if (programCardsEl) observer.unobserve(programCardsEl)
       if (bookingEl) observer.unobserve(bookingEl)
+      if (relationshipQuoteEl) observer.unobserve(relationshipQuoteEl)
+      if (premaritalAccordionEl) observer.unobserve(premaritalAccordionEl)
+      if (premaritalProgramCardsEl) observer.unobserve(premaritalProgramCardsEl)
       observer.disconnect()
     }
   }, [slug])
@@ -348,6 +491,12 @@ export default function CounsellingServicePage() {
     content.id === 'debrief-grief-support' ||
     content.slug === 'debrief-grief-loss-support' ||
     content.slug.includes('debrief')
+  const isPremaritalService =
+    content.id === 'premarital-counselling' ||
+    content.slug === 'premarital-counselling' ||
+    content.title.toLowerCase().includes('premarital')
+  const premaritalProgramCardsRef = useRef(null)
+  const [isPremaritalProgramCardsVisible, setIsPremaritalProgramCardsVisible] = useState(false)
   const isPrenatalService =
     content.id === 'prenatal-wellbeing-support' ||
     content.slug === 'prenatal-wellbeing-support' ||
@@ -427,6 +576,174 @@ export default function CounsellingServicePage() {
           </div>
         </div>
 
+        {isPremaritalService ? (
+          <section
+            ref={introRef}
+            className={`counsellingServicePage__intro counsellingServicePage__intro--premarital${isIntroVisible ? ' counsellingServicePage__intro--visible' : ''}`}
+            aria-label="Why this matters for premarital counselling"
+          >
+            <div className="counsellingServicePage__introInner counsellingServicePage__introInner--premarital">
+              <img
+                className="counsellingServicePage__introImage counsellingServicePage__introImage--premarital"
+                src={premaritalWhyThisMatters.image}
+                alt={premaritalWhyThisMatters.imageAlt}
+                loading="lazy"
+              />
+
+              <div className="counsellingServicePage__introText counsellingServicePage__introText--premarital">
+                <p className="counsellingServicePage__introEyebrow">{premaritalWhyThisMatters.label}</p>
+                <h2 className="counsellingServicePage__introHeading">{premaritalWhyThisMatters.title}</h2>
+                <p className="counsellingServicePage__introParagraph">{premaritalWhyThisMatters.intro}</p>
+                <ul className="counsellingServicePage__introBenefits" role="list">
+                  {premaritalWhyThisMatters.points.map((point) => (
+                    <li key={point} className="counsellingServicePage__introBenefitItem">
+                      <HiCheckCircle className="counsellingServicePage__introBenefitIcon" aria-hidden />
+                      <span>{point}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </section>
+        ) : null}
+
+        {isPremaritalService ? (
+          <section
+            ref={relationshipQuoteRef}
+            className={`counsellingServicePage__relationshipQuote${isRelationshipQuoteVisible ? ' counsellingServicePage__relationshipQuote--visible' : ''}`}
+            aria-label="Relationship support quote"
+          >
+            <div className="counsellingServicePage__relationshipQuoteWave counsellingServicePage__relationshipQuoteWave--top" aria-hidden />
+            <div className="counsellingServicePage__relationshipQuoteWave counsellingServicePage__relationshipQuoteWave--bottom" aria-hidden />
+            <div className="counsellingServicePage__relationshipQuoteInner">
+              <p className="counsellingServicePage__relationshipQuoteText">“{premaritalRelationshipQuote.text}”</p>
+            </div>
+          </section>
+        ) : null}
+        {isPremaritalService ? (
+          <section
+            ref={premaritalAccordionRef}
+            className={`counsellingServicePage__whoThisIsFor${isPremaritalAccordionVisible ? ' counsellingServicePage__whoThisIsFor--visible' : ''}`}
+            aria-label="Who this service is for"
+          >
+            <div className="counsellingServicePage__whoThisIsForInner">
+              <div className="counsellingServicePage__whoThisIsForText">
+                <h2 className="counsellingServicePage__whoThisIsForHeading">Who This Is For</h2>
+                <p className="counsellingServicePage__whoThisIsForIntro">{premaritalWhoThisIsFor.intro}</p>
+              </div>
+
+              <div className="counsellingServicePage__accordionContainer">
+                {premaritalWhoThisIsFor.items.map((item, index) => (
+                  <div
+                    key={index}
+                    className={`counsellingServicePage__accordionItem${premaritalAccordionOpen === index ? ' counsellingServicePage__accordionItem--open' : ''}`}
+                  >
+                    <button
+                      className="counsellingServicePage__accordionButton"
+                      onClick={() => setPremaritalAccordionOpen(premaritalAccordionOpen === index ? null : index)}
+                      aria-expanded={premaritalAccordionOpen === index}
+                    >
+                      <span className="counsellingServicePage__accordionIcon">+</span>
+                      <span className="counsellingServicePage__accordionTitle">{item.title}</span>
+                    </button>
+                    {premaritalAccordionOpen === index && (
+                      <div className="counsellingServicePage__accordionContent">
+                        <p>{item.description}</p>
+                      </div>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
+        {isPremaritalService ? (
+          <section
+            className="counsellingServicePage__premaritalReasons"
+            aria-label="Common reasons couples seek counselling"
+          >
+            <video
+              className="counsellingServicePage__premaritalReasonsVideo"
+              src="https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/13885768_3840_2160_60fps(1)(2).mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="metadata"
+            />
+            <div className="counsellingServicePage__premaritalReasonsOverlay" aria-hidden />
+            <div className="counsellingServicePage__premaritalReasonsContent">
+              <h2 className="counsellingServicePage__premaritalReasonsHeading">{premaritalReasonsSection.title}</h2>
+              <div className="counsellingServicePage__premaritalReasonsGrid">
+                {premaritalReasonsSection.items.map((item) => (
+                  <article key={item.title} className="counsellingServicePage__premaritalReasonCard">
+                    <HiOutlineHeart className="counsellingServicePage__premaritalReasonIcon" aria-hidden />
+                    <h3 className="counsellingServicePage__premaritalReasonTitle">{item.title}</h3>
+                    <p className="counsellingServicePage__premaritalReasonBody">{item.body}</p>
+                  </article>
+                ))}
+              </div>
+            </div>
+          </section>
+        ) : null}
+        {isPremaritalService ? (
+          <section
+            ref={premaritalProgramCardsRef}
+            className={`counsellingServicePage__programCards counsellingServicePage__programCards--premarital${isPremaritalProgramCardsVisible ? ' counsellingServicePage__programCards--premarital--visible' : ''}`}
+            aria-label="Premarital counselling program details"
+          >
+            <div className="counsellingServicePage__programCardsGrid">
+              {/* Highlights Card */}
+              <article className="counsellingServicePage__programCard">
+                <h3 className="counsellingServicePage__programCardTitle">{premaritalProgramCards.highlights.title}</h3>
+                <ul className="counsellingServicePage__programRows" role="list">
+                  {premaritalProgramCards.highlights.rows.map((row) => (
+                    <li key={row.label} className="counsellingServicePage__programRow">
+                      <strong>{row.label}:</strong> {row.value}
+                    </li>
+                  ))}
+                </ul>
+              </article>
+
+              {/* Gains Card */}
+              <article className="counsellingServicePage__programCard">
+                <h3 className="counsellingServicePage__programCardTitle">{premaritalProgramCards.gains.title}</h3>
+                <ul className="counsellingServicePage__programList">
+                  {premaritalProgramCards.gains.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+
+              {/* Support Card */}
+              <article className="counsellingServicePage__programCard">
+                <h3 className="counsellingServicePage__programCardTitle">{premaritalProgramCards.support.title}</h3>
+                <ul className="counsellingServicePage__programList">
+                  {premaritalProgramCards.support.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </article>
+            </div>
+          </section>
+        ) : null}
+        {isPremaritalService ? (
+          <section className="counsellingServicePage__premaritalCta" aria-label="Book premarital counselling">
+            <img
+              className="counsellingServicePage__premaritalCtaImage"
+              src={premaritalCTA.image}
+              alt="Couple in a supportive moment"
+              loading="lazy"
+            />
+            <div className="counsellingServicePage__premaritalCtaOverlay" aria-hidden />
+            <div className="counsellingServicePage__premaritalCtaContent">
+              <h2 className="counsellingServicePage__premaritalCtaHeading">{premaritalCTA.heading}</h2>
+              <p className="counsellingServicePage__premaritalCtaBody">{premaritalCTA.body}</p>
+              <p className="counsellingServicePage__premaritalCtaSubtitle">{premaritalCTA.subtitle}</p>
+              <button className="counsellingServicePage__premaritalCtaButton">Book Now</button>
+            </div>
+          </section>
+        ) : null}
         {isPrenatalService ? (
           <section
             ref={introRef}
@@ -460,36 +777,11 @@ export default function CounsellingServicePage() {
                 </ul>
               </div>
             </div>
-            <div className="counsellingServicePage__introFooter">
-              <p className="counsellingServicePage__introParagraph counsellingServicePage__introParagraph--desktop">
-                {prenatalIntro.outro}
-              </p>
-              <p className="counsellingServicePage__introParagraph counsellingServicePage__introParagraph--mobile">
-                {prenatalIntro.outroMobile}
-              </p>
-            </div>
-          </section>
-        ) : content.introSectionBody && content.introSectionImage ? (
-          <section
-            ref={introRef}
-            className={`counsellingServicePage__intro${isIntroVisible ? ' counsellingServicePage__intro--visible' : ''}`}
-            aria-label="Service overview"
-          >
-            <div className="counsellingServicePage__introInner">
-              <div className="counsellingServicePage__introText">{content.introSectionBody}</div>
-              <img
-                className="counsellingServicePage__introImage"
-                src={content.introSectionImage}
-                alt={content.introSectionImageAlt ?? `${content.title} supporting image`}
-                loading="lazy"
-              />
-            </div>
           </section>
         ) : null}
 
         {isMotherhoodService ? (
           <section
-            ref={motherhoodSupportRef}
             className={`counsellingServicePage__motherhoodSupport${isMotherhoodSupportVisible ? ' counsellingServicePage__motherhoodSupport--visible' : ''}`}
             aria-label="Resilient motherhood support overview"
           >
