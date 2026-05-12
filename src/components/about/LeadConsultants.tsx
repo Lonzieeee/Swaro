@@ -18,7 +18,7 @@ const consultants: readonly Consultant[] = [
     title: 'Lead Consultant | Human Development & Community Empowerment',
     summary:
       'Specialist in counselling, gender and family wellbeing, and community-based research for sustainable livelihoods. She brings over two decades of leadership in mentoring, participatory research, and translating evidence into practical support for families and communities. Her work consistently connects academic rigor with compassionate field practice, helping organizations design interventions that are ethical, inclusive, and measurable.',
-    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/Alica.jpeg',
+    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/Proff.jpeg',
     imageAlt: 'Prof. Alice Ondigi, Lead Consultant at SWARO',
     bio: [
       'Prof. Alice Ondigi is a Professor of Human Development with a PhD from Kenyatta University and MSc and BSc degrees from the University of Minnesota, USA. She currently serves at Kenyatta University in the Department of Community Resource Management.',
