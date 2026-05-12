@@ -13,7 +13,7 @@ type RouteMeta = {
 }
 
 const SITE_URL = 'https://swaroinstitute.com'
-const SHARE_IMAGE_VERSION = '20260506'
+const SHARE_IMAGE_VERSION = '20260512'
 const DIST_DIR = path.resolve(process.cwd(), 'dist')
 const DIST_INDEX = path.join(DIST_DIR, 'index.html')
 
@@ -76,32 +76,39 @@ function detectImageType(url: string): string {
   return 'image/*'
 }
 
+/** Escape text embedded in double-quoted HTML attributes (titles, descriptions, alt). */
+function escapeHtmlAttribute(value: string): string {
+  return value.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;')
+}
+
 function buildRouteHtml(templateHtml: string, meta: RouteMeta): string {
   const pageUrl = absoluteUrl(meta.routePath)
   const shareImage = appendVersion(meta.image)
   const shareImageType = detectImageType(meta.image)
+  const safeTitle = escapeHtmlAttribute(meta.title)
+  const safeDescription = escapeHtmlAttribute(meta.description)
+  const safeImageAlt = escapeHtmlAttribute(meta.imageAlt)
+  const titleWithBrand = `${safeTitle} · Swaro Institute`
   let html = templateHtml
 
-  html = replaceTag(html, /<title>.*?<\/title>/i, `<title>${meta.title} · Swaro Institute</title>`)
-  html = setMetaByName(html, 'description', meta.description)
+  html = replaceTag(html, /<title>.*?<\/title>/i, `<title>${titleWithBrand}</title>`)
+  html = setMetaByName(html, 'description', safeDescription)
   html = setLinkRel(html, 'canonical', pageUrl)
   html = setAlternateHref(html, 'en-KE', pageUrl)
   html = setAlternateHref(html, 'x-default', pageUrl)
 
   html = setMetaByProperty(html, 'og:url', pageUrl)
-  html = setMetaByProperty(html, 'og:title', `${meta.title} · Swaro Institute`)
-  html = setMetaByProperty(html, 'og:description', meta.description)
+  html = setMetaByProperty(html, 'og:title', titleWithBrand)
+  html = setMetaByProperty(html, 'og:description', safeDescription)
   html = setMetaByProperty(html, 'og:image', shareImage)
   html = setMetaByProperty(html, 'og:image:secure_url', shareImage)
   html = setMetaByProperty(html, 'og:image:type', shareImageType)
-  html = setMetaByProperty(html, 'og:image:width', '1200')
-  html = setMetaByProperty(html, 'og:image:height', '630')
-  html = setMetaByProperty(html, 'og:image:alt', meta.imageAlt)
+  html = setMetaByProperty(html, 'og:image:alt', safeImageAlt)
 
-  html = setMetaByName(html, 'twitter:title', `${meta.title} · Swaro Institute`)
-  html = setMetaByName(html, 'twitter:description', meta.description)
+  html = setMetaByName(html, 'twitter:title', titleWithBrand)
+  html = setMetaByName(html, 'twitter:description', safeDescription)
   html = setMetaByName(html, 'twitter:image', shareImage)
-  html = setMetaByName(html, 'twitter:image:alt', meta.imageAlt)
+  html = setMetaByName(html, 'twitter:image:alt', safeImageAlt)
 
   return html
 }

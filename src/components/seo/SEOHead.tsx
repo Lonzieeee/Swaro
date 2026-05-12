@@ -6,7 +6,7 @@ import { absoluteUrl, buildTitle, resolveOgImage } from '../../utils/seo'
 type Props = PageMeta
 
 const JSON_LD_ID = 'swaro-jsonld'
-const SHARE_IMAGE_VERSION = '20260506'
+const SHARE_IMAGE_VERSION = '20260512'
 
 function appendVersion(url: string): string {
   const separator = url.includes('?') ? '&' : '?'
@@ -143,8 +143,8 @@ export default function SEOHead({
     setMeta('og:image', shareImage, 'property')
     setMeta('og:image:secure_url', shareImage, 'property')
     setMeta('og:image:type', shareImageType, 'property')
-    setMeta('og:image:width', '1200', 'property')
-    setMeta('og:image:height', '630', 'property')
+    removeMeta('og:image:width', 'property')
+    removeMeta('og:image:height', 'property')
     setMeta('og:image:alt', imageAlt, 'property')
     setMeta('og:type', 'website', 'property')
     setMeta('og:site_name', site.fullName, 'property')

@@ -39,7 +39,6 @@ export const counsellingServices: readonly CounsellingService[] = [
       'Builds strong foundations for marriage through better communication, shared expectations, and emotional understanding.',
     pageDescription:
       'Prepare for marriage with premarital and marital counselling in Kenya: communication, expectations, conflict skills, and emotional connection—in person or online at Swaro Institute.',
-    shareImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/premaritalcta.png',
     image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/remaritall_1_.webp',
     imageAlt: 'Premarital and marital counselling for couples at Swaro Institute Kenya',
   },
@@ -83,11 +82,11 @@ export const counsellingServices: readonly CounsellingService[] = [
   {
     id: 'youth-counselling',
     slug: 'youth-counselling',
-    title: 'Youth Counselling',
+    title: 'Teen & Young Adult Counselling',
     description:
-      'Support for young people navigating academic pressure, identity, relationships, and personal growth. Helps build confidence, resilience, and healthy decision-making skills.',
+      'Support for teens and young adults navigating emotional challenges, stress, identity, relationships, and personal growth in a safe and understanding space.',
     image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/youthcounselling.jpg',
-    imageAlt: 'Youth participant in a counseling conversation',
+    imageAlt: 'Teen or young adult in a supportive counselling conversation',
   },
 ]
 

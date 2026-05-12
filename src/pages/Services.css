@@ -90,30 +90,78 @@
 
 .servicesLanding__grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-  gap: 1rem;
+  grid-template-columns: 1fr;
+  gap: clamp(1rem, 2vw, 1.35rem);
+}
+
+@media (min-width: 640px) {
+  .servicesLanding__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .servicesLanding__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 .servicesLanding__card {
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(255, 255, 255, 0.92);
   border: 1px solid rgba(13, 43, 29, 0.1);
   border-radius: 14px;
-  padding: 1.2rem;
+  padding: clamp(1.15rem, 2vw, 1.35rem);
   display: flex;
   flex-direction: column;
+  min-height: 0;
   box-shadow: 0 10px 24px rgba(13, 43, 29, 0.08);
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.servicesLanding__card:hover {
+  border-color: rgba(27, 67, 50, 0.22);
+  box-shadow: 0 14px 32px rgba(13, 43, 29, 0.12);
+}
+
+.servicesLanding__cardIconWrap {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.85rem;
+  background: linear-gradient(145deg, rgba(27, 67, 50, 0.12), rgba(27, 67, 50, 0.06));
+  border: 1px solid rgba(27, 67, 50, 0.14);
+}
+
+.servicesLanding__cardIcon {
+  width: 1.55rem;
+  height: 1.55rem;
+  color: #1b4332;
 }
 
 .servicesLanding__cardTitle {
   margin: 0;
   color: #1b4332;
-  font-size: 1.35rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.08rem, 1.1vw + 0.95rem, 1.28rem);
+  font-weight: 400;
+  line-height: 1.22;
+  text-wrap: balance;
 }
 
 .servicesLanding__cardCopy {
-  margin: 0.75rem 0 1rem;
+  margin: 0.65rem 0 1rem;
   color: #4c4c4c;
   flex-grow: 1;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.88rem, 0.15vw + 0.84rem, 0.94rem);
+  line-height: 1.62;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  overflow: hidden;
 }
 
 .servicesLanding__link {
@@ -126,4 +174,21 @@
   text-transform: uppercase;
   letter-spacing: 0.06em;
   font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+
+.servicesLanding__link:hover {
+  background: #1b4332;
+  color: #f8f9f6;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .servicesLanding__card {
+    transition: none;
+  }
+
+  .servicesLanding__link {
+    transition: none;
+  }
 }

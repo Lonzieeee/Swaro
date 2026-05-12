@@ -1,12 +1,31 @@
 
 import { Link, Navigate, Route, Routes } from 'react-router-dom';
+import type { IconType } from 'react-icons';
+import {
+  HiAcademicCap,
+  HiBookOpen,
+  HiChatBubbleLeftRight,
+  HiClipboardDocumentList,
+  HiHeart,
+  HiUserGroup,
+} from 'react-icons/hi2';
 import PageHero, { type PageHeroBreadcrumb } from '../components/common/PageHero';
 import SEOHead from '../components/seo/SEOHead';
 import ServicePageTemplate from '../components/services/ServicePageTemplate';
+import type { ServiceSlug } from '../constants/servicePages';
 import { servicePages, servicePagesBySlug } from '../constants/servicePages';
 import { aboutPageMedia, pageHeroMedia } from '../constants/swaroData';
 import type { BreadcrumbJsonLdItem } from '../utils/seo';
 import './Services.css';
+
+const SERVICE_CARD_ICONS: Record<ServiceSlug, IconType> = {
+  counselling: HiChatBubbleLeftRight,
+  training: HiAcademicCap,
+  education: HiBookOpen,
+  community: HiUserGroup,
+  research: HiClipboardDocumentList,
+  health: HiHeart,
+};
 
 const SERVICES_BREADCRUMBS: PageHeroBreadcrumb[] = [
   { label: 'Home', path: '/' },
@@ -69,15 +88,23 @@ function ServicesLanding() {
           </div>
 
           <div className="servicesLanding__grid">
-            {servicePages.map((service) => (
-              <article key={service.slug} className="servicesLanding__card">
-                <h2 className="servicesLanding__cardTitle">{service.title}</h2>
-                <p className="servicesLanding__cardCopy">{service.overview[0]}</p>
-                <Link to={service.path} className="servicesLanding__link">
-                  View Service Page
-                </Link>
-              </article>
-            ))}
+            {servicePages.map((service) => {
+              const CardIcon = SERVICE_CARD_ICONS[service.slug]
+              return (
+                <article key={service.slug} className="servicesLanding__card">
+                  <div className="servicesLanding__cardIconWrap" aria-hidden>
+                    <CardIcon className="servicesLanding__cardIcon" />
+                  </div>
+                  <h2 className="servicesLanding__cardTitle">{service.title}</h2>
+                  <p className="servicesLanding__cardCopy" title={service.overview[0]}>
+                    {service.overview[0]}
+                  </p>
+                  <Link to={service.path} className="servicesLanding__link">
+                    View Service Page
+                  </Link>
+                </article>
+              )
+            })}
           </div>
         </div>
       </section>
