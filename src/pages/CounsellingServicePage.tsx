@@ -438,6 +438,20 @@ export default function CounsellingServicePage() {
     )
       return
 
+    const overlapsViewport = (el: HTMLElement) => {
+      const r = el.getBoundingClientRect()
+      const vh = window.innerHeight || document.documentElement.clientHeight
+      return r.bottom > 1 && r.top < vh - 1
+    }
+
+    /** IntersectionObserver can miss the first paint (already in view). Sync from layout after observe. */
+    const syncRevealFromLayout = () => {
+      if (introEl && overlapsViewport(introEl)) setIsIntroVisible(true)
+      if (prenatalJourneyEl && overlapsViewport(prenatalJourneyEl)) setIsPrenatalJourneyVisible(true)
+      if (motherhoodSupportEl && overlapsViewport(motherhoodSupportEl)) setIsMotherhoodSupportVisible(true)
+      if (mosaicEl && overlapsViewport(mosaicEl)) setIsMosaicVisible(true)
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -470,7 +484,7 @@ export default function CounsellingServicePage() {
             return
           }
           if (entry.target === motherhoodSupportEl) {
-            setIsMotherhoodSupportVisible(entry.isIntersecting && entry.intersectionRatio >= 0.25)
+            setIsMotherhoodSupportVisible(entry.isIntersecting)
             return
           }
           if (!entry.isIntersecting) return
@@ -481,7 +495,8 @@ export default function CounsellingServicePage() {
       },
       {
         root: null,
-        rootMargin: '0px 0px 12% 0px',
+        /* Expand root so sections just under the hero register reliably */
+        rootMargin: '180px 0px 32% 0px',
         threshold: [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1],
       },
     )
@@ -496,6 +511,11 @@ export default function CounsellingServicePage() {
     if (premaritalAccordionEl) observer.observe(premaritalAccordionEl)
     if (premaritalProgramCardsEl) observer.observe(premaritalProgramCardsEl)
     if (premaritalCtaEl) observer.observe(premaritalCtaEl)
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(syncRevealFromLayout)
+    })
+
     return () => {
       if (introEl) observer.unobserve(introEl)
       if (prenatalJourneyEl) observer.unobserve(prenatalJourneyEl)
@@ -832,6 +852,7 @@ export default function CounsellingServicePage() {
 
         {isMotherhoodService ? (
           <section
+            ref={motherhoodSupportRef}
             className={`counsellingServicePage__motherhoodSupport${isMotherhoodSupportVisible ? ' counsellingServicePage__motherhoodSupport--visible' : ''}`}
             aria-label="Resilient motherhood support overview"
           >
