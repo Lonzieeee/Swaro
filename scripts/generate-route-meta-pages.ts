@@ -191,7 +191,7 @@ async function main(): Promise<void> {
     routePath: `/counselling-services/${service.slug}`,
     title: service.title,
     description: service.pageDescription ?? service.description,
-    image: service.pageImage ?? service.image,
+    image: service.shareImage ?? service.pageImage ?? service.image,
     imageAlt: service.imageAlt,
   }))
 

@@ -399,6 +399,8 @@ export default function CounsellingServicePage() {
   const bookingRef = useRef<HTMLElement | null>(null)
   const relationshipQuoteRef = useRef<HTMLElement | null>(null)
   const premaritalAccordionRef = useRef<HTMLElement | null>(null)
+  const premaritalProgramCardsRef = useRef<HTMLElement | null>(null)
+  const premaritalCtaRef = useRef<HTMLElement | null>(null)
   const [isIntroVisible, setIsIntroVisible] = useState(false)
   const [isPrenatalJourneyVisible, setIsPrenatalJourneyVisible] = useState(false)
   const [isMotherhoodSupportVisible, setIsMotherhoodSupportVisible] = useState(false)
@@ -409,6 +411,8 @@ export default function CounsellingServicePage() {
   const [premaritalAccordionOpen, setPremaritalAccordionOpen] = useState<number | null>(0)
 
   const [isPremaritalAccordionVisible, setIsPremaritalAccordionVisible] = useState(false)
+  const [isPremaritalProgramCardsVisible, setIsPremaritalProgramCardsVisible] = useState(false)
+  const [isPremaritalCtaVisible, setIsPremaritalCtaVisible] = useState(false)
   useEffect(() => {
     const introEl = introRef.current
     const prenatalJourneyEl = prenatalJourneyRef.current
@@ -419,46 +423,68 @@ export default function CounsellingServicePage() {
     const relationshipQuoteEl = relationshipQuoteRef.current
     const premaritalAccordionEl = premaritalAccordionRef.current
     const premaritalProgramCardsEl = premaritalProgramCardsRef.current
-    if (!introEl && !prenatalJourneyEl && !motherhoodSupportEl && !mosaicEl && !programCardsEl && !bookingEl && !relationshipQuoteEl && !premaritalAccordionEl && !premaritalProgramCardsEl) return
+    const premaritalCtaEl = premaritalCtaRef.current
+    if (
+      !introEl &&
+      !prenatalJourneyEl &&
+      !motherhoodSupportEl &&
+      !mosaicEl &&
+      !programCardsEl &&
+      !bookingEl &&
+      !relationshipQuoteEl &&
+      !premaritalAccordionEl &&
+      !premaritalProgramCardsEl &&
+      !premaritalCtaEl
+    )
+      return
 
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.target === prenatalJourneyEl) {
-          setIsPrenatalJourneyVisible(entry.isIntersecting)
-          return
-        }
-        if (entry.target === programCardsEl) {
-          setIsProgramCardsVisible(entry.isIntersecting && entry.intersectionRatio >= 0.3)
-          return
-        }
-        if (entry.target === bookingEl) {
-          setIsBookingVisible(entry.isIntersecting && entry.intersectionRatio >= 0.3)
-          return
-        }
-        if (entry.target === relationshipQuoteEl) {
-          setIsRelationshipQuoteVisible(entry.isIntersecting && entry.intersectionRatio >= 0.45)
-          return
-        }
-        if (entry.target === premaritalAccordionEl) {
-          setIsPremaritalAccordionVisible(entry.isIntersecting && entry.intersectionRatio >= 0.3)
-          return
-        }
-        if (entry.target === premaritalProgramCardsEl) {
-          setIsPremaritalProgramCardsVisible(entry.isIntersecting && entry.intersectionRatio >= 0.3)
-          return
-        }
-        if (entry.target === motherhoodSupportEl) {
-          setIsMotherhoodSupportVisible(entry.isIntersecting && entry.intersectionRatio >= 0.82)
-          return
-        }
-        if (!entry.isIntersecting) return
-        if (entry.target === introEl) setIsIntroVisible(true)
-        if (entry.target === mosaicEl) setIsMosaicVisible(true)
-        observer.unobserve(entry.target)
-      })
-    }, {
-      threshold: [0.22, 0.82],
-    })
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === prenatalJourneyEl) {
+            setIsPrenatalJourneyVisible(entry.isIntersecting)
+            return
+          }
+          if (entry.target === programCardsEl) {
+            setIsProgramCardsVisible(entry.isIntersecting)
+            return
+          }
+          if (entry.target === bookingEl) {
+            setIsBookingVisible(entry.isIntersecting)
+            return
+          }
+          if (entry.target === relationshipQuoteEl) {
+            setIsRelationshipQuoteVisible(entry.isIntersecting)
+            return
+          }
+          if (entry.target === premaritalAccordionEl) {
+            setIsPremaritalAccordionVisible(entry.isIntersecting)
+            return
+          }
+          if (entry.target === premaritalProgramCardsEl) {
+            setIsPremaritalProgramCardsVisible(entry.isIntersecting)
+            return
+          }
+          if (entry.target === premaritalCtaEl) {
+            setIsPremaritalCtaVisible(entry.isIntersecting)
+            return
+          }
+          if (entry.target === motherhoodSupportEl) {
+            setIsMotherhoodSupportVisible(entry.isIntersecting && entry.intersectionRatio >= 0.25)
+            return
+          }
+          if (!entry.isIntersecting) return
+          if (entry.target === introEl) setIsIntroVisible(true)
+          if (entry.target === mosaicEl) setIsMosaicVisible(true)
+          observer.unobserve(entry.target)
+        })
+      },
+      {
+        root: null,
+        rootMargin: '0px 0px 12% 0px',
+        threshold: [0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.6, 0.65, 0.7, 0.75, 0.8, 0.85, 0.9, 0.95, 1],
+      },
+    )
 
     if (introEl) observer.observe(introEl)
     if (prenatalJourneyEl) observer.observe(prenatalJourneyEl)
@@ -469,6 +495,7 @@ export default function CounsellingServicePage() {
     if (relationshipQuoteEl) observer.observe(relationshipQuoteEl)
     if (premaritalAccordionEl) observer.observe(premaritalAccordionEl)
     if (premaritalProgramCardsEl) observer.observe(premaritalProgramCardsEl)
+    if (premaritalCtaEl) observer.observe(premaritalCtaEl)
     return () => {
       if (introEl) observer.unobserve(introEl)
       if (prenatalJourneyEl) observer.unobserve(prenatalJourneyEl)
@@ -479,6 +506,7 @@ export default function CounsellingServicePage() {
       if (relationshipQuoteEl) observer.unobserve(relationshipQuoteEl)
       if (premaritalAccordionEl) observer.unobserve(premaritalAccordionEl)
       if (premaritalProgramCardsEl) observer.unobserve(premaritalProgramCardsEl)
+      if (premaritalCtaEl) observer.unobserve(premaritalCtaEl)
       observer.disconnect()
     }
   }, [slug])
@@ -495,8 +523,6 @@ export default function CounsellingServicePage() {
     content.id === 'premarital-counselling' ||
     content.slug === 'premarital-counselling' ||
     content.title.toLowerCase().includes('premarital')
-  const premaritalProgramCardsRef = useRef(null)
-  const [isPremaritalProgramCardsVisible, setIsPremaritalProgramCardsVisible] = useState(false)
   const isPrenatalService =
     content.id === 'prenatal-wellbeing-support' ||
     content.slug === 'prenatal-wellbeing-support' ||
@@ -506,6 +532,8 @@ export default function CounsellingServicePage() {
     content.slug === 'resilient-motherhood-program' ||
     content.title.toLowerCase().includes('motherhood')
   const pageImage = content.pageImage ?? content.image
+  const shareImage = content.shareImage ?? content.pageImage ?? content.image
+  const heroBackgroundImage = isPremaritalService ? content.image : pageImage
   const pageTitle = isMotherhoodService ? 'Resilient Motherhood Program' : content.title
   const pageDescription = isMotherhoodService
     ? 'Guided motherhood support for first-time mothers to build emotional resilience, newborn care confidence, and wellbeing during pregnancy and early motherhood.'
@@ -519,6 +547,8 @@ export default function CounsellingServicePage() {
       ? 'grief counselling Kenya, loss support counselling, bereavement therapy Kenya, emotional healing support, debrief grief and loss, trauma and grief counselling'
       : isMotherhoodService
         ? 'resilient motherhood program Kenya, first-time mothers support, early motherhood counselling, maternal emotional resilience, motherhood confidence support'
+        : isPremaritalService
+          ? 'premarital counselling Kenya, marital counselling Kenya, couples counselling, marriage preparation, relationship counselling Kenya, Swaro Institute'
       : undefined
   const debriefMosaicImage = 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/shot.jpg'
   const debriefMosaicImageMiddle = 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/sliideee.webp'
@@ -535,14 +565,14 @@ export default function CounsellingServicePage() {
         description={pageDescription}
         path={`/counselling-services/${content.slug}`}
         schemaPageType="WebPage"
-        image={pageImage}
+        image={shareImage}
         ogImageAlt={ogImageAlt}
         keywords={pageKeywords}
       />
       <section className={`counsellingServicePage${isPrenatalService ? ' counsellingServicePage--prenatal' : ''}${isMotherhoodService ? ' counsellingServicePage--motherhood' : ''}`}>
         <div
           className="counsellingServicePage__hero"
-          style={{ backgroundImage: `linear-gradient(rgba(15, 19, 18, 0.55), rgba(15, 19, 18, 0.55)), url(${pageImage})` }}
+          style={{ backgroundImage: `linear-gradient(rgba(15, 19, 18, 0.55), rgba(15, 19, 18, 0.55)), url(${heroBackgroundImage})` }}
           role="img"
           aria-label={content.imageAlt}
         >
@@ -728,19 +758,39 @@ export default function CounsellingServicePage() {
           </section>
         ) : null}
         {isPremaritalService ? (
-          <section className="counsellingServicePage__premaritalCta" aria-label="Book premarital counselling">
-            <img
-              className="counsellingServicePage__premaritalCtaImage"
-              src={premaritalCTA.image}
-              alt="Couple in a supportive moment"
-              loading="lazy"
-            />
-            <div className="counsellingServicePage__premaritalCtaOverlay" aria-hidden />
-            <div className="counsellingServicePage__premaritalCtaContent">
+          <section
+            ref={premaritalCtaRef}
+            className={`counsellingServicePage__premaritalCta${isPremaritalCtaVisible ? ' counsellingServicePage__premaritalCta--visible' : ''}`}
+            aria-label="Book premarital counselling"
+          >
+            <div className="counsellingServicePage__premaritalCtaMedia" aria-hidden>
+              <img
+                className="counsellingServicePage__premaritalCtaImage"
+                src={premaritalCTA.image}
+                alt=""
+                loading="lazy"
+                decoding="async"
+              />
+            </div>
+            <div className="counsellingServicePage__premaritalCtaScrim" aria-hidden />
+            <div className="counsellingServicePage__premaritalCtaInner">
               <h2 className="counsellingServicePage__premaritalCtaHeading">{premaritalCTA.heading}</h2>
               <p className="counsellingServicePage__premaritalCtaBody">{premaritalCTA.body}</p>
               <p className="counsellingServicePage__premaritalCtaSubtitle">{premaritalCTA.subtitle}</p>
-              <button className="counsellingServicePage__premaritalCtaButton">Book Now</button>
+              <Link
+                to={`/book-session?service=${encodeURIComponent(content.slug)}`}
+                className="counsellingServicePage__premaritalCtaButton"
+              >
+                Book Now
+              </Link>
+            </div>
+            <div className="counsellingServicePage__premaritalCtaWave" aria-hidden>
+              <svg viewBox="0 0 1440 48" preserveAspectRatio="none" className="counsellingServicePage__premaritalCtaWaveSvg">
+                <path
+                  fill="currentColor"
+                  d="M0,32 C240,8 480,40 720,24 C960,8 1200,40 1440,16 L1440,48 L0,48 Z"
+                />
+              </svg>
             </div>
           </section>
         ) : null}

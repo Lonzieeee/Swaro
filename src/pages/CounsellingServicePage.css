@@ -634,6 +634,200 @@
   margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
 }
 
+/* Premarital closing CTA — calm full-bleed panel (matches reference layout; uses premaritalCTA image + copy) */
+.counsellingServicePage__premaritalCta {
+  position: relative;
+  isolation: isolate;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: clamp(26rem, 62vh, 40rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(3.5rem, 10vw, 5.5rem) clamp(1.25rem, 4vw, 2rem) clamp(4rem, 11vw, 6rem);
+  overflow: hidden;
+  background: #e8eef0;
+}
+
+.counsellingServicePage__premaritalCtaMedia {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.counsellingServicePage__premaritalCtaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transform: scale(1.02);
+}
+
+.counsellingServicePage__premaritalCtaScrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(248, 249, 246, 0.22) 0%, rgba(232, 238, 240, 0.62) 45%, rgba(232, 238, 240, 0.78) 100%),
+    linear-gradient(90deg, rgba(15, 35, 42, 0.12) 0%, rgba(15, 35, 42, 0.05) 50%, rgba(15, 35, 42, 0.14) 100%);
+  pointer-events: none;
+}
+
+.counsellingServicePage__premaritalCtaInner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.counsellingServicePage__premaritalCta--visible .counsellingServicePage__premaritalCtaInner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__premaritalCta--visible .counsellingServicePage__premaritalCtaHeading {
+  transition-delay: 0.06s;
+}
+
+.counsellingServicePage__premaritalCta--visible .counsellingServicePage__premaritalCtaBody {
+  transition: opacity 0.55s ease 0.12s;
+}
+
+.counsellingServicePage__premaritalCta--visible .counsellingServicePage__premaritalCtaSubtitle {
+  transition: opacity 0.55s ease 0.18s;
+}
+
+.counsellingServicePage__premaritalCta--visible .counsellingServicePage__premaritalCtaButton {
+  transition:
+    opacity 0.5s ease 0.22s,
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.counsellingServicePage__premaritalCtaHeading {
+  margin: 0 0 clamp(0.85rem, 2vw, 1.1rem);
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.65rem, 3.4vw, 2.35rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: #2b3230;
+  text-wrap: balance;
+}
+
+.counsellingServicePage__premaritalCtaBody {
+  margin: 0 auto clamp(0.75rem, 2vw, 1rem);
+  max-width: 42rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.95rem, 1.35vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.68;
+  color: #3a4340;
+}
+
+.counsellingServicePage__premaritalCtaSubtitle {
+  margin: 0 auto clamp(1.35rem, 3vw, 1.75rem);
+  max-width: 38rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.88rem, 1.1vw, 0.98rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #4a5450;
+}
+
+.counsellingServicePage__premaritalCtaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.82rem 2.15rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1f2c29;
+  background: #f3dfaa;
+  border: none;
+  box-shadow: 0 8px 22px rgba(13, 43, 29, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.counsellingServicePage__premaritalCtaButton:hover {
+  transform: translateY(-2px);
+  background: #ead598;
+  box-shadow: 0 12px 28px rgba(13, 43, 29, 0.28);
+}
+
+.counsellingServicePage__premaritalCtaButton:focus-visible {
+  outline: 2px solid #1b4332;
+  outline-offset: 3px;
+}
+
+.counsellingServicePage__premaritalCtaWave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 3;
+  height: clamp(2rem, 5vw, 3rem);
+  color: #f8f9f6;
+  pointer-events: none;
+}
+
+.counsellingServicePage__premaritalCtaWaveSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .counsellingServicePage__premaritalCtaInner {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .counsellingServicePage__premaritalCtaButton:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .counsellingServicePage__premaritalCta {
+    min-height: auto;
+    padding: clamp(3rem, 12vw, 4rem) 1.1rem clamp(3.5rem, 14vw, 4.5rem);
+  }
+
+  .counsellingServicePage__premaritalCtaHeading {
+    font-size: clamp(1.45rem, 6vw, 1.85rem);
+  }
+
+  .counsellingServicePage__premaritalCtaBody {
+    font-size: 0.94rem;
+    line-height: 1.62;
+  }
+
+  .counsellingServicePage__premaritalCtaSubtitle {
+    font-size: 0.86rem;
+  }
+
+  .counsellingServicePage__premaritalCtaButton {
+    width: min(100%, 18rem);
+    padding: 0.78rem 1.6rem;
+  }
+}
+
 
 @keyframes slideInUp {
   from {
