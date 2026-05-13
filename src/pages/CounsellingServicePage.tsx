@@ -1,396 +1,73 @@
+import { useMemo, useState } from 'react'
 import { Link, Navigate, useParams } from 'react-router-dom'
-import { useEffect, useRef, useState } from 'react'
-import { HiCheckCircle, HiOutlineHeart } from 'react-icons/hi2'
 import SEOHead from '../components/seo/SEOHead'
 import { counsellingServicesBySlug } from '../constants/counsellingServices'
 import './CounsellingServicePage.css'
 
-const debriefMosaicContent = [
-  {
-    type: 'text',
-    title: 'Why This Matters',
-    body: 'Unprocessed grief can quietly affect your emotions, relationships, and daily functioning. Taking time to process what you have been through helps you regain balance, build emotional resilience, and move forward with greater clarity and stability.',
-  },
-  { type: 'image' },
-  {
-    type: 'text',
-    title: 'What You May Be Experiencing',
-    body: 'You may be feeling deep sadness, confusion, emotional numbness, or being overwhelmed by constant thoughts and memories. At times, it can feel difficult to cope, stay present, or understand your own emotions.',
-  },
-  { type: 'image' },
-  {
-    type: 'text',
-    title: 'Who This Service Supports',
-    body: 'This service is for anyone experiencing loss, emotional pain, or a challenging life transition. If you are finding it hard to process your feelings or move forward, this space offers support and understanding.',
-  },
-  { type: 'image' },
-] as const
+type TabKey = 'overview' | 'notes' | 'quizzes' | 'certificate' | 'reviews'
 
-const debriefProgramCards = {
-  highlights: {
-    title: 'Program Highlights',
-    rows: [
-      { label: 'Duration', value: '20 hrs' },
-      { label: 'Session Length', value: '2 hours per week' },
-      { label: 'Location', value: 'Online or Physical Sessions' },
-      { label: 'Certificate', value: 'Awarded upon completion' },
-      { label: 'Individual Counselling', value: 'Ksh 40,000' },
-      { label: 'Group Counselling', value: 'Ksh 50,000' },
-    ],
-  },
-  gains: {
-    title: "What You'll Gain",
-    items: [
-      'Emotional healing and a safe space to process your grief with compassion.',
-      'Better understanding and acceptance of your emotions and experiences.',
-      'Practical ways to cope with emotional overwhelm in daily life.',
-      'A sense of stability, grounding, and emotional balance over time.',
-      'Gradual restoration of hope, clarity, and inner peace.',
-    ],
-  },
-  support: {
-    title: 'How We Help',
-    items: [
-      'Provide a safe, compassionate, and non-judgmental space to express yourself.',
-      'Offer guided conversations to help you process emotions at your own pace.',
-      'Help you make sense of your thoughts and experiences in a structured way.',
-      'Support emotional healing through active listening and gentle guidance.',
-      'Equip you with practical coping strategies for daily emotional balance.',
-      'Help you gradually regain clarity, stability, and inner calm.',
-    ],
-  },
-} as const
-
-const prenatalProgramCards = {
-  highlights: {
-    title: 'Program Highlights',
-    rows: [
-      { label: 'Duration', value: '20 hrs' },
-      { label: 'Session Length', value: '2 hours per week' },
-      { label: 'Location', value: 'Online or Physical Sessions' },
-      { label: 'Certificate', value: 'Awarded upon completion' },
-      { label: 'Individual Counselling', value: 'Ksh 40,000' },
-      { label: 'Group Counselling', value: 'Ksh 50,000' },
-    ],
-  },
-  gains: {
-    title: "What You'll Gain",
-    items: [
-      'Greater emotional balance and calm throughout your pregnancy',
-      'Increased confidence in preparing for motherhood',
-      'Practical ways to manage stress, anxiety, and emotional changes',
-      'A stronger sense of connection to yourself and your journey',
-      'Improved readiness for the transition into motherhood',
-    ],
-  },
-  support: {
-    title: 'How We Help',
-    items: [
-      'Provide a safe, nurturing space to express your thoughts and emotions',
-      'Support you in managing pregnancy-related stress and uncertainty',
-      'Help you understand and navigate emotional and lifestyle changes',
-      'Offer gentle guidance to build confidence and emotional resilience',
-      'Encourage reflection and preparation for motherhood at your own pace',
-      'Equip you with simple, practical tools for everyday wellbeing',
-    ],
-  },
-} as const
-
-const debriefBookingSteps: ReadonlyArray<{
+type WeekItem = {
+  week: string
   title: string
   description: string
-  image?: string
-}> = [
-  {
-    title: '1. Reserve Your Slot',
-    description: 'Choose a date and time that fits your schedule and secure your session in just a few steps.',
-    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/bookslot.avif',
-  },
-  {
-    title: '2. Connect & Talk',
-    description: 'Meet your counsellor in a safe and private space, either through a secure online session link or in person, depending on your preference.',
-    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/debrief.jpg',
-  },
-  {
-    title: '3. Begin to Heal',
-    description: 'Begin your healing journey with supportive guidance, emotional clarity, and simple, practical steps to help you move forward.',
-  },
-] as const
-
-const prenatalBookingSteps: ReadonlyArray<{
-  title: string
-  description: string
-  image?: string
-}> = [
-  {
-    title: '1. Reserve Your Slot',
-    description: 'Choose a date and time that feels right for you and secure your prenatal wellbeing session in a few easy steps.',
-    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/bookslot.avif',
-  },
-  {
-    title: '2. Connect & Reflect',
-    description: 'Meet your counsellor in a safe and supportive space to talk through your emotions, concerns, and expectations during pregnancy.',
-    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/whyprenatal.webp',
-  },
-  {
-    title: '3. Prepare with Confidence',
-    description: 'Build practical emotional tools, clarity, and calm so you can move through pregnancy and motherhood with greater confidence.',
-    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/prenatal%20nursery-Photoroom.webp',
-  },
-] as const
-
-const motherhoodBookingSteps: ReadonlyArray<{
-  title: string
-  description: string
-  image?: string
-}> = [
-  {
-    title: '1. Reserve Your Slot',
-    description:
-      'Choose a suitable date and time, then book your motherhood support session in a few simple steps.',
-    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/bookslot.avif',
-  },
-  {
-    title: '2. Attend Guided Sessions',
-    description:
-      'Join structured weekly sessions focused on emotional support, newborn care, and practical wellbeing skills for daily motherhood.',
-    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/newmother_compressed.webp',
-  },
-  {
-    title: '3. Grow with Ongoing Support',
-    description:
-      'Apply practical tools between sessions, strengthen confidence, and continue your motherhood journey with consistent guidance.',
-    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/newborn.jpeg',
-  },
-] as const
-
-const prenatalIntro = {
-  title: 'Why Prenatal Wellbeing Matters',
-  intro:
-    'Pregnancy is not only a physical journey but also an emotional and mental one. As your body, routine, and relationships change, it is natural to experience a mix of excitement, uncertainty, and emotional shifts. Taking time to care for your wellbeing during this period helps you feel more grounded, supported, and confident as you prepare for motherhood.',
-  introMobile:
-    'Pregnancy brings physical, emotional, and mental changes. Caring for your wellbeing helps you feel grounded, supported, and more confident for motherhood.',
-  leadIn: 'Focusing on your emotional wellbeing during pregnancy can help you:',
-  points: [
-    'Better manage stress, anxiety, and emotional changes',
-    'Feel more confident and prepared for motherhood',
-    'Adjust to lifestyle and relationship changes more smoothly',
-    'Build a calm, supportive foundation for yourself and your baby',
-  ],
-  outro:
-    'Prioritising your wellbeing during this time allows you to move through your pregnancy with greater ease, clarity, and a stronger sense of emotional readiness for the journey ahead.',
-  outroMobile:
-    'Prioritising wellbeing helps you move through pregnancy with more calm, clarity, and emotional readiness.',
-  image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/whyprenatal.webp',
-} as const
-
-const premaritalWhyThisMatters = {
-  label: 'WHY THIS MATTERS',
-  title: 'Why This Matters',
-  intro:
-    'Relationships can bring love, companionship, and growth, but they can also come with misunderstandings, emotional distance, stress, and conflict. Without healthy communication and support, small issues can gradually affect trust, connection, and emotional wellbeing. Counselling provides a safe and supportive space for couples to better understand each other, strengthen communication, and navigate challenges together in a healthier way.',
-  points: [
-    'Improve communication and emotional understanding',
-    'Build trust, connection, and healthy conflict resolution skills',
-    'Prepare for long-term commitment and shared responsibilities',
-    'Strengthen emotional intimacy and relationship stability',
-  ],
-  image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/couple%20therapy-2e45fd9b-3560-48c0-9c8b-3e79555d6e31.jpg',
-  imageAlt: 'Couple receiving premarital counselling support',
-} as const
-
-const premaritalRelationshipQuote = {
-  text:
-    'Every relationship goes through seasons of growth, adjustment, and challenge. Whether you are preparing for marriage, newly married, or working through ongoing difficulties, this counselling space is designed to help couples reconnect, communicate openly, and grow together with greater understanding and support.',
-} as const
-
-const premaritalWhoThisIsFor = {
-  intro:
-    'This counselling service is designed for couples at different stages of their relationship journey who are seeking guidance, healthier communication, emotional support, and stronger connection. Whether you are preparing for marriage, adjusting to married life, navigating conflict, or working through relationship challenges together, this space provides support tailored to your unique relationship needs.',
-  items: [
-    {
-      title: 'Engaged Couples',
-      description:
-        'Couples preparing for marriage who want to build a strong foundation through healthy communication, shared expectations, and emotional understanding.',
-    },
-    {
-      title: 'Newly Married Couples',
-      description:
-        'Partners adjusting to married life, shared responsibilities, lifestyle changes, and building deeper connection during the early stages of marriage.',
-    },
-    {
-      title: 'Couples Facing Relationship Challenges',
-      description:
-        'Couples experiencing conflict, communication difficulties, emotional distance, or recurring misunderstandings within the relationship.',
-    },
-    {
-      title: 'Couples Navigating Life Transitions',
-      description:
-        'Partners adjusting to major life changes such as parenthood, financial pressure, relocation, career demands, or family-related stress.',
-    },
-  ],
-} as const
-
-const premaritalReasonsSection = {
-  title: 'Common Reasons Couples Seek Counselling',
-  items: [
-    {
-      title: 'Communication Challenges',
-      body: 'Difficulty expressing feelings, frequent misunderstandings, or feeling unheard within the relationship.',
-    },
-    {
-      title: 'Conflict & Recurring Arguments',
-      body: 'Ongoing disagreements, tension, or unresolved issues that affect connection and peace within the relationship.',
-    },
-    {
-      title: 'Emotional Distance',
-      body: 'Feeling disconnected, emotionally distant, or struggling to maintain closeness and intimacy.',
-    },
-    {
-      title: 'Premarital Preparation',
-      body: 'Preparing for marriage through conversations around expectations, values, finances, and future goals.',
-    },
-    {
-      title: 'Life Transitions & Stress',
-      body: 'Navigating major changes such as marriage, parenthood, relocation, financial pressure, or career stress together.',
-    },
-    {
-      title: 'Trust & Relationship Healing',
-      body: 'Working through trust issues, emotional hurt, or rebuilding connection after difficult experiences.',
-    },
-  ],
-} as const
-
-const premaritalProgramCards = {
-  highlights: {
-    title: 'Program Highlights',
-    rows: [
-      { label: 'Session Format', value: 'Individual Couple Sessions or Group Sessions' },
-      { label: 'Location', value: 'Online or Physical Sessions' },
-      { label: 'Session Duration', value: '1.5 – 2 Hours' },
-      { label: 'Focus Areas', value: 'Communication, emotional wellbeing, trust, and relationship growth' },
-      { label: 'Certification', value: 'Available for premarital completion programs' },
-    ],
-  },
-  gains: {
-    title: "What You'll Gain",
-    items: [
-      'Healthier communication and listening skills',
-      'Greater emotional understanding and connection',
-      'Practical tools for managing conflict and relationship stress',
-      'Improved trust, respect, and emotional support',
-      'Better preparation for marriage and shared responsibilities',
-      'A stronger and healthier relationship foundation',
-    ],
-  },
-  support: {
-    title: 'How We Help',
-    items: [
-      'Create a safe and non-judgmental space for open conversations',
-      'Guide couples through healthy communication and conflict resolution',
-      'Support emotional healing, trust-building, and relationship growth',
-      'Help couples navigate stress, expectations, and life transitions together',
-      'Provide practical relationship tools that strengthen long-term connection',
-    ],
-  },
-} as const
-
-const premaritalCTA = {
-  image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/premaritalcta.png',
-  heading: 'Your Relationship Deserves Care & Support',
-  body: 'Taking the step to strengthen your relationship is a sign of commitment, growth, and intentional love. Whether you are preparing for marriage or working through challenges together, support is available to help you build a healthier and more connected relationship.',
-  subtitle: 'Available for online or physical sessions in a safe and supportive environment.',
 }
 
-const prenatalJourney = {
-  title: 'A Space Just for You and Your Journey',
-  body: [
-    'Pregnancy is a deeply personal experience, and every journey into motherhood is unique. Whether you are a first-time mum navigating new emotions and uncertainties, or preparing to welcome another child while balancing life\'s demands, this space is designed with you in mind.',
-    'Through gentle guidance and supportive conversations, you are given the time, care, and understanding needed to reflect, adjust, and prepare for motherhood with confidence and emotional clarity.',
-  ],
-  subTitle: 'Who This Program Is For',
-  leadIn: 'This program is designed for:',
-  points: [
-    'First-time mothers adjusting to the emotional and physical changes of pregnancy',
-    'Expectant mothers experiencing stress, anxiety, or uncertainty',
-    'Women seeking emotional support, clarity, and confidence during pregnancy',
-    'Partners who wish to be involved and supportive during the journey',
-  ],
-  leftImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/prenatal%20nursery-Photoroom.webp',
-  rightImage: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/whyprenatal.webp',
-} as const
+const courseTabs: Array<{ key: TabKey; label: string }> = [
+  { key: 'overview', label: 'Overview' },
+  { key: 'notes', label: 'Notes' },
+  { key: 'quizzes', label: 'Quizzes' },
+  { key: 'certificate', label: 'Certificate' },
+  { key: 'reviews', label: 'Reviews' },
+]
 
-const motherhoodSupportSection = {
-  first: {
-    title: 'Why This Matters',
-    body:
-      'The transition into motherhood can bring both joy and unexpected emotional, mental, and physical challenges. Many first-time mothers experience feelings of uncertainty, exhaustion, anxiety, or pressure as they adjust to caring for themselves and their baby. Having the right support during this stage helps mothers feel more emotionally prepared, confident, and supported throughout pregnancy and early motherhood.',
-    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/whyitmaters(1).jpg',
-    imageAlt: 'Mother holding her baby during early motherhood support',
-  },
-  second: {
-    title: 'This program is designed to help first-time mothers:',
-    points: [
-      'Build emotional resilience and confidence',
-      'Develop practical newborn care skills',
-      'Improve maternal health and wellbeing awareness',
-      'Strengthen mother-baby bonding',
-      'Manage stress and postpartum challenges',
-      'Build healthier support systems and daily routines',
-    ],
-    image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/objectivess.jpeg',
-    imageAlt: 'Mother and child bonding in a calm home setting',
-  },
-} as const
+function createWeeklyContent(title: string): WeekItem[] {
+  return [
+    {
+      week: 'Week 1',
+      title: `Getting started with ${title}`,
+      description:
+        'An introduction to the course journey, expectations, and the core issues the program is designed to support in a safe and guided way.',
+    },
+    {
+      week: 'Week 2',
+      title: 'Understanding the foundations',
+      description:
+        'A closer look at the key emotional, relational, and practical foundations that will shape the rest of the learning experience.',
+    },
+    {
+      week: 'Week 3',
+      title: 'Practical tools and reflection',
+      description:
+        'Simple exercises, reflection prompts, and practical tools that help participants apply what they are learning to daily life.',
+    },
+    {
+      week: 'Week 4',
+      title: 'Strengthening confidence',
+      description:
+        'Activities focused on confidence-building, stability, and finding better ways to respond to common challenges and transitions.',
+    },
+    {
+      week: 'Week 5',
+      title: 'Consolidation and next steps',
+      description:
+        'A closing week for reviewing progress, identifying key takeaways, and preparing for the next stage of support or growth.',
+    },
+  ]
+}
 
-const motherhoodProgramCards = {
-  highlights: {
-    title: 'Program Highlights',
-    intro:
-      'This program is designed to provide structured, consistent support throughout your motherhood journey, combining emotional guidance with practical caregiving skills in a safe and supportive environment.',
-    rows: [
-      { label: 'Duration', value: '20 weeks' },
-      { label: 'Session Length', value: '2 hours per week' },
-      { label: 'Location', value: 'Online or Physical Sessions' },
-      { label: 'Certification', value: 'Awarded upon completion' },
-      { label: 'Format', value: 'Individual or Group Counselling Options' },
-      { label: 'Focus', value: 'Emotional wellbeing, newborn care, and maternal support' },
-    ],
-  },
-  gains: {
-    title: "What You'll Gain",
-    intro:
-      'This program helps you transition into motherhood with confidence, emotional strength, and practical knowledge, ensuring you feel supported every step of the way.',
-    items: [
-      'Greater emotional resilience and stability during pregnancy and postpartum',
-      "Confidence in newborn care and understanding your baby's needs",
-      'Stronger mother-baby bonding and emotional connection',
-      'Improved awareness of your physical and mental wellbeing',
-      'Practical tools to manage stress, anxiety, and daily motherhood challenges',
-      'A more supported, balanced, and positive motherhood experience',
-    ],
-  },
-  support: {
-    title: 'How We Help',
-    intro:
-      'We provide a safe, supportive, and structured space where you can learn, reflect, and grow through your motherhood journey. Our approach is gentle, practical, and focused on your individual needs.',
-    items: [
-      'Offer guided emotional and psychological support throughout pregnancy and early motherhood',
-      'Provide practical training on newborn care and daily routines',
-      'Help you understand and manage emotional changes with confidence',
-      'Encourage healthy bonding between you and your baby',
-      'Support you in building strong personal and family support systems',
-      'Create a non-judgmental space where you can openly share and grow',
-    ],
-  },
-} as const
+function OverviewCard({ title, value }: { title: string; value: string }) {
+  return (
+    <article className="courseOverviewPage__highlightCard">
+      <p className="courseOverviewPage__highlightLabel">{title}</p>
+      <p className="courseOverviewPage__highlightValue">{value}</p>
+    </article>
+  )
+}
 
 export default function CounsellingServicePage() {
   const { slug } = useParams<{ slug: string }>()
-  if (slug === 'career-workplace-support') {
-    return <Navigate to="/counselling-services/resilient-motherhood-program" replace />
-  }
   const content = slug ? counsellingServicesBySlug[slug] : undefined
+<<<<<<< HEAD
   const introRef = useRef<HTMLElement | null>(null)
   const prenatalJourneyRef = useRef<HTMLElement | null>(null)
   const motherhoodSupportRef = useRef<HTMLElement | null>(null)
@@ -530,10 +207,17 @@ export default function CounsellingServicePage() {
       observer.disconnect()
     }
   }, [slug])
+=======
+  const [activeTab, setActiveTab] = useState<TabKey>('overview')
+  const [openWeek, setOpenWeek] = useState<number>(0)
+
+  const weeklyContent = useMemo(() => createWeeklyContent(content?.title ?? 'this program'), [content?.title])
+>>>>>>> db3fbed (Featured programs update)
 
   if (!content) {
     return <Navigate to="/" replace />
   }
+<<<<<<< HEAD
   const heroDescription = content.pageDescription ?? content.description
   const isDebriefService =
     content.id === 'debrief-grief-support' ||
@@ -577,14 +261,36 @@ export default function CounsellingServicePage() {
     ? [debriefMosaicImage, debriefMosaicImageMiddle, debriefMosaicImageLast]
     : [content.introSectionImage ?? pageImage, pageImage, content.introSectionImage ?? pageImage]
   
+=======
+
+  const heroDescription =
+    content.pageDescription ??
+    content.description ??
+    'A guided learning experience designed to support growth, reflection, and practical progress.'
+
+  const aboutCourse =
+    content.introSectionBody ??
+    heroDescription +
+      ' This course overview brings together the key information, course structure, and learning highlights in one place.'
+
+  const programHighlights = [
+    { title: 'Format', value: 'Weekly guided sessions' },
+    { title: 'Access', value: 'Online and physical options' },
+    { title: 'Duration', value: 'Structured program pathway' },
+    { title: 'Support', value: 'One-on-one or group sessions' },
+    { title: 'Certificate', value: 'Awarded upon completion' },
+    { title: 'Price', value: 'Paid course' },
+  ]
+>>>>>>> db3fbed (Featured programs update)
 
   return (
     <>
       <SEOHead
-        title={pageTitle}
-        description={pageDescription}
+        title={`${content.title} | Course Overview`}
+        description={heroDescription}
         path={`/counselling-services/${content.slug}`}
         schemaPageType="WebPage"
+<<<<<<< HEAD
         image={shareImage}
         ogImageAlt={ogImageAlt}
         keywords={pageKeywords}
@@ -964,235 +670,153 @@ export default function CounsellingServicePage() {
               <div className="counsellingServicePage__bookingActions">
                 <Link to={`/book-session?service=${encodeURIComponent(content.slug)}`} className="counsellingServicePage__bookingButton">
                   Book Session
+=======
+        image={content.pageImage ?? content.image}
+        ogImageAlt={content.imageAlt}
+      />
+
+      <section className="courseOverviewPage">
+        <div className="courseOverviewPage__layout">
+          <div className="courseOverviewPage__heroShell">
+            <div
+              className="courseOverviewPage__heroImage"
+              style={{ backgroundImage: `linear-gradient(rgba(10, 14, 13, 0.22), rgba(10, 14, 13, 0.42)), url(${content.pageImage ?? content.image})` }}
+              role="img"
+              aria-label={content.imageAlt}
+            >
+              <div className="courseOverviewPage__heroOverlay">
+                <div className="courseOverviewPage__heroBadge">Paid Course</div>
+                <h1 className="courseOverviewPage__heroTitle">{content.title}</h1>
+                <p className="courseOverviewPage__heroText">{heroDescription}</p>
+                <Link to={`/book-session?service=${encodeURIComponent(content.slug)}`} className="courseOverviewPage__heroButton">
+                  Enrol Now
+>>>>>>> db3fbed (Featured programs update)
                 </Link>
-                <a
-                  href="https://docs.google.com/document/d/1kQSA2g1ofdej4uYuSxjDpPXZX-YojZp2/edit?usp=sharing&ouid=105813593224161752969&rtpof=true&sd=true"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="counsellingServicePage__bookingSecondaryButton"
-                >
-                  Learn More
-                </a>
               </div>
             </div>
-          </section>
-        ) : null}
+          </div>
 
-        {isPrenatalService ? (
-          <section
-            ref={prenatalJourneyRef}
-            className={`counsellingServicePage__prenatalJourney${isPrenatalJourneyVisible ? ' counsellingServicePage__prenatalJourney--visible' : ''}`}
-            aria-label="Prenatal support overview"
-          >
-            <div className="counsellingServicePage__prenatalJourneyFrame">
-              <aside className="counsellingServicePage__prenatalJourneySide counsellingServicePage__prenatalJourneySide--left" aria-hidden>
-                <img src={prenatalJourney.leftImage} alt="" loading="lazy" />
-              </aside>
-
-              <article className="counsellingServicePage__prenatalJourneyContent">
-                <h2 className="counsellingServicePage__prenatalJourneyTitle">{prenatalJourney.title}</h2>
-                {prenatalJourney.body.map((paragraph) => (
-                  <p key={paragraph} className="counsellingServicePage__prenatalJourneyText">
-                    {paragraph}
-                  </p>
-                ))}
-
-                <h3 className="counsellingServicePage__prenatalJourneySubtitle">{prenatalJourney.subTitle}</h3>
-                <p className="counsellingServicePage__prenatalJourneyLead">{prenatalJourney.leadIn}</p>
-                <ul className="counsellingServicePage__prenatalJourneyList" role="list">
-                  {prenatalJourney.points.map((point) => (
-                    <li key={point} className="counsellingServicePage__prenatalJourneyListItem">
-                      <HiCheckCircle className="counsellingServicePage__prenatalJourneyListIcon" aria-hidden />
-                      <span>{point}</span>
-                    </li>
-                  ))}
-                </ul>
-              </article>
-
-              <aside className="counsellingServicePage__prenatalJourneySide counsellingServicePage__prenatalJourneySide--right" aria-hidden>
-                <img src={prenatalJourney.rightImage} alt="" loading="lazy" />
-              </aside>
-             </div>
-          </section>
-        ) : null}
-
-        {isPrenatalService ? (
-          <section
-            ref={programCardsRef}
-            className={`counsellingServicePage__programCards${isProgramCardsVisible ? ' counsellingServicePage__programCards--visible' : ''}`}
-            aria-label="Program cards"
-          >
-            <div className="counsellingServicePage__programCardsGrid">
-              <article className="counsellingServicePage__programCard">
-                <h3 className="counsellingServicePage__programCardTitle">{prenatalProgramCards.highlights.title}</h3>
-                <ul className="counsellingServicePage__programRows" role="list">
-                  {prenatalProgramCards.highlights.rows.map((row) => (
-                    <li key={row.label} className="counsellingServicePage__programRow">
-                      <strong>{row.label}:</strong> {row.value}
-                    </li>
-                  ))}
-                </ul>
-              </article>
-
-              <article className="counsellingServicePage__programCard">
-                <h3 className="counsellingServicePage__programCardTitle">{prenatalProgramCards.gains.title}</h3>
-                <ul className="counsellingServicePage__programList">
-                  {prenatalProgramCards.gains.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </article>
-
-              <article className="counsellingServicePage__programCard">
-                <h3 className="counsellingServicePage__programCardTitle">{prenatalProgramCards.support.title}</h3>
-                <ul className="counsellingServicePage__programList">
-                  {prenatalProgramCards.support.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </article>
-            </div>
-          </section>
-        ) : null}
-
-        {isPrenatalService ? (
-          <section
-            ref={bookingRef}
-            className={`counsellingServicePage__bookingFlow${isBookingVisible ? ' counsellingServicePage__bookingFlow--visible' : ''}`}
-            aria-label="How to book a session"
-          >
-            <div className="counsellingServicePage__bookingInner">
-              <h3 className="counsellingServicePage__bookingHeading">How to Book a Session</h3>
-
-              <div className="counsellingServicePage__bookingGrid">
-                {prenatalBookingSteps.map((step) => (
-                  <article key={step.title} className="counsellingServicePage__bookingCard">
-                    <div className="counsellingServicePage__bookingImageWrap">
-                      <img
-                        className="counsellingServicePage__bookingImage"
-                        src={step.image ?? content.image}
-                        alt={step.title}
-                        loading="lazy"
-                      />
-                    </div>
-                    <h4 className="counsellingServicePage__bookingTitle">{step.title}</h4>
-                    <p className="counsellingServicePage__bookingText">{step.description}</p>
-                  </article>
-                ))}
+          <aside className="courseOverviewPage__sidebar" aria-label="Course details and weekly content">
+            <div className="courseOverviewPage__sidebarCard">
+              <div className="courseOverviewPage__sidebarHeader">
+                <p className="courseOverviewPage__sidebarKicker">Course overview</p>
+                <h2 className="courseOverviewPage__sidebarTitle">{content.title}</h2>
+                <p className="courseOverviewPage__sidebarDescription">{heroDescription}</p>
+                <button className="courseOverviewPage__tutorButton" type="button" disabled aria-disabled="true">
+                  View Tutor Profile
+                </button>
               </div>
 
-              <Link to={`/book-session?service=${encodeURIComponent(content.slug)}`} className="counsellingServicePage__bookingButton">
-                Book Session
-              </Link>
-            </div>
-          </section>
-        ) : null}
+              <div className="courseOverviewPage__sidebarSection">
+                <div className="courseOverviewPage__sidebarSectionHeader">
+                  <h3 className="courseOverviewPage__sidebarSectionTitle">Course content</h3>
+                  <span className="courseOverviewPage__sidebarSectionMeta">Weekly</span>
+                </div>
 
-        {isDebriefService ? (
-          <>
-            <section
-              ref={mosaicRef}
-              className={`counsellingServicePage__mosaic${isMosaicVisible ? ' counsellingServicePage__mosaic--visible' : ''}`}
-              aria-label="Grief support highlights"
-            >
-              <div className="counsellingServicePage__mosaicGrid">
-                {debriefMosaicContent.map((item, index) => {
-                  if (item.type === 'image') {
-                    const imageSrc = mosaicImages[Math.floor(index / 2)] ?? content.image
+                <div className="courseOverviewPage__accordion" role="list">
+                  {weeklyContent.map((item, index) => {
+                    const isOpen = openWeek === index
+
                     return (
-                      <article key={`mosaic-image-${index}`} className="counsellingServicePage__mosaicCell">
-                        <img
-                          className="counsellingServicePage__mosaicImage"
-                          src={imageSrc}
-                          alt={content.imageAlt}
-                          loading="lazy"
-                        />
-                      </article>
-                    )
-                  }
+                      <article key={item.week} className={`courseOverviewPage__accordionItem${isOpen ? ' courseOverviewPage__accordionItem--open' : ''}`} role="listitem">
+                        <button
+                          type="button"
+                          className="courseOverviewPage__accordionButton"
+                          onClick={() => setOpenWeek(isOpen ? -1 : index)}
+                          aria-expanded={isOpen}
+                        >
+                          <span>
+                            <span className="courseOverviewPage__accordionWeek">{item.week}</span>
+                            <span className="courseOverviewPage__accordionTitle">{item.title}</span>
+                          </span>
+                          <span className="courseOverviewPage__accordionChevron" aria-hidden>
+                            {isOpen ? '−' : '⌄'}
+                          </span>
+                        </button>
 
-                  return (
-                    <article key={item.title} className="counsellingServicePage__mosaicCell counsellingServicePage__mosaicCell--text">
-                      <h3 className="counsellingServicePage__mosaicTitle">{item.title}</h3>
-                      <p className="counsellingServicePage__mosaicBody">{item.body}</p>
-                    </article>
-                  )
-                })}
-              </div>
-            </section>
-
-            <section
-              ref={programCardsRef}
-              className={`counsellingServicePage__programCards${isProgramCardsVisible ? ' counsellingServicePage__programCards--visible' : ''}`}
-              aria-label="Program cards"
-            >
-              <div className="counsellingServicePage__programCardsGrid">
-                <article className="counsellingServicePage__programCard">
-                  <h3 className="counsellingServicePage__programCardTitle">{debriefProgramCards.highlights.title}</h3>
-                  <ul className="counsellingServicePage__programRows" role="list">
-                    {debriefProgramCards.highlights.rows.map((row) => (
-                      <li key={row.label} className="counsellingServicePage__programRow">
-                        <strong>{row.label}:</strong> {row.value}
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-
-                <article className="counsellingServicePage__programCard">
-                  <h3 className="counsellingServicePage__programCardTitle">{debriefProgramCards.gains.title}</h3>
-                  <ul className="counsellingServicePage__programList">
-                    {debriefProgramCards.gains.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </article>
-
-                <article className="counsellingServicePage__programCard">
-                  <h3 className="counsellingServicePage__programCardTitle">{debriefProgramCards.support.title}</h3>
-                  <ul className="counsellingServicePage__programList">
-                    {debriefProgramCards.support.items.map((item) => (
-                      <li key={item}>{item}</li>
-                    ))}
-                  </ul>
-                </article>
-              </div>
-            </section>
-
-            <section
-              ref={bookingRef}
-              className={`counsellingServicePage__bookingFlow${isBookingVisible ? ' counsellingServicePage__bookingFlow--visible' : ''}`}
-              aria-label="How to book a session"
-            >
-              <div className="counsellingServicePage__bookingInner">
-                <h3 className="counsellingServicePage__bookingHeading">How to Book a Session</h3>
-
-                <div className="counsellingServicePage__bookingGrid">
-                  {debriefBookingSteps.map((step, index) => {
-                    const imageSrc = step.image ?? mosaicImages[index] ?? content.image
-                    return (
-                      <article key={step.title} className="counsellingServicePage__bookingCard">
-                        <div className="counsellingServicePage__bookingImageWrap">
-                          <img
-                            className="counsellingServicePage__bookingImage"
-                            src={imageSrc}
-                            alt={step.title}
-                            loading="lazy"
-                          />
-                        </div>
-                        <h4 className="counsellingServicePage__bookingTitle">{step.title}</h4>
-                        <p className="counsellingServicePage__bookingText">{step.description}</p>
+                        {isOpen ? (
+                          <div className="courseOverviewPage__accordionBody">
+                            <p>{item.description}</p>
+                          </div>
+                        ) : null}
                       </article>
                     )
                   })}
                 </div>
-
-                <Link to={`/book-session?service=${encodeURIComponent(content.slug)}`} className="counsellingServicePage__bookingButton">
-                  Book Session
-                </Link>
               </div>
-            </section>
-          </>
-        ) : null}
+            </div>
+          </aside>
+        </div>
+
+        <div className="courseOverviewPage__tabsWrap">
+          <div className="courseOverviewPage__tabs" role="tablist" aria-label="Course sections">
+            {courseTabs.map((tab) => (
+              <button
+                key={tab.key}
+                type="button"
+                role="tab"
+                aria-selected={activeTab === tab.key}
+                className={`courseOverviewPage__tab${activeTab === tab.key ? ' courseOverviewPage__tab--active' : ''}`}
+                onClick={() => setActiveTab(tab.key)}
+              >
+                {tab.label}
+              </button>
+            ))}
+          </div>
+
+          <div className="courseOverviewPage__panels">
+            {activeTab === 'overview' ? (
+              <section className="courseOverviewPage__panel" aria-labelledby="overview-panel-title">
+                <h2 id="overview-panel-title" className="courseOverviewPage__panelTitle">
+                  About this course
+                </h2>
+                <p className="courseOverviewPage__panelIntro">{aboutCourse}</p>
+
+                <div className="courseOverviewPage__highlightGrid" aria-label="Program highlights">
+                  {programHighlights.map((item) => (
+                    <OverviewCard key={item.title} title={item.title} value={item.value} />
+                  ))}
+                </div>
+              </section>
+            ) : null}
+
+            {activeTab === 'notes' ? (
+              <section className="courseOverviewPage__panel" aria-labelledby="notes-panel-title">
+                <h2 id="notes-panel-title" className="courseOverviewPage__panelTitle">
+                  Notes
+                </h2>
+                <div className="courseOverviewPage__emptyState">Notes will appear here soon.</div>
+              </section>
+            ) : null}
+
+            {activeTab === 'quizzes' ? (
+              <section className="courseOverviewPage__panel" aria-labelledby="quizzes-panel-title">
+                <h2 id="quizzes-panel-title" className="courseOverviewPage__panelTitle">
+                  Quizzes
+                </h2>
+                <div className="courseOverviewPage__emptyState">Quiz content is coming soon.</div>
+              </section>
+            ) : null}
+
+            {activeTab === 'certificate' ? (
+              <section className="courseOverviewPage__panel" aria-labelledby="certificate-panel-title">
+                <h2 id="certificate-panel-title" className="courseOverviewPage__panelTitle">
+                  Certificate
+                </h2>
+                <div className="courseOverviewPage__certificateCard">Certificate awarded upon completion.</div>
+              </section>
+            ) : null}
+
+            {activeTab === 'reviews' ? (
+              <section className="courseOverviewPage__panel" aria-labelledby="reviews-panel-title">
+                <h2 id="reviews-panel-title" className="courseOverviewPage__panelTitle">
+                  Reviews
+                </h2>
+                <div className="courseOverviewPage__emptyState">Reviews will be added here later.</div>
+              </section>
+            ) : null}
+          </div>
+        </div>
       </section>
     </>
   )

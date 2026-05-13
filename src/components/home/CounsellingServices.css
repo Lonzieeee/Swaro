@@ -10,7 +10,7 @@
 
 .counsellingServices__heading {
   margin: 0 0 clamp(1.8rem, 4vw, 2.6rem);
-  text-align: center;
+  text-align: left;
   font-family: "DM Serif Display", Georgia, serif;
   font-size: clamp(1.9rem, 3vw, 2.8rem);
   font-weight: 400;
@@ -21,6 +21,10 @@
   transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
+.counsellingServices__headingAccent {
+  color: #1f6b5a;
+}
+
 .counsellingServices--visible .counsellingServices__heading {
   opacity: 1;
   transform: translateY(0);
@@ -29,15 +33,20 @@
 .counsellingServices__grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: clamp(1.2rem, 2vw, 1.6rem);
+  gap: clamp(0.8rem, 1.6vw, 1.2rem);
 }
 
 .counsellingServices__card {
   display: flex;
   flex-direction: column;
+  background: #ffffff;
+  border-radius: 0.9rem;
+  overflow: hidden;
+  border: 1px solid rgba(24, 28, 26, 0.06);
+  box-shadow: 0 4px 14px rgba(18, 22, 20, 0.04);
   opacity: 0;
-  transform: translateY(34px);
-  transition: opacity 0.65s ease, transform 0.65s ease;
+  transform: translateY(24px);
+  transition: opacity 0.5s ease, transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .counsellingServices--visible .counsellingServices__card {
@@ -47,55 +56,143 @@
 
 .counsellingServices__mediaCard {
   overflow: hidden;
-  border-radius: 0.8rem 0.8rem 1.55rem 1.55rem;
   background: #d9dbd6;
 }
 
 .counsellingServices__image {
   width: 100%;
-  aspect-ratio: 16 / 9;
+  aspect-ratio: 4 / 3;
   object-fit: cover;
-  border-radius: 0.8rem 0.8rem 0 0;
   display: block;
 }
 
-.counsellingServices__titleWrap {
-  background: #d9dbd6;
-  border-radius: 0 0 1.55rem 1.55rem;
-  padding: 0.72rem 1rem 0.82rem;
+.counsellingServices__content {
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  min-height: 120px;
+  flex: 1 1 auto;
+}
+
+.counsellingServices__meta {
+  display: flex;
+  align-items: center;
+}
+
+.counsellingServices__tag {
+  display: inline-block;
+  background: rgba(31, 107, 90, 0.08);
+  color: #1f6b5a;
+  font-size: 0.74rem;
+  padding: 0.12rem 0.44rem;
+  border-radius: 999px;
+  font-weight: 600;
 }
 
 .counsellingServices__title {
   margin: 0;
   font-family: "DM Serif Display", Georgia, serif;
-  font-size: clamp(0.98rem, 1.3vw, 1.12rem);
+  font-size: clamp(0.98rem, 1.1vw, 1.02rem);
   font-weight: 400;
-  line-height: 1.3;
-  color: #2b3634;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 2px;
+  line-height: 1.22;
+  color: #17221f;
 }
+
 
 .counsellingServices__titleLink {
   color: inherit;
-  text-decoration: inherit;
-  text-decoration-thickness: inherit;
-  text-underline-offset: inherit;
-  transition: color 0.2s ease;
+  text-decoration: none;
+  transition: color 0.16s ease;
 }
 
 .counsellingServices__titleLink:hover {
-  color: #1d2f2b;
+  color: #0f1b19;
 }
 
 .counsellingServices__description {
-  margin: 0.88rem 0 0;
+  margin: 0;
   font-family: "DM Sans", sans-serif;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   font-weight: 300;
-  line-height: 1.66;
-  color: #2f3f3c;
+  line-height: 1.45;
+  color: #3a4a47;
+  margin-top: 0.2rem;
+  line-clamp: 2;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.counsellingServices__footer {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+}
+
+.counsellingServices__cta {
+  margin-top: 0.4rem;
+  display: inline-block;
+  background: #1f6b5a;
+  color: #fff;
+  padding: 0.38rem 0.6rem;
+  border-radius: 0.46rem;
+  font-weight: 600;
+  text-decoration: none;
+  font-size: 0.86rem;
+  transition: background 0.16s ease, transform 0.12s ease;
+}
+
+.counsellingServices__cta:hover {
+  background: #184f44;
+  transform: translateY(-2px);
+}
+
+.counsellingServices__actions {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.counsellingServices__overview {
+  display: inline-block;
+  text-decoration: none;
+  background: transparent;
+  border: 1px solid rgba(15, 20, 18, 0.06);
+  color: #556460;
+  padding: 0.34rem 0.56rem;
+  border-radius: 0.46rem;
+  font-weight: 600;
+  font-size: 0.86rem;
+  opacity: 0.78;
+  transition: background 0.12s ease, color 0.12s ease, border-color 0.12s ease, transform 0.1s ease;
+}
+
+.counsellingServices__overview:hover {
+  background: rgba(31, 107, 90, 0.06);
+  border-color: rgba(31, 107, 90, 0.18);
+  color: #184f44;
+  transform: translateY(-1px);
+}
+
+.counsellingServices__learn {
+  display: inline-block;
+  background: transparent;
+  color: #1f6b5a;
+  border: 1px solid rgba(31, 107, 90, 0.12);
+  padding: 0.34rem 0.56rem;
+  border-radius: 0.46rem;
+  font-weight: 700;
+  font-size: 0.86rem;
+  text-decoration: none;
+  transition: background 0.12s ease, color 0.12s ease, transform 0.1s ease;
+}
+
+.counsellingServices__learn:hover {
+  background: rgba(31, 107, 90, 0.06);
+  color: #184f44;
+  transform: translateY(-2px);
 }
 
 @media (max-width: 1024px) {
@@ -110,8 +207,14 @@
   }
 
   .counsellingServices__description {
-    display: none;
+    line-clamp: 4;
+    -webkit-line-clamp: 4;
   }
+}
+
+.counsellingServices__card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 26px rgba(11, 16, 14, 0.08);
 }
 
 @media (prefers-reduced-motion: reduce) {

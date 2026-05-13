@@ -14,7 +14,20 @@ export default function ScrollToTop() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return
-    const run = () => window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    const targetId = hash ? decodeURIComponent(hash.replace('#', '')) : ''
+
+    const run = () => {
+      if (targetId) {
+        const targetEl = document.getElementById(targetId)
+        if (targetEl) {
+          targetEl.scrollIntoView({ block: 'start', behavior: 'auto' })
+          return
+        }
+      }
+
+      window.scrollTo({ top: 0, left: 0, behavior: 'auto' })
+    }
+
     run()
     /* Extra passes handle late layout shifts (hero images/fonts) after route change. */
     const raf = requestAnimationFrame(run)
