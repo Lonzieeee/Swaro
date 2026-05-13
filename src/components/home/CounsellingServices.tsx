@@ -28,6 +28,7 @@ export default function CounsellingServices() {
 
   return (
     <section
+      id="featured-programs"
       ref={sectionRef}
       className={`counsellingServices${visible ? ' counsellingServices--visible' : ''}`}
       aria-labelledby="counselling-services-heading"

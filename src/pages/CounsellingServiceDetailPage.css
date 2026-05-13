@@ -1,0 +1,2119 @@
+.counsellingServicePage {
+  background: #f8f9f6;
+}
+
+.counsellingServicePage__hero {
+  min-height: clamp(24rem, 78vh, 52rem);
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  padding: clamp(2.8rem, 7vw, 4.8rem) clamp(1.2rem, 4vw, 2rem);
+}
+
+.counsellingServicePage__inner {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.counsellingServicePage__label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e7e4dc;
+  margin-bottom: 0.85rem;
+}
+
+.counsellingServicePage__heading {
+  margin: 0;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.9rem, 4vw, 2.8rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #ffffff;
+  max-width: 20ch;
+}
+
+.counsellingServicePage__summary {
+  margin: 1rem 0 0;
+  max-width: 600px;
+  font-family: "DM Sans", sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.counsellingServicePage__summaryMobile {
+  display: none;
+}
+
+.counsellingServicePage__summaryDesktop {
+  display: inline;
+}
+
+.counsellingServicePage__summarySubtitle {
+  display: block;
+  margin-bottom: 0.35rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #f3dfaa;
+}
+
+.counsellingServicePage__bookButton {
+  margin-top: 1.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.78rem 1.2rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #f3dfaa;
+  color: #1f2c29;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.counsellingServicePage__bookButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.counsellingServicePage__intro {
+  padding: clamp(2.4rem, 6vw, 4rem) clamp(1.2rem, 4vw, 2rem) clamp(3rem, 7vw, 4.8rem);
+}
+
+.counsellingServicePage__introInner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(320px, 0.9fr);
+  align-items: center;
+  gap: clamp(2rem, 4vw, 4rem);
+}
+
+.counsellingServicePage__introInner--premarital {
+  grid-template-columns: minmax(320px, 0.92fr) minmax(0, 1fr);
+  align-items: center;
+}
+
+.counsellingServicePage__introText {
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+  font-weight: 300;
+  line-height: 1.9;
+  color: #2e3b38;
+  opacity: 0;
+  transform: translateX(-42px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.counsellingServicePage__introText--premarital {
+  color: #2b3533;
+  align-self: center;
+}
+
+.counsellingServicePage__introEyebrow {
+  margin: 0 0 0.55rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #c9a84c;
+}
+
+.counsellingServicePage__introHeading {
+  margin: 0 0 0.9rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #1f2c29;
+}
+
+.counsellingServicePage__introParagraph {
+  margin: 0 0 1rem;
+}
+
+.counsellingServicePage__introOutro {
+  margin: 1rem 0 0;
+  font-weight: 500;
+  color: #1f2c29;
+}
+
+.counsellingServicePage__introParagraph--mobile {
+  display: none;
+}
+
+.counsellingServicePage__introParagraph--desktop {
+  display: block;
+}
+
+.counsellingServicePage__introLead {
+  margin: 0.6rem 0 0.45rem;
+  font-weight: 500;
+}
+
+.counsellingServicePage__introBenefits {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.62rem;
+}
+
+.counsellingServicePage__introBenefitItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.counsellingServicePage__introBenefitIcon {
+  width: 1.05rem;
+  height: 1.05rem;
+  color: #2d6a4f;
+  margin-top: 0.22rem;
+  flex-shrink: 0;
+}
+
+.counsellingServicePage__introFooter {
+  max-width: 1280px;
+  margin: clamp(1rem, 2vw, 1.4rem) auto 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.98rem, 1.15vw, 1.08rem);
+  font-weight: 300;
+  line-height: 1.9;
+  color: #2e3b38;
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.counsellingServicePage__introImage {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+  border-radius: 1rem;
+  display: block;
+  opacity: 0;
+  transform: translateX(42px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.counsellingServicePage__introImage--premarital {
+  width: 100%;
+  height: 100%;
+  min-height: clamp(420px, 48vw, 620px);
+  aspect-ratio: auto;
+  border-radius: 1.25rem;
+  box-shadow: 0 18px 40px rgba(27, 67, 50, 0.12);
+}
+
+.counsellingServicePage__intro--visible .counsellingServicePage__introText,
+.counsellingServicePage__intro--visible .counsellingServicePage__introImage {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.counsellingServicePage__intro--visible .counsellingServicePage__introFooter {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0.12s;
+}
+
+.counsellingServicePage__intro--visible .counsellingServicePage__introImage {
+  transition-delay: 0.08s;
+}
+
+.counsellingServicePage__intro--premarital .counsellingServicePage__introText {
+  transform: translateX(42px);
+}
+
+.counsellingServicePage__intro--premarital .counsellingServicePage__introImage {
+  transform: translateX(-42px);
+}
+
+.counsellingServicePage__intro--premarital.counsellingServicePage__intro--visible .counsellingServicePage__introText,
+.counsellingServicePage__intro--premarital.counsellingServicePage__intro--visible .counsellingServicePage__introImage {
+  transform: translateX(0);
+}
+
+.counsellingServicePage__intro--premarital .counsellingServicePage__introBenefits {
+  margin-top: 1.15rem;
+}
+
+.counsellingServicePage__intro--premarital .counsellingServicePage__introBenefitItem {
+  font-size: clamp(0.96rem, 1vw, 1.05rem);
+}
+
+@media (max-width: 899px) {
+  .counsellingServicePage__introInner--premarital {
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage__introImage--premarital {
+    min-height: 0;
+    height: auto;
+    aspect-ratio: 16 / 10;
+  }
+
+  .counsellingServicePage__intro--premarital .counsellingServicePage__introText {
+    transform: translateY(20px);
+  }
+
+  .counsellingServicePage__intro--premarital .counsellingServicePage__introImage {
+    transform: translateY(-12px);
+  }
+
+  .counsellingServicePage__intro--premarital .counsellingServicePage__introBenefitItem {
+    align-items: flex-start;
+  }
+
+  .counsellingServicePage__intro--premarital .counsellingServicePage__introBenefits {
+    display: none;
+  }
+}
+
+.counsellingServicePage__relationshipQuote {
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  background: linear-gradient(180deg, #223a63 0%, #1f355b 100%);
+  color: #ffffff;
+  min-height: clamp(420px, 58vw, 560px);
+  display: flex;
+  align-items: center;
+  padding: clamp(5rem, 8vw, 7rem) clamp(1.2rem, 4vw, 2rem);
+}
+
+.counsellingServicePage__relationshipQuoteWave {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: clamp(38px, 4vw, 56px);
+  background: #f8f9f6;
+  z-index: 1;
+}
+
+.counsellingServicePage__relationshipQuoteWave--top {
+  top: 0;
+  border-bottom-left-radius: 50% 100%;
+  border-bottom-right-radius: 50% 100%;
+}
+
+.counsellingServicePage__relationshipQuoteWave--bottom {
+  bottom: 0;
+  border-top-left-radius: 50% 100%;
+  border-top-right-radius: 50% 100%;
+}
+
+.counsellingServicePage__relationshipQuoteInner {
+  position: relative;
+  z-index: 2;
+  max-width: min(1050px, 92vw);
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.75s ease, transform 0.75s ease;
+}
+
+.counsellingServicePage__relationshipQuote--visible .counsellingServicePage__relationshipQuoteInner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__relationshipQuoteText {
+  margin: 0;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.55rem, 2.6vw, 3.2rem);
+  font-weight: 400;
+  line-height: 1.42;
+  letter-spacing: 0.01em;
+  color: #fffdf7;
+  text-wrap: balance;
+  text-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+}
+
+.counsellingServicePage__relationshipQuoteSource {
+  margin: 1.6rem 0 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #f3dfaa;
+}
+
+@media (max-width: 760px) {
+  .counsellingServicePage__relationshipQuote {
+    min-height: clamp(360px, 92vw, 500px);
+    padding: clamp(4rem, 12vw, 5rem) 1rem;
+  }
+
+  .counsellingServicePage__relationshipQuoteInner {
+    max-width: 94vw;
+  }
+
+  .counsellingServicePage__relationshipQuoteText {
+    font-size: clamp(1.15rem, 5vw, 1.7rem);
+    line-height: 1.55;
+  }
+
+  .counsellingServicePage__relationshipQuoteSource {
+    margin-top: 1.1rem;
+  }
+}
+
+.counsellingServicePage__whoThisIsFor {
+  background: #f8f9f6;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  padding: clamp(3.5rem, 8vw, 5.5rem) clamp(1.2rem, 4vw, 2rem);
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.counsellingServicePage__whoThisIsFor--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__whoThisIsForInner {
+  max-width: 1280px;
+  width: 100%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(300px, 0.9fr) minmax(350px, 1fr);
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+  align-items: start;
+}
+
+.counsellingServicePage__whoThisIsForText {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease 0.12s, transform 0.7s ease 0.12s;
+}
+
+.counsellingServicePage__whoThisIsFor--visible .counsellingServicePage__whoThisIsForText {
+  opacity: 1;
+  transform: translateY(0);
+}
+.counsellingServicePage__whoThisIsForHeading {
+  margin: 0 0 1rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.8rem, 2.5vw, 2.4rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #1b4332;
+}
+
+.counsellingServicePage__whoThisIsForIntro {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.95rem, 1.1vw, 1.08rem);
+  font-weight: 300;
+  line-height: 1.8;
+  color: #4a4a4a;
+}
+
+.counsellingServicePage__accordionContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease 0.24s, transform 0.7s ease 0.24s;
+}
+
+.counsellingServicePage__whoThisIsFor--visible .counsellingServicePage__accordionContainer {
+  opacity: 1;
+  transform: translateY(0);
+}
+.counsellingServicePage__accordionItem {
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(27, 67, 50, 0.08);
+}
+
+.counsellingServicePage__accordionButton {
+  width: 100%;
+  background: #1B4332;
+  color: #ffffff;
+  border: none;
+  padding: 1.1rem 1.5rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1rem, 1.2vw, 1.3rem);
+  font-weight: 400;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: background 0.3s ease;
+}
+
+.counsellingServicePage__accordionButton:hover {
+  background: #0D2B1D;
+}
+
+.counsellingServicePage__accordionIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.5rem;
+  height: 1.5rem;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: #C9A84C;
+  flex-shrink: 0;
+  transition: transform 0.3s ease;
+}
+
+.counsellingServicePage__accordionItem--open .counsellingServicePage__accordionIcon {
+  transform: rotate(45deg);
+}
+
+.counsellingServicePage__accordionTitle {
+  flex: 1;
+  margin: 0;
+}
+
+.counsellingServicePage__accordionContent {
+  background: #F9F5EC;
+  padding: 1.25rem 1.5rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.93rem, 1vw, 1.02rem);
+  font-weight: 300;
+  line-height: 1.7;
+  color: #2E3B38;
+  animation: slideDown 0.35s ease-out;
+}
+
+.counsellingServicePage__accordionContent p {
+  margin: 0;
+}
+
+.counsellingServicePage__premaritalReasons {
+  position: relative;
+  min-height: min(92vh, 980px);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  isolation: isolate;
+  padding: clamp(3.5rem, 8vw, 5.5rem) clamp(1.2rem, 4vw, 2rem);
+}
+
+.counsellingServicePage__premaritalReasonsVideo,
+.counsellingServicePage__premaritalReasonsOverlay {
+  position: absolute;
+  inset: 0;
+}
+
+.counsellingServicePage__premaritalReasonsVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  z-index: 0;
+}
+
+.counsellingServicePage__premaritalReasonsOverlay {
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(10, 22, 35, 0.58) 0%, rgba(18, 33, 50, 0.42) 55%, rgba(12, 24, 36, 0.62) 100%),
+    radial-gradient(circle at top, rgba(255, 255, 255, 0.12), transparent 48%);
+}
+
+.counsellingServicePage__premaritalReasonsContent {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  color: #ffffff;
+}
+
+.counsellingServicePage__premaritalReasonsHeading {
+  margin: 0 0 clamp(1.5rem, 3vw, 2.2rem);
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.9rem, 3.4vw, 3rem);
+  font-weight: 400;
+  line-height: 1.15;
+  text-align: center;
+  text-wrap: balance;
+  text-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+}
+
+.counsellingServicePage__premaritalReasonsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1rem, 2vw, 1.4rem);
+  margin-top: clamp(2rem, 4vw, 3.2rem);
+}
+
+.counsellingServicePage__premaritalReasonCard {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 22px;
+  padding: 1.35rem 1.3rem 1.2rem;
+  background: rgba(14, 22, 34, 0.48);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+}
+
+.counsellingServicePage__premaritalReasonIcon {
+  width: 1.35rem;
+  height: 1.35rem;
+  margin-bottom: 0.9rem;
+  color: #f3dfaa;
+}
+
+.counsellingServicePage__premaritalReasonTitle {
+  margin: 0 0 0.7rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.12rem, 1.5vw, 1.45rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #ffffff;
+}
+
+.counsellingServicePage__premaritalReasonBody {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.92rem, 1vw, 1rem);
+  line-height: 1.75;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.counsellingServicePage__programCards--premarital {
+  padding-top: clamp(2.4rem, 4vw, 3.2rem);
+  padding-bottom: clamp(2.4rem, 4vw, 3.2rem);
+  padding-left: clamp(1rem, 4vw, 2.4rem);
+  padding-right: clamp(1rem, 4vw, 2.4rem);
+}
+
+.counsellingServicePage__programCards--premarital .counsellingServicePage__programCard {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.counsellingServicePage__programCards--premarital--visible .counsellingServicePage__programCard {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__programCards--premarital .counsellingServicePage__programCardsGrid .counsellingServicePage__programCard:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.counsellingServicePage__programCards--premarital .counsellingServicePage__programCardsGrid .counsellingServicePage__programCard:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.counsellingServicePage__programCards--premarital .counsellingServicePage__programCardsGrid .counsellingServicePage__programCard:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.counsellingServicePage__programCards--premarital .counsellingServicePage__programCardsGrid {
+  gap: clamp(1.4rem, 2.6vw, 2.2rem);
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+  margin-bottom: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+/* Premarital closing CTA — calm full-bleed panel (matches reference layout; uses premaritalCTA image + copy) */
+.counsellingServicePage__premaritalCta {
+  position: relative;
+  isolation: isolate;
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: clamp(26rem, 62vh, 40rem);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(3.5rem, 10vw, 5.5rem) clamp(1.25rem, 4vw, 2rem) clamp(4rem, 11vw, 6rem);
+  overflow: hidden;
+  background: #e8eef0;
+}
+
+.counsellingServicePage__premaritalCtaMedia {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.counsellingServicePage__premaritalCtaImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  transform: scale(1.02);
+}
+
+.counsellingServicePage__premaritalCtaScrim {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background:
+    linear-gradient(180deg, rgba(248, 249, 246, 0.22) 0%, rgba(232, 238, 240, 0.62) 45%, rgba(232, 238, 240, 0.78) 100%),
+    linear-gradient(90deg, rgba(15, 35, 42, 0.12) 0%, rgba(15, 35, 42, 0.05) 50%, rgba(15, 35, 42, 0.14) 100%);
+  pointer-events: none;
+}
+
+.counsellingServicePage__premaritalCtaInner {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 44rem;
+  margin: 0 auto;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.counsellingServicePage__premaritalCta--visible .counsellingServicePage__premaritalCtaInner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__premaritalCta--visible .counsellingServicePage__premaritalCtaHeading {
+  transition-delay: 0.06s;
+}
+
+.counsellingServicePage__premaritalCta--visible .counsellingServicePage__premaritalCtaBody {
+  transition: opacity 0.55s ease 0.12s;
+}
+
+.counsellingServicePage__premaritalCta--visible .counsellingServicePage__premaritalCtaSubtitle {
+  transition: opacity 0.55s ease 0.18s;
+}
+
+.counsellingServicePage__premaritalCta--visible .counsellingServicePage__premaritalCtaButton {
+  transition:
+    opacity 0.5s ease 0.22s,
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+.counsellingServicePage__premaritalCtaHeading {
+  margin: 0 0 clamp(0.85rem, 2vw, 1.1rem);
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.65rem, 3.4vw, 2.35rem);
+  font-weight: 400;
+  line-height: 1.18;
+  letter-spacing: -0.02em;
+  color: #2b3230;
+  text-wrap: balance;
+}
+
+.counsellingServicePage__premaritalCtaBody {
+  margin: 0 auto clamp(0.75rem, 2vw, 1rem);
+  max-width: 42rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.95rem, 1.35vw, 1.05rem);
+  font-weight: 400;
+  line-height: 1.68;
+  color: #3a4340;
+}
+
+.counsellingServicePage__premaritalCtaSubtitle {
+  margin: 0 auto clamp(1.35rem, 3vw, 1.75rem);
+  max-width: 38rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.88rem, 1.1vw, 0.98rem);
+  font-style: italic;
+  font-weight: 400;
+  line-height: 1.55;
+  color: #4a5450;
+}
+
+.counsellingServicePage__premaritalCtaButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.82rem 2.15rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.86rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #1f2c29;
+  background: #f3dfaa;
+  border: none;
+  box-shadow: 0 8px 22px rgba(13, 43, 29, 0.22);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+.counsellingServicePage__premaritalCtaButton:hover {
+  transform: translateY(-2px);
+  background: #ead598;
+  box-shadow: 0 12px 28px rgba(13, 43, 29, 0.28);
+}
+
+.counsellingServicePage__premaritalCtaButton:focus-visible {
+  outline: 2px solid #1b4332;
+  outline-offset: 3px;
+}
+
+.counsellingServicePage__premaritalCtaWave {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  z-index: 3;
+  height: clamp(2rem, 5vw, 3rem);
+  color: #f8f9f6;
+  pointer-events: none;
+}
+
+.counsellingServicePage__premaritalCtaWaveSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .counsellingServicePage__premaritalCtaInner {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .counsellingServicePage__premaritalCtaButton:hover {
+    transform: none;
+  }
+}
+
+@media (max-width: 720px) {
+  .counsellingServicePage__premaritalCta {
+    min-height: auto;
+    padding: clamp(3rem, 12vw, 4rem) 1.1rem clamp(3.5rem, 14vw, 4.5rem);
+  }
+
+  .counsellingServicePage__premaritalCtaHeading {
+    font-size: clamp(1.45rem, 6vw, 1.85rem);
+  }
+
+  .counsellingServicePage__premaritalCtaBody {
+    font-size: 0.94rem;
+    line-height: 1.62;
+  }
+
+  .counsellingServicePage__premaritalCtaSubtitle {
+    font-size: 0.86rem;
+  }
+
+  .counsellingServicePage__premaritalCtaButton {
+    width: min(100%, 18rem);
+    padding: 0.78rem 1.6rem;
+  }
+}
+
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .counsellingServicePage__whoThisIsForInner {
+    grid-template-columns: 1fr;
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+
+  .counsellingServicePage__premaritalReasonsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .counsellingServicePage__programCards--premarital .counsellingServicePage__programCardsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .counsellingServicePage__whoThisIsFor {
+    padding: clamp(2.5rem, 6vw, 3.5rem) 1rem;
+  }
+
+  .counsellingServicePage__premaritalReasons {
+    min-height: auto;
+    padding: clamp(3rem, 8vw, 4rem) 1rem;
+  }
+
+  .counsellingServicePage__premaritalReasonsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage__whoThisIsForHeading {
+    font-size: clamp(1.4rem, 4vw, 1.8rem);
+  }
+
+  .counsellingServicePage__premaritalReasonsHeading {
+    margin-bottom: 1.1rem;
+    font-size: clamp(1.55rem, 6vw, 2rem);
+  }
+
+  .counsellingServicePage__premaritalReasonCard {
+    padding: 1.15rem 1rem 1rem;
+    border-radius: 18px;
+  }
+
+  .counsellingServicePage__accordionButton {
+    padding: 0.95rem 1.25rem;
+    font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+  }
+
+  .counsellingServicePage__accordionContent {
+    padding: 1rem 1.25rem;
+    font-size: clamp(0.88rem, 2.8vw, 0.95rem);
+  }
+
+  .counsellingServicePage__programCards--premarital {
+    padding: 2rem 1rem;
+  }
+
+  .counsellingServicePage__programCards--premarital .counsellingServicePage__programCardsGrid {
+    grid-template-columns: 1fr;
+    gap: 1.2rem;
+  }
+
+  .counsellingServicePage__programCard {
+    padding: 1rem 0.92rem;
+  }
+}
+
+.counsellingServicePage__motherhoodSupport {
+  background: #242427;
+  color: #f4f1e8;
+  padding: clamp(2.4rem, 5vw, 3.8rem) clamp(1rem, 3vw, 2rem);
+  min-height: 90vh;
+  display: flex;
+  align-items: center;
+}
+
+.counsellingServicePage__motherhoodSupportInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  gap: clamp(1.9rem, 4vw, 2.8rem);
+}
+
+.counsellingServicePage__motherhoodRow {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.88fr);
+  gap: clamp(1rem, 2.2vw, 1.8rem);
+  align-items: center;
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.counsellingServicePage__motherhoodRow--reverse {
+  grid-template-columns: minmax(280px, 0.88fr) minmax(0, 1fr);
+}
+
+.counsellingServicePage__motherhoodTextCard {
+  padding: clamp(0.5rem, 1vw, 0.9rem);
+}
+
+.counsellingServicePage__motherhoodTitle {
+  margin: 0 0 0.7rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.3rem, 1.8vw, 1.85rem);
+  font-weight: 400;
+  line-height: 1.28;
+  color: #f3dfaa;
+}
+
+.counsellingServicePage__motherhoodBody {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.92rem, 0.95vw, 1.02rem);
+  line-height: 1.78;
+  color: rgba(245, 244, 240, 0.92);
+}
+
+.counsellingServicePage__motherhoodImage {
+  width: 100%;
+  border-radius: 4px;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 16 / 9;
+}
+
+.counsellingServicePage__motherhoodList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.52rem;
+}
+
+.counsellingServicePage__motherhoodListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.91rem, 0.93vw, 1rem);
+  line-height: 1.7;
+  color: rgba(244, 241, 232, 0.95);
+}
+
+.counsellingServicePage__motherhoodListIcon {
+  width: 1.02rem;
+  height: 1.02rem;
+  color: #f3dfaa;
+  margin-top: 0.18rem;
+  flex-shrink: 0;
+}
+
+.counsellingServicePage__motherhoodSupport--visible .counsellingServicePage__motherhoodRow {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__motherhoodSupport--visible .counsellingServicePage__motherhoodRow:nth-child(2) {
+  transition-delay: 0.12s;
+}
+
+.counsellingServicePage__motherhoodCards {
+  background: #f7f6f1;
+  padding: clamp(2.2rem, 5vw, 3.6rem) clamp(1rem, 3vw, 2rem);
+}
+
+.counsellingServicePage__motherhoodCardsInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(1.15rem, 2.4vw, 1.8rem);
+}
+
+.counsellingServicePage__motherhoodCardsHeader {
+  grid-column: 1 / -1;
+  text-align: left;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.counsellingServicePage__motherhoodCardsHeading {
+  margin: 0 0 0.55rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.45rem, 2vw, 2rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #1f2c29;
+}
+
+.counsellingServicePage__motherhoodCardsDescription {
+  margin: 0;
+  max-width: 76ch;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.94rem, 0.95vw, 1.02rem);
+  line-height: 1.72;
+  color: #32413b;
+  text-align: left;
+}
+
+.counsellingServicePage__motherhoodCard {
+  border: 1px solid rgba(201, 168, 76, 0.28);
+  background: linear-gradient(165deg, #1b4332 0%, #163529 52%, #123023 100%);
+  border-radius: 14px;
+  padding: clamp(1rem, 2vw, 1.4rem);
+  box-shadow:
+    0 6px 22px rgba(27, 67, 50, 0.2);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    background 0.25s ease,
+    border-color 0.25s ease;
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.counsellingServicePage__motherhoodCards--visible .counsellingServicePage__motherhoodCardsHeader {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__motherhoodCards--visible .counsellingServicePage__motherhoodCard {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__motherhoodCards--visible .counsellingServicePage__motherhoodCard:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.counsellingServicePage__motherhoodCards--visible .counsellingServicePage__motherhoodCard:nth-child(3) {
+  transition-delay: 0.14s;
+}
+
+.counsellingServicePage__motherhoodCards--visible .counsellingServicePage__motherhoodCard:nth-child(4) {
+  transition-delay: 0.2s;
+}
+
+.counsellingServicePage__motherhoodCards--visible .counsellingServicePage__motherhoodCard:nth-child(5) {
+  transition-delay: 0.26s;
+}
+
+.counsellingServicePage__motherhoodCard:hover {
+  transform: translateY(-8px) !important;
+  border-color: rgba(232, 213, 163, 0.56);
+  background: linear-gradient(165deg, #214d3b 0%, #1a3d2e 52%, #153626 100%);
+  box-shadow: 0 14px 32px rgba(16, 33, 25, 0.26);
+}
+
+.counsellingServicePage__motherhoodCardIconWrap {
+  width: 2.3rem;
+  height: 2.3rem;
+  border-radius: 12px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 0.62rem;
+  background: rgba(201, 168, 76, 0.14);
+  border: 1px solid rgba(201, 168, 76, 0.38);
+}
+
+.counsellingServicePage__motherhoodCardIcon {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: #f3dfaa;
+}
+
+.counsellingServicePage__motherhoodCardTitle {
+  margin: 0 0 0.6rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.1rem, 1.2vw, 1.35rem);
+  line-height: 1.3;
+  font-weight: 400;
+  color: #f7f3e8;
+}
+
+.counsellingServicePage__motherhoodCardBody {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.92rem, 0.9vw, 0.99rem);
+  line-height: 1.72;
+  color: rgba(241, 247, 243, 0.93);
+}
+
+.counsellingServicePage__prenatalJourney {
+  background: #f1f1ee;
+  padding: clamp(2.2rem, 5vw, 3.2rem) clamp(0.9rem, 3vw, 1.8rem) clamp(2.8rem, 6vw, 3.8rem);
+}
+
+.counsellingServicePage__prenatalJourneyFrame {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(90px, 0.22fr) minmax(0, 1fr) minmax(90px, 0.22fr);
+  gap: clamp(0.9rem, 1.8vw, 1.5rem);
+  align-items: stretch;
+}
+
+.counsellingServicePage__prenatalJourneySide {
+  overflow: hidden;
+  border-radius: 2px;
+}
+
+.counsellingServicePage__prenatalJourneySide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.counsellingServicePage__prenatalJourneySide--left img {
+  object-position: 18% center;
+  filter: saturate(1.04) brightness(1.03) contrast(0.97);
+}
+
+.counsellingServicePage__prenatalJourneySide--right img {
+  object-position: 82% center;
+  filter: saturate(0.94) brightness(0.95) contrast(1.04);
+}
+
+.counsellingServicePage__prenatalJourneyContent {
+  background: #f7f7f4;
+  border: 1px solid rgba(30, 40, 34, 0.12);
+  padding: clamp(1.15rem, 2.4vw, 1.9rem) clamp(1.1rem, 2.5vw, 2rem);
+  color: #1e2723;
+}
+
+.counsellingServicePage__prenatalJourneyTitle {
+  margin: 0 0 0.7rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.45rem, 2.2vw, 2rem);
+  line-height: 1.25;
+  font-weight: 400;
+}
+
+.counsellingServicePage__prenatalJourneyText {
+  margin: 0 0 0.9rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.95rem, 1vw, 1.02rem);
+  line-height: 1.8;
+  color: #2a3632;
+}
+
+.counsellingServicePage__prenatalJourneySubtitle {
+  margin: 1.05rem 0 0.45rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.2rem, 1.7vw, 1.5rem);
+  line-height: 1.3;
+  font-weight: 400;
+}
+
+.counsellingServicePage__prenatalJourneyLead {
+  margin: 0 0 0.55rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.92rem, 0.95vw, 1rem);
+  line-height: 1.75;
+}
+
+.counsellingServicePage__prenatalJourneyList {
+  margin: 0;
+  padding-left: 1.08rem;
+  display: grid;
+  gap: 0.42rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.9rem, 0.95vw, 1rem);
+  line-height: 1.72;
+  color: #2a3632;
+}
+
+.counsellingServicePage__mosaic {
+  width: 90vw;
+  margin-left: calc(50% - 45vw);
+  margin-right: calc(50% - 45vw);
+  padding: 0 0 clamp(3.2rem, 7vw, 5rem);
+}
+
+.counsellingServicePage__mosaicGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0;
+}
+
+.counsellingServicePage__mosaicCell {
+  min-height: clamp(14rem, 27vw, 19rem);
+  opacity: 0;
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.counsellingServicePage__mosaicCell--text {
+  background: #2d6a73;
+  color: #eef6f5;
+  padding: clamp(1.35rem, 2.4vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transform: translateX(-26px);
+}
+
+.counsellingServicePage__mosaicTitle {
+  margin: 0 0 0.7rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.2rem, 1.5vw, 1.65rem);
+  font-weight: 400;
+  line-height: 1.2;
+  color: #f2ead1;
+}
+
+.counsellingServicePage__mosaicBody {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.92rem, 0.9vw, 1.02rem);
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(240, 246, 245, 0.94);
+}
+
+.counsellingServicePage__mosaicImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: translateX(26px) scale(1.02);
+  transition: transform 0.7s ease;
+}
+
+.counsellingServicePage__mosaic--visible .counsellingServicePage__mosaicCell {
+  opacity: 1;
+}
+
+.counsellingServicePage__mosaic--visible .counsellingServicePage__mosaicCell--text {
+  transform: translateX(0);
+}
+
+.counsellingServicePage__mosaic--visible .counsellingServicePage__mosaicImage {
+  transform: translateX(0) scale(1);
+}
+
+.counsellingServicePage__mosaicGrid .counsellingServicePage__mosaicCell:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.counsellingServicePage__mosaicGrid .counsellingServicePage__mosaicCell:nth-child(2) {
+  transition-delay: 0.08s;
+}
+
+.counsellingServicePage__mosaicGrid .counsellingServicePage__mosaicCell:nth-child(3) {
+  transition-delay: 0.16s;
+}
+
+.counsellingServicePage__mosaicGrid .counsellingServicePage__mosaicCell:nth-child(4) {
+  transition-delay: 0.24s;
+}
+
+.counsellingServicePage__mosaicGrid .counsellingServicePage__mosaicCell:nth-child(5) {
+  transition-delay: 0.32s;
+}
+
+.counsellingServicePage__mosaicGrid .counsellingServicePage__mosaicCell:nth-child(6) {
+  transition-delay: 0.4s;
+}
+
+.counsellingServicePage__programCards {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: 50vh;
+  padding: 0 clamp(1rem, 4vw, 2.4rem) clamp(3.4rem, 7vw, 5.2rem);
+}
+
+.counsellingServicePage__programCards--motherhood {
+  margin-block: 0;
+  padding: clamp(2.4rem, 4vw, 3rem) clamp(1rem, 4vw, 2.4rem) clamp(2.4rem, 4vw, 3rem);
+}
+
+.counsellingServicePage__programCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(1.4rem, 2.6vw, 2.2rem);
+}
+
+.counsellingServicePage__programCard {
+  min-height: clamp(19rem, 22vh, 24rem);
+  border: 2px solid #1b4332;
+  background: #f7f6f1;
+  padding: clamp(1.1rem, 2vw, 1.6rem);
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.counsellingServicePage__programCardTitle {
+  margin: 0 0 0.9rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.3rem, 1.8vw, 1.65rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: #1b4332;
+}
+
+.counsellingServicePage__programIntro {
+  margin: 0 0 0.9rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.9rem, 0.95vw, 1rem);
+  line-height: 1.68;
+  color: #2f463b;
+}
+
+.counsellingServicePage__programRows {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.65rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.94rem, 0.9vw, 1.03rem);
+  line-height: 1.6;
+  color: #2f463b;
+}
+
+.counsellingServicePage__programRow strong {
+  font-weight: 700;
+}
+
+.counsellingServicePage__programList {
+  margin: 0;
+  padding-left: 1.15rem;
+  display: grid;
+  gap: 0.62rem;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.94rem, 0.9vw, 1.03rem);
+  line-height: 1.65;
+  color: #2f463b;
+}
+
+.counsellingServicePage__programCards--visible .counsellingServicePage__programCard {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__programCardsGrid .counsellingServicePage__programCard:nth-child(1) {
+  transition-delay: 0s;
+}
+
+.counsellingServicePage__programCardsGrid .counsellingServicePage__programCard:nth-child(2) {
+  transition-delay: 0.1s;
+}
+
+.counsellingServicePage__programCardsGrid .counsellingServicePage__programCard:nth-child(3) {
+  transition-delay: 0.2s;
+}
+
+.counsellingServicePage__bookingFlow {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  min-height: 50vh;
+  padding: clamp(2rem, 4vw, 2.8rem) clamp(1rem, 3vw, 2rem) clamp(2rem, 4vw, 2.8rem);
+  background: #e5eadc;
+}
+
+.counsellingServicePage__bookingInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: calc(50vh - 4rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.counsellingServicePage__bookingHeading {
+  margin: 0 0 clamp(1.4rem, 2.4vw, 2rem);
+  text-align: center;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.7rem, 2.6vw, 2.3rem);
+  font-weight: 400;
+  color: #1f2c29;
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.counsellingServicePage__bookingGrid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(2rem, 4vw, 3.4rem);
+}
+
+.counsellingServicePage__bookingCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.38rem;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.55s ease, transform 0.55s ease;
+}
+
+.counsellingServicePage__bookingImageWrap {
+  width: clamp(7.2rem, 12vw, 9.4rem);
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid rgba(45, 106, 79, 0.35);
+  background: #f5f6f1;
+  margin-bottom: 1rem;
+}
+
+.counsellingServicePage__bookingImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.counsellingServicePage__bookingTitle {
+  margin: 0 0 0.62rem;
+  font-family: "DM Serif Display", Georgia, serif;
+  font-size: clamp(1.02rem, 1.25vw, 1.2rem);
+  font-weight: 400;
+  color: #21312d;
+}
+
+.counsellingServicePage__bookingText {
+  margin: 0;
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.88rem, 0.85vw, 0.98rem);
+  line-height: 1.7;
+  color: #2f3f3c;
+  max-width: 33ch;
+}
+
+.counsellingServicePage__bookingButton {
+  margin: clamp(1.25rem, 2.5vw, 1.8rem) auto 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.78rem 1.3rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: #1b4332;
+  color: #f7f6f1;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.counsellingServicePage__bookingActions {
+  margin-top: clamp(1.25rem, 2.5vw, 1.8rem);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.counsellingServicePage__bookingActions .counsellingServicePage__bookingButton {
+  margin-top: 0;
+  margin-inline: 0;
+}
+
+.counsellingServicePage__bookingSecondaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.78rem 1.3rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-family: "DM Sans", sans-serif;
+  font-size: 0.84rem;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  border: 1px solid #1b4332;
+  color: #1b4332;
+  background: transparent;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+  opacity: 0;
+  transform: translateY(18px);
+}
+
+.counsellingServicePage__bookingButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(27, 67, 50, 0.28);
+}
+
+.counsellingServicePage__bookingSecondaryButton:hover {
+  transform: translateY(-1px);
+  background: rgba(27, 67, 50, 0.08);
+}
+
+.counsellingServicePage__bookingFlow--visible .counsellingServicePage__bookingHeading,
+.counsellingServicePage__bookingFlow--visible .counsellingServicePage__bookingCard,
+.counsellingServicePage__bookingFlow--visible .counsellingServicePage__bookingButton,
+.counsellingServicePage__bookingFlow--visible .counsellingServicePage__bookingSecondaryButton {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__bookingGrid .counsellingServicePage__bookingCard:nth-child(1) {
+  transition-delay: 0.04s;
+}
+
+.counsellingServicePage__bookingGrid .counsellingServicePage__bookingCard:nth-child(2) {
+  transition-delay: 0.14s;
+}
+
+.counsellingServicePage__bookingGrid .counsellingServicePage__bookingCard:nth-child(3) {
+  transition-delay: 0.24s;
+}
+
+.counsellingServicePage__bookingFlow--visible .counsellingServicePage__bookingButton {
+  transition-delay: 0.3s;
+}
+
+@media (max-width: 720px) {
+  .counsellingServicePage__hero {
+    min-height: clamp(22rem, 78vh, 52rem);
+    padding-top: clamp(3.2rem, 11vw, 4.2rem);
+    padding-bottom: clamp(2.4rem, 8vw, 3.2rem);
+  }
+
+  .counsellingServicePage__summary {
+    margin-top: 0.85rem;
+    font-size: 0.94rem;
+    line-height: 1.6;
+    max-width: 42ch;
+  }
+
+  .counsellingServicePage__summaryDesktop {
+    display: none;
+  }
+
+  .counsellingServicePage__summaryMobile {
+    display: inline;
+  }
+
+  .counsellingServicePage__introInner {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .counsellingServicePage__introText {
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .counsellingServicePage__introHeading {
+    font-size: clamp(1.28rem, 5.2vw, 1.55rem);
+    margin-bottom: 0.65rem;
+  }
+
+  .counsellingServicePage__introLead {
+    margin-top: 0.45rem;
+    margin-bottom: 0.4rem;
+    font-size: 0.93rem;
+  }
+
+  .counsellingServicePage__introBenefitItem span {
+    font-size: 0.93rem;
+    line-height: 1.62;
+  }
+
+  .counsellingServicePage__introParagraph--desktop {
+    display: none;
+  }
+
+  .counsellingServicePage__introParagraph--mobile {
+    display: block;
+    margin-bottom: 0.7rem;
+  }
+
+  .counsellingServicePage__introFooter {
+    margin-top: 0.5rem;
+    font-size: 0.95rem;
+    line-height: 1.75;
+  }
+
+  .counsellingServicePage__motherhoodRow,
+  .counsellingServicePage__motherhoodRow--reverse {
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage__motherhoodTitle {
+    font-size: clamp(1.2rem, 5vw, 1.45rem);
+  }
+
+  .counsellingServicePage__motherhoodBody,
+  .counsellingServicePage__motherhoodListItem {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .counsellingServicePage__motherhoodCardsInner {
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage__motherhoodCard {
+    padding: 0.95rem;
+  }
+
+  .counsellingServicePage__prenatalJourney {
+    padding-top: 1.8rem;
+    padding-bottom: 2.3rem;
+  }
+
+  .counsellingServicePage__prenatalJourneyFrame {
+    grid-template-columns: 1fr;
+    gap: 0.9rem;
+  }
+
+  .counsellingServicePage__prenatalJourneySide {
+    display: none;
+  }
+
+  .counsellingServicePage__prenatalJourneyContent {
+    padding: 1rem 0.92rem;
+  }
+
+  .counsellingServicePage__prenatalJourneyTitle {
+    font-size: clamp(1.22rem, 5vw, 1.45rem);
+  }
+
+  .counsellingServicePage__prenatalJourneyText,
+  .counsellingServicePage__prenatalJourneyLead,
+  .counsellingServicePage__prenatalJourneyList {
+    font-size: 0.92rem;
+    line-height: 1.65;
+  }
+
+  .counsellingServicePage__mosaicGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage__mosaicCell {
+    min-height: 13.5rem;
+  }
+
+  .counsellingServicePage__programCardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage__programCard {
+    min-height: auto;
+  }
+
+  .counsellingServicePage__bookingFlow {
+    min-height: auto;
+  }
+
+  .counsellingServicePage__bookingInner {
+    min-height: auto;
+  }
+
+  .counsellingServicePage__bookingGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 1024px) and (min-width: 721px) {
+  .counsellingServicePage__hero {
+    min-height: clamp(24rem, 78vh, 52rem);
+  }
+
+  .counsellingServicePage__summary {
+    max-width: 54ch;
+    font-size: 0.98rem;
+    line-height: 1.65;
+  }
+
+  .counsellingServicePage__introInner {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.9fr);
+    gap: clamp(1.35rem, 3vw, 2.2rem);
+  }
+
+  .counsellingServicePage__introHeading {
+    font-size: clamp(1.35rem, 2vw, 1.72rem);
+  }
+
+  .counsellingServicePage__introText {
+    font-size: 0.98rem;
+    line-height: 1.78;
+  }
+
+  .counsellingServicePage__prenatalJourneyFrame {
+    grid-template-columns: minmax(72px, 0.18fr) minmax(0, 1fr) minmax(72px, 0.18fr);
+  }
+
+  .counsellingServicePage__prenatalJourneyContent {
+    padding: clamp(1rem, 2vw, 1.35rem);
+  }
+
+  .counsellingServicePage__mosaicGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .counsellingServicePage__programCardsGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* Final exact-match prenatal journey styling */
+.counsellingServicePage__prenatalJourney {
+  background: transparent;
+  min-height: 96vh;
+  padding: clamp(1.2rem, 2.8vw, 1.8rem);
+  display: flex;
+  align-items: center;
+}
+
+.counsellingServicePage__prenatalJourneyFrame {
+  width: min(1320px, 100%);
+  min-height: min(92vh, 920px);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 190px minmax(0, 1fr) 190px;
+  gap: 0;
+  align-items: stretch;
+}
+
+.counsellingServicePage__prenatalJourneySide {
+  display: block;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.counsellingServicePage__prenatalJourneySide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.counsellingServicePage__prenatalJourneyContent {
+  background: #f5f5f3;
+  border: none;
+  width: min(900px, 100%);
+  justify-self: center;
+  padding: clamp(1.2rem, 2.1vw, 1.95rem) clamp(1.25rem, 2.3vw, 2.15rem);
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.65s ease, transform 0.65s ease;
+}
+
+.counsellingServicePage__prenatalJourneyTitle {
+  font-size: clamp(1.45rem, 2vw, 1.95rem);
+  max-width: 34ch;
+}
+
+.counsellingServicePage__prenatalJourneyText {
+  font-size: clamp(0.96rem, 1vw, 1.05rem);
+  line-height: 1.8;
+}
+
+.counsellingServicePage__prenatalJourneyLead,
+.counsellingServicePage__prenatalJourneyList {
+  font-size: clamp(0.92rem, 0.95vw, 1rem);
+  line-height: 1.72;
+}
+
+.counsellingServicePage__prenatalJourneyList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 0.55rem;
+}
+
+.counsellingServicePage__prenatalJourneyListItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+
+.counsellingServicePage__prenatalJourneyListIcon {
+  width: 1.02rem;
+  height: 1.02rem;
+  color: #2d6a4f;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
+}
+
+.counsellingServicePage__prenatalJourney--visible .counsellingServicePage__prenatalJourneyContent,
+.counsellingServicePage__prenatalJourney--visible .counsellingServicePage__prenatalJourneySide {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counsellingServicePage__prenatalJourney--visible .counsellingServicePage__prenatalJourneySide--left {
+  transition-delay: 0.06s;
+}
+
+.counsellingServicePage__prenatalJourney--visible .counsellingServicePage__prenatalJourneyContent {
+  transition-delay: 0.12s;
+}
+
+.counsellingServicePage__prenatalJourney--visible .counsellingServicePage__prenatalJourneySide--right {
+  transition-delay: 0.2s;
+}
+
+@media (max-width: 1024px) and (min-width: 721px) {
+  .counsellingServicePage__prenatalJourneyFrame {
+    grid-template-columns: 130px minmax(0, 1fr) 130px;
+  }
+}
+
+@media (max-width: 720px) {
+  .counsellingServicePage__prenatalJourney {
+    padding: 1rem 0.75rem 1.2rem;
+    min-height: auto;
+  }
+
+  .counsellingServicePage__prenatalJourneyFrame {
+    min-height: auto;
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage__prenatalJourneySide {
+    display: none;
+  }
+
+  .counsellingServicePage__prenatalJourneyContent {
+    padding: 1rem 0.9rem;
+  }
+}
+
+/* Prenatal-only responsive hardening */
+.counsellingServicePage--prenatal .counsellingServicePage__hero {
+  min-height: clamp(24rem, 78vh, 52rem);
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__heading {
+  max-width: 18ch;
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__summary {
+  max-width: 62ch;
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__introInner {
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 1fr);
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__programCards {
+  padding-top: clamp(1.4rem, 3vw, 2.2rem);
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__programCardsGrid {
+  gap: clamp(1.1rem, 2.2vw, 2rem);
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__bookingGrid {
+  gap: clamp(1.5rem, 3vw, 2.6rem);
+}
+
+@media (max-width: 1200px) and (min-width: 901px) {
+  .counsellingServicePage--prenatal .counsellingServicePage__prenatalJourneyFrame {
+    grid-template-columns: 120px minmax(0, 1fr) 120px;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__programCardsGrid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 900px) and (min-width: 721px) {
+  .counsellingServicePage--prenatal .counsellingServicePage__hero {
+    min-height: clamp(24rem, 78vh, 52rem);
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__introInner {
+    grid-template-columns: 1fr;
+    gap: 1.35rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__introImage {
+    aspect-ratio: 16 / 8.6;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__programCardsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__bookingGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .counsellingServicePage--prenatal .counsellingServicePage__hero {
+    min-height: clamp(22rem, 78vh, 52rem);
+    padding-top: clamp(2.4rem, 9vw, 3.2rem);
+    padding-bottom: clamp(2rem, 7vw, 2.6rem);
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__heading {
+    font-size: clamp(1.6rem, 7.2vw, 2rem);
+    max-width: 14ch;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__summary {
+    font-size: 0.92rem;
+    line-height: 1.58;
+    max-width: 40ch;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__bookButton {
+    width: 100%;
+    max-width: 16rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__intro {
+    padding-top: 1.7rem;
+    padding-bottom: 2.1rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__introImage {
+    border-radius: 0.8rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__programCards {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__programCard {
+    padding: 1rem 0.92rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__bookingFlow {
+    padding-left: 0.85rem;
+    padding-right: 0.85rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__bookingImageWrap {
+    width: clamp(6.4rem, 28vw, 7.8rem);
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__bookingText {
+    max-width: none;
+  }
+}
+
+@media (max-width: 420px) {
+  .counsellingServicePage--prenatal .counsellingServicePage__programCardTitle {
+    font-size: 1.16rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__programRows,
+  .counsellingServicePage--prenatal .counsellingServicePage__programList,
+  .counsellingServicePage--prenatal .counsellingServicePage__bookingText {
+    font-size: 0.9rem;
+    line-height: 1.58;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .counsellingServicePage__introText,
+  .counsellingServicePage__introImage {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .counsellingServicePage__mosaicCell,
+  .counsellingServicePage__mosaicImage {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .counsellingServicePage__programCard {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .counsellingServicePage__bookingHeading,
+  .counsellingServicePage__bookingCard,
+  .counsellingServicePage__bookingButton {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .counsellingServicePage__prenatalJourneySide,
+  .counsellingServicePage__prenatalJourneyContent {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+/* Final mobile overflow guards for prenatal page */
+.counsellingServicePage--prenatal {
+  overflow-x: clip;
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__intro,
+.counsellingServicePage--prenatal .counsellingServicePage__introInner,
+.counsellingServicePage--prenatal .counsellingServicePage__introText,
+.counsellingServicePage--prenatal .counsellingServicePage__introFooter {
+  max-width: 100%;
+}
+
+.counsellingServicePage--prenatal .counsellingServicePage__introBenefitItem span {
+  min-width: 0;
+}
+
+.counsellingServicePage--motherhood .counsellingServicePage__hero {
+  min-height: clamp(24rem, 78vh, 52rem);
+}
+
+.counsellingServicePage--motherhood .counsellingServicePage__programCards {
+  min-height: auto;
+  margin-top: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.counsellingServicePage--motherhood .counsellingServicePage__summary {
+  max-width: 65ch;
+}
+
+@media (max-width: 720px) {
+  .counsellingServicePage--prenatal .counsellingServicePage__intro {
+    padding-left: 0.9rem;
+    padding-right: 0.9rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__introInner {
+    grid-template-columns: minmax(0, 1fr) !important;
+    gap: 1rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__introHeading {
+    max-width: 100%;
+    text-wrap: balance;
+    overflow-wrap: anywhere;
+  }
+
+  .counsellingServicePage__summarySubtitle {
+    font-size: 0.84rem;
+    margin-bottom: 0.28rem;
+  }
+
+  .counsellingServicePage--prenatal .counsellingServicePage__introText,
+  .counsellingServicePage--prenatal .counsellingServicePage__introFooter,
+  .counsellingServicePage--prenatal .counsellingServicePage__introBenefitItem span {
+    overflow-wrap: anywhere;
+  }
+}

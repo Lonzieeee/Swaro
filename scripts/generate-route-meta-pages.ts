@@ -1,8 +1,10 @@
 import { mkdir, readFile, writeFile } from 'node:fs/promises'
 import path from 'node:path'
 import { counsellingServices } from '../src/constants/counsellingServices'
+import { leadConsultantProfilesBySlug } from '../src/constants/leadConsultantProfiles'
 import { servicePages } from '../src/constants/servicePages'
 import { pageHeroMedia, partnershipsPageMedia, site } from '../src/constants/swaroData'
+import { truncateShareDescription } from '../src/utils/seo'
 
 type RouteMeta = {
   routePath: string
@@ -86,7 +88,7 @@ function buildRouteHtml(templateHtml: string, meta: RouteMeta): string {
   const shareImage = appendVersion(meta.image)
   const shareImageType = detectImageType(meta.image)
   const safeTitle = escapeHtmlAttribute(meta.title)
-  const safeDescription = escapeHtmlAttribute(meta.description)
+  const safeDescription = escapeHtmlAttribute(truncateShareDescription(meta.description))
   const safeImageAlt = escapeHtmlAttribute(meta.imageAlt)
   const titleWithBrand = `${safeTitle} · Swaro Institute`
   let html = templateHtml
@@ -121,6 +123,14 @@ async function writeRouteHtml(routePath: string, html: string): Promise<void> {
 
 async function main(): Promise<void> {
   const templateHtml = await readFile(DIST_INDEX, 'utf8')
+
+  const leadConsultantProfilePages: RouteMeta[] = Object.values(leadConsultantProfilesBySlug).map((p) => ({
+    routePath: `/about/${p.slug}`,
+    title: p.name,
+    description: p.metaDescription,
+    image: p.image,
+    imageAlt: p.imageAlt,
+  }))
 
   const corePages: RouteMeta[] = [
     {
@@ -202,7 +212,21 @@ async function main(): Promise<void> {
     imageAlt: service.imageAlt,
   }))
 
-  const routeMeta: RouteMeta[] = [...corePages, ...serviceDetailPages, ...counsellingDetailPages]
+  const courseOverviewPages: RouteMeta[] = counsellingServices.map((service) => ({
+    routePath: `/course-overview/${service.slug}`,
+    title: `${service.title} | Course Overview`,
+    description: service.pageDescription ?? service.description,
+    image: service.shareImage ?? service.pageImage ?? service.image,
+    imageAlt: service.imageAlt,
+  }))
+
+  const routeMeta: RouteMeta[] = [
+    ...corePages,
+    ...leadConsultantProfilePages,
+    ...serviceDetailPages,
+    ...counsellingDetailPages,
+    ...courseOverviewPages,
+  ]
 
   await Promise.all(
     routeMeta.map(async (meta) => {

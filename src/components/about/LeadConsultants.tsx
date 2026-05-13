@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import './LeadConsultants.css'
 
 type Consultant = {
@@ -9,11 +10,14 @@ type Consultant = {
   imageAlt: string
   bio: string[]
   coreAreas: string[]
+
+  profileSlug?: string
 }
 
 const consultants: readonly Consultant[] = [
   {
     id: 'consultant-alice',
+    profileSlug: 'prof-alice-ondigi',
     name: 'Prof. Alice Ondigi',
     title: 'Lead Consultant | Human Development & Community Empowerment',
     summary:
@@ -79,29 +83,53 @@ export default function LeadConsultants() {
         </header>
 
         <ul className="leadConsultants__grid" role="list">
-          {consultants.map((c) => (
-            <li key={c.id} className="leadConsultants__card" role="listitem" tabIndex={0}>
-              <img className="leadConsultants__photo" src={c.image} alt={c.imageAlt} loading="lazy" />
-              <div className="leadConsultants__namePlate">
-                <h3 className="leadConsultants__name">{c.name}</h3>
-                <p className="leadConsultants__title">{c.title}</p>
-                <p className="leadConsultants__summary">{c.summary}</p>
-              </div>
-              <div className="leadConsultants__overlay">
-                <div className="leadConsultants__overlayContent">
-                  <h4 className="leadConsultants__overlayHeading">{c.name}</h4>
-                  {c.bio.map((paragraph) => (
-                    <p key={paragraph} className="leadConsultants__bio">
-                      {paragraph}
-                    </p>
-                  ))}
-                  <p className="leadConsultants__coreAreas">
-                    <strong>Core Areas:</strong> {c.coreAreas.join(', ')}
-                  </p>
+          {consultants.map((c) => {
+            const profileHref = c.profileSlug ? `/about/${c.profileSlug}` : undefined
+            return (
+              <li
+                key={c.id}
+                className={`leadConsultants__card${c.profileSlug ? ' leadConsultants__card--hasProfile' : ''}`}
+                role="listitem"
+                tabIndex={0}
+              >
+                <img className="leadConsultants__photo" src={c.image} alt={c.imageAlt} loading="lazy" />
+                <div className="leadConsultants__namePlate">
+                  <h3 className="leadConsultants__name">{c.name}</h3>
+                  <p className="leadConsultants__title">{c.title}</p>
+                  <p className="leadConsultants__summary">{c.summary}</p>
+                  {profileHref ? (
+                    <Link to={profileHref} className="leadConsultants__learnMoreTouch">
+                      Learn more
+                    </Link>
+                  ) : null}
                 </div>
-              </div>
-            </li>
-          ))}
+                {profileHref ? (
+                  <>
+                    <div className="leadConsultants__profileShade" aria-hidden />
+                    <div className="leadConsultants__profileCta">
+                      <Link to={profileHref} className="leadConsultants__learnMoreBtn">
+                        Learn more
+                      </Link>
+                    </div>
+                  </>
+                ) : (
+                  <div className="leadConsultants__overlay">
+                    <div className="leadConsultants__overlayContent">
+                      <h4 className="leadConsultants__overlayHeading">{c.name}</h4>
+                      {c.bio.map((paragraph) => (
+                        <p key={paragraph} className="leadConsultants__bio">
+                          {paragraph}
+                        </p>
+                      ))}
+                      <p className="leadConsultants__coreAreas">
+                        <strong>Core Areas:</strong> {c.coreAreas.join(', ')}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </li>
+            )
+          })}
         </ul>
       </div>
     </section>

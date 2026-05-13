@@ -53,3 +53,13 @@ export function buildTitle(pageTitle: string): string {
   if (t === site.homeTitle || t === site.fullName) return site.homeTitle
   return `${t} · ${site.fullName}`
 }
+
+/** ~160 chars for meta / Open Graph / Twitter (matches prerender script). */
+export function truncateShareDescription(text: string, max = 158): string {
+  const t = text.replace(/\s+/g, ' ').trim()
+  if (t.length <= max) return t
+  const slice = t.slice(0, max - 1)
+  const lastSpace = slice.lastIndexOf(' ')
+  const cut = lastSpace > 48 ? lastSpace : max - 1
+  return `${slice.slice(0, cut).trimEnd()}…`
+}
