@@ -16,6 +16,8 @@ export const site = {
   sameAs: [] as readonly string[],
   
   defaultOgImagePath: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/sliideee.webp',
+  
+  brandLogoUrl: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/swarologoo.png',
   contactEmail: 'info@swaroinstitute.com',
   phone: '+254 711 966258',
 } as const
@@ -39,7 +41,7 @@ export const pageHeroMedia = {
     'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/ABouthero(1).webp',
 } as const
 
-/** About page feature imagery (below mission / vision) */
+
 export const aboutPageMedia = {
   showcase:
     'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/image%20abt(1).webp',

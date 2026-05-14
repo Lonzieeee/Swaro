@@ -9,9 +9,8 @@ import {
   HiOutlineUsers,
 } from "react-icons/hi2";
 import type { IconType } from "react-icons";
+import { site } from "../../constants/swaroData";
 import "./Navbar.css";
-
-const NAVBAR_LOGO_URL = "https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/swarologoo.png";
 
 type ServiceItem = {
   label: string;
@@ -127,7 +126,8 @@ export default function Navbar() {
       <nav className="navbar" data-scrolled={scrolled} aria-label="Main">
         <div className="navbar__inner">
           <Link to="/" className="navbar__logo" onClick={closeAllMenus}>
-            <img src={NAVBAR_LOGO_URL} alt="Swaro Institute" className="navbar__logo-image" />
+            <img src={site.brandLogoUrl} alt="Swaro Institute" className="navbar__logo-image" />
+            <span className="navbar__logo-name">{site.fullName}</span>
           </Link>
 
           <div className="navbar__desktop">

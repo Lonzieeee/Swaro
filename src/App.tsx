@@ -14,6 +14,7 @@ import CounsellingBooking from "./pages/CounsellingBooking";
 import CounsellingServicePage from "./pages/CounsellingServicePage";
 import CounsellingServiceDetailPage from "./pages/CounsellingServiceDetailPage";
 import ScrollToTop from "./components/common/ScrollToTop";
+import SupportChatWidget from "./components/common/SupportChatWidget";
 
 export default function App() {
   return (
@@ -36,6 +37,7 @@ export default function App() {
         </Routes>
       </main>
       <Footer />
+      <SupportChatWidget />
     </>
   );
 }

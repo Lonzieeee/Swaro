@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import './CTASection.css'
 
 const CTA_IMAGE_URL =
-  'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/bw%20cta(1).webp'
+  'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/bw%20cta(1)-80ce8688-727d-4dde-887b-bfa4acee2705.jpg'
 
 const CLIENTS = [
   {

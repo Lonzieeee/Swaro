@@ -7,7 +7,7 @@ const TRUST_INITIALS = ['S', 'M', 'A'] as const
 const AUTO_ADVANCE_MS = 5200
 
 const INTRO_BG =
-  'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/hero%20bg(1).png'
+  'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/hero%20bg(1).jpg'
 
 type IntroSlide = {
   kind: 'intro'
