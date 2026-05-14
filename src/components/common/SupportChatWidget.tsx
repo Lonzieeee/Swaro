@@ -16,7 +16,7 @@ import './SupportChatWidget.css'
 const STORAGE_KEY = 'swaro_support_chat_v1'
 const TEASER_DISMISSED_KEY = 'swaro_support_teaser_dismissed_v1'
 
-const WHATSAPP_E164 = '254711966258'
+const WHATSAPP_E164 = '254714882190'
 const WHATSAPP_PREFILL =
   'Hello Swaro Institute, I would like to ask about counselling or training services.'
 

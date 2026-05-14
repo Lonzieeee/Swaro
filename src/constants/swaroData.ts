@@ -19,7 +19,7 @@ export const site = {
   
   brandLogoUrl: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/swarologoo.png',
   contactEmail: 'info@swaroinstitute.com',
-  phone: '+254 711 966258',
+  phone: '+254 714 882190',
 } as const
 
 export const navLinks = [
