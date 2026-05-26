@@ -19,7 +19,7 @@ export const ALICE_ONDIGI_SLUG = 'prof-alice-ondigi'
 const aliceProfile: LeadConsultantProfile = {
   slug: ALICE_ONDIGI_SLUG,
   name: 'Prof. Alice Ondigi',
-  roleLabel: 'Lead Consultant | Human Development & Community Empowerment',
+  roleLabel: 'Senior Accreditted counsellor/psychologist by KCPA',
   image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/Proff.jpeg',
   imageAlt: 'Prof. Alice Ondigi, Lead Consultant at Swaro Institute',
   metaDescription:

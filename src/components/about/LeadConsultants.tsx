@@ -19,7 +19,7 @@ const consultants: readonly Consultant[] = [
     id: 'consultant-alice',
     profileSlug: 'prof-alice-ondigi',
     name: 'Prof. Alice Ondigi',
-    title: 'Lead Consultant | Human Development & Community Empowerment',
+    title: 'Senior Accreditted counsellor/psychologist by KCPA',
     summary:
       'Specialist in counselling, gender and family wellbeing, and community-based research for sustainable livelihoods. She brings over two decades of leadership in mentoring, participatory research, and translating evidence into practical support for families and communities. Her work consistently connects academic rigor with compassionate field practice, helping organizations design interventions that are ethical, inclusive, and measurable.',
     image: 'https://pub-280c8760758440989f8d553b295d5bd5.r2.dev/Proff.jpeg',

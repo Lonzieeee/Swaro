@@ -1,6 +1,6 @@
 import SEOHead from '../components/seo/SEOHead'
 import type { FormEvent } from 'react'
-import { pageHeroMedia } from '../constants/swaroData'
+import { pageHeroMedia, site } from '../constants/swaroData'
 import { counsellingServices } from '../constants/counsellingServices'
 import type { BreadcrumbJsonLdItem } from '../utils/seo'
 import { useSearchParams } from 'react-router-dom'
@@ -17,6 +17,18 @@ const CONTACT_META_DESCRIPTION =
 const CONTACT_KEYWORDS =
   'book consultation Kenya, SWARO contact, counselling consultation, training consultation, research consultancy contact, community development support'
 
+const CONTACT_TIME_SLOTS = [
+  'Monday - 8:00-10:00am - Online',
+  'Monday - 2:00-4:00pm - Physical',
+  'Monday - 7:00-9:00pm - Online',
+  'Tuesday - 8:00-10:00am - Online',
+  'Tuesday - 2:00-4:00pm - Physical',
+  'Tuesday - 7:00-9:00pm - Online',
+  'Wednesday - 8:00-10:00am - Online',
+  'Wednesday - 2:00-4:00pm - Physical',
+  'Wednesday - 7:00-9:00pm - Online',
+] as const
+
 export default function Contact() {
   const [searchParams] = useSearchParams()
   const preselectedServiceParam = searchParams.get('service') ?? ''
@@ -32,10 +44,9 @@ export default function Contact() {
     const fullName = String(formData.get('fullName') ?? '').trim()
     const email = String(formData.get('email') ?? '').trim()
     const phone = String(formData.get('phone') ?? '').trim()
-    const preferredStartDate = String(formData.get('preferredStartDate') ?? '').trim()
     const service = String(formData.get('service') ?? '').trim()
     const serviceFormat = String(formData.get('serviceFormat') ?? '').trim()
-    const preferredMode = String(formData.get('preferredMode') ?? '').trim()
+    const preferredTimeSlot = String(formData.get('preferredTimeSlot') ?? '').trim()
     const message = String(formData.get('message') ?? '').trim()
 
     const details = [
@@ -46,12 +57,11 @@ export default function Contact() {
       `Phone / WhatsApp: ${phone}`,
       `Counselling Service: ${service}`,
       `Service Format: ${serviceFormat}`,
-      `Preferred Mode: ${preferredMode}`,
-      `Preferred Start Date: ${preferredStartDate}`,
+      `Preferred Time Slot: ${preferredTimeSlot}`,
       `Message: ${message || 'N/A'}`,
     ].join('\n')
 
-    const whatsappNumber = '254711966258'
+    const whatsappNumber = site.phone.replace(/\D/g, '')
     const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(details)}`
     window.location.href = whatsappUrl
   }
@@ -104,11 +114,6 @@ export default function Contact() {
               </label>
 
               <label className="contactConsult__field">
-                <span>Preferred Start Date *</span>
-                <input type="date" name="preferredStartDate" required />
-              </label>
-
-              <label className="contactConsult__field">
                 <span>Counselling Service *</span>
                 <select name="service" required defaultValue={preselectedService}>
                   <option value="" disabled>
@@ -134,13 +139,14 @@ export default function Contact() {
               </label>
 
               <label className="contactConsult__field">
-                <span>Preferred Mode *</span>
-                <select name="preferredMode" required defaultValue="">
+                <span>Preferred Time Slot *</span>
+                <select name="preferredTimeSlot" required defaultValue="">
                   <option value="" disabled>
-                    Select preferred mode
+                    Select preferred time slot
                   </option>
-                  <option>Online</option>
-                  <option>In-person</option>
+                  {CONTACT_TIME_SLOTS.map((slot) => (
+                    <option key={slot}>{slot}</option>
+                  ))}
                 </select>
               </label>
 
